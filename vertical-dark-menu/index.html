@@ -97,11 +97,13 @@
 
     </style>
 </head>
-<body class="layout-boxed">
+<body class="layout-boxed" style="padding: 0 !important;">
 <!-- BEGIN LOADER -->
 <div id="load_screen"> <div class="loader"> <div class="loader-content">
     <div class="spinner-grow align-self-center"></div>
-</div></div></div>
+</div>
+</div>
+</div>
 <!--  END LOADER -->
 
 <!--  BEGIN NAVBAR  -->
@@ -110,49 +112,14 @@
 
     <!--</header>-->
 <!--</div>-->
-<div class="main-container" id="container" style="border:1px solid red;padding: 0 !important;">
-    <!--<div class="overlay"></div>-->
-    <!--<div class="search-overlay"></div>-->
-    <!--<div class="sidebar-wrapper sidebar-theme">-->
-        <!--<nav id="sidebar">-->
-            <!--<div class="navbar-nav theme-brand flex-row  text-center">-->
-                <!--<div class="nav-logo">-->
-                    <!--<div class="nav-item theme-logo">-->
-                        <!--<a href="./index.html">-->
-                            <!--<img src="../src/assets/img/logo.svg" class="navbar-logo" alt="logo">-->
-                        <!--</a>-->
-                    <!--</div>-->
-                    <!--<div class="nav-item theme-text">-->
-                        <!--<a href="./index.html" class="nav-link">  </a>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="nav-item sidebar-toggle">-->
-                    <!--<div class="btn-toggle sidebarCollapse">-->
-                        <!--<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-left"><polyline points="11 17 6 12 11 7"></polyline><polyline points="18 17 13 12 18 7"></polyline></svg>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="shadow-bottom"></div>-->
-            <!--<ul class="list-unstyled menu-categories" id="accordionExample">-->
-                <!--<li class="menu active">-->
-                    <!--<a href="./index.html" aria-expanded="false" class="dropdown-toggle">-->
-                        <!--<div class="">-->
-                            <!--<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>-->
-                            <!--<span>Dashboard</span>-->
-                        <!--</div>-->
-                    <!--</a>-->
-                <!--</li>-->
-            <!--</ul>-->
-        <!--</nav>-->
-
-    <!--</div>-->
-
-    <!--  END SIDEBAR  -->
-    <!--  BEGIN CONTENT AREA  -->
-    <div id="content" class="main-content" style="border:1px solid red;padding: 0 !important;">
+<div class="main-container" id="container" style="padding: 0 !important;">
+    <div id="content" class="main-content" style="padding: 0 !important;width: 0% !important;">
         <div class="layout-px-spacing">
             <div class="middle-content container-xxl p-0">
                 <div class="row layout-top-spacing">
+                    <div class="col-12 col-xs-12 col-md-12">
+                        <h3 class="text-left">Energy Monitoring Dashboard</h3>
+                    </div>
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="row">
                             <div class="col-7 col-xs-7 col-md-6">
@@ -213,7 +180,7 @@
                             </div>
                             <div class="col-5 col-xs-5 col-md-6">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-6">
                                         <div class="widget widget-table-one" style="padding-bottom: 0">
                                             <div class="widget-heading" style="">
                                                 <h5 class="">Filter Location</h5>
@@ -283,7 +250,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 mt-2">
+                                    <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-2">
                                         <div class="widget widget-table-one">
                                             <div class="widget-heading">
                                                 <h5 class="">Uptime & Status</h5>
@@ -353,7 +320,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-xs-12 col-md-12 mt-3">
-                        <h3 class="text-center">Energy Consumptoin By Sector</h3>
+                        <h3 class="text-left">Energy Consumption By Sector</h3>
                     </div>
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-2">
                         <div class="row widget-statistic">
@@ -448,7 +415,8 @@
                         <div class="widget widget-one_hybrid widget-followers">
                             <div class="widget widget-chart-one">
                                 <div class="widget-heading">
-                                    <h5 class="" style="font-weight: bold !important;font-size: 17px !important;color:white !important;">Realtime Trend</h5>
+                                    <h5 class="" style="font-weight: bold !important;font-size: 17px !important;color:white !important;">Monthly Used Energy By Plant
+                                    </h5>
                                 </div>
                                 <div class="widget-content pl-10 pr-10">
                                     <div id="realtime-chart"></div>
@@ -692,7 +660,7 @@
                 }]
             },
             subtitle: {
-                text: '$10,840',
+                text: '12.600 mW/h',
                 align: 'left',
                 margin: 0,
                 offsetX: 100,
@@ -704,7 +672,7 @@
                 }
             },
             title: {
-                text: 'Total Profit',
+                text: 'Avg Usage',
                 align: 'left',
                 margin: 0,
                 offsetX: -10,
