@@ -98,23 +98,16 @@
     </style>
 </head>
 <body class="layout-boxed" style="padding: 0 !important;">
-<!-- BEGIN LOADER -->
-<div id="load_screen"> <div class="loader"> <div class="loader-content">
-    <div class="spinner-grow align-self-center"></div>
+<div id="load_screen">
+    <div class="loader">
+        <div class="loader-content">
+            <div class="spinner-grow align-self-center"></div>
+        </div>
+    </div>
 </div>
-</div>
-</div>
-<!--  END LOADER -->
-
-<!--  BEGIN NAVBAR  -->
-<!--<div class="header-container container-xxl">-->
-    <!--<header class="header navbar navbar-expand-sm expand-header">-->
-
-    <!--</header>-->
-<!--</div>-->
-<div class="main-container" id="container" style="padding: 0 !important;">
-    <div id="content" class="main-content" style="padding: 0 !important;width: 0% !important;">
-        <div class="layout-px-spacing">
+<div class="main-container" id="container" style="padding: 0 !important;zoom:80% !important;">
+    <div id="content" class="main-content" style="padding: 0 !important;width: 0 !important;margin-left: 0 !important;margin-top: 0 !important;">
+        <div class="layout-px-spacing" style="margin-left: 0 !important;">
             <div class="middle-content container-xxl p-0">
                 <div class="row layout-top-spacing">
                     <div class="col-12 col-xs-12 col-md-12">
@@ -122,7 +115,7 @@
                     </div>
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="row">
-                            <div class="col-7 col-xs-7 col-md-6">
+                            <div class="col-7 col-xs-7 col-md-8">
                                 <div class="widget widget-card-four">
                                     <div class="widget-content">
                                         <div class="w-header">
@@ -153,7 +146,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="widget widget-wallet-one mt-2">
+                                <div class="widget widget-wallet-one mt-3">
                                     <ul class="list-group list-group-media">
                                         <li class="list-group-item ">
                                             <div class="media">
@@ -178,9 +171,9 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-5 col-xs-5 col-md-6">
+                            <div class="col-5 col-xs-5 col-md-4">
                                 <div class="row">
-                                    <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                                    <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                         <div class="widget widget-table-one" style="padding-bottom: 0">
                                             <div class="widget-heading" style="">
                                                 <h5 class="">Filter Location</h5>
@@ -250,7 +243,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-2">
+                                    <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-3">
                                         <div class="widget widget-table-one">
                                             <div class="widget-heading">
                                                 <h5 class="">Uptime & Status</h5>
@@ -322,7 +315,7 @@
                     <div class="col-12 col-xs-12 col-md-12 mt-3">
                         <h3 class="text-left">Energy Consumption By Sector</h3>
                     </div>
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-2">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3">
                         <div class="row widget-statistic">
                             <div class="col-md-12">
                                 <div class="row">
@@ -365,7 +358,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-12 mt-2">
+                            <div class="col-md-12 mt-3">
                                 <div class="row">
                                     <div class="col-6 col-xs-6 col-md-6">
                                         <div class="widget widget-one_hybrid widget-followers">
@@ -448,7 +441,7 @@
 
                                             </div>
                                             <hr>
-                                            <div class="widget-content mt-2">
+                                            <div class="widget-content mt-3">
                                                 <div class="w-header">
                                                     <div class="w-info">
                                                         <h5 class="value">Avg Today</h5>
@@ -513,30 +506,36 @@
 
                         </div>
                     </div>
-                    <div class="col-xl-7 mt-3">
-                        <div class="widget widget-one_hybrid widget-followers">
-                            <div class="widget widget-chart-one">
-                                <div class="widget-heading">
-                                    <h5 style="font-size: 17px !important;color: white !important;font-weight: bold !important;">Last 30 Days (KWH)</h5>
+                    <div class="col-md-12 mt-3">
+                        <div class="row">
+                            <div class="col-xl-7">
+                                <div class="widget widget-one_hybrid widget-followers">
+                                    <div class="widget widget-chart-one">
+                                        <div class="widget-heading">
+                                            <h5 style="font-size: 17px !important;color: white !important;font-weight: bold !important;">Last 30 Days (KWH)</h5>
+                                        </div>
+                                        <div class="widget-content">
+                                            <div id="last30days" class=""></div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="widget-content">
-                                    <div id="last30days" class=""></div>
+                            </div>
+                            <div class="col-xl-5">
+                                <div class="widget widget-one_hybrid widget-followers">
+                                    <div class="widget widget-chart-one">
+                                        <div class="widget-heading">
+                                            <h5 style="font-size: 17px !important;color: white !important;font-weight: bold !important;">Last 12 Months (KWH)</h5>
+                                        </div>
+                                        <div class="widget-content">
+                                            <div id="last12months" class=""></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-5 mt-2">
-                        <div class="widget widget-one_hybrid widget-followers">
-                            <div class="widget widget-chart-one">
-                                <div class="widget-heading">
-                                    <h5 style="font-size: 17px !important;color: white !important;font-weight: bold !important;">Last 12 Months (KWH)</h5>
-                                </div>
-                                <div class="widget-content">
-                                    <div id="last12months" class=""></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+
                 </div>
             </div>
         </div>
