@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+    <title>CORK Admin - Multipurpose Bootstrap Dashboard Template </title>
+    <link rel="icon" type="image/x-icon" href="../src/assets/img/favicon.ico"/>
+    <link href="../layouts/vertical-dark-menu/css/light/loader.css" rel="stylesheet" type="text/css" />
+    <link href="../layouts/vertical-dark-menu/css/dark/loader.css" rel="stylesheet" type="text/css" />
+    <script src="../layouts/vertical-dark-menu/loader.js"></script>
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+    <link href="../src/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../layouts/vertical-dark-menu/css/light/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="../layouts/vertical-dark-menu/css/dark/plugins.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+    <link href="../src/plugins/src/apex/apexcharts.css" rel="stylesheet" type="text/css">
+    <link href="../src/assets/css/light/dashboard/dash_1.css" rel="stylesheet" type="text/css" />
+    <link href="../src/assets/css/dark/dashboard/dash_1.css" rel="stylesheet" type="text/css" />
+    <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+
+    <link href="../src/assets/css/light/scrollspyNav.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../src/assets/css/light/forms/switches.css">
+
+    <link href="../src/assets/css/dark/scrollspyNav.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../src/assets/css/dark/forms/switches.css">
+
+    <!--<link href="../src/assets/css/dark/components/font-icons.css" rel="stylesheet" type="text/css">-->
+    <!--<link rel="stylesheet" href="../src/plugins/src/font-icons/fontawesome/css/fontawesome.css">-->
+
+    <style>
+        .pl-10{
+            padding-left: 10px !important;
+        }
+        .pr-10{
+            padding-right: 10px !important;
+        }
+        .pb-10{
+            padding-bottom: 10px !important;
+        }
+        .w-100{
+            width: 100% !important;
+        }
+        .color-label-gauge{
+            display: flex;
+            align-items: center;
+            vertical-align: middle;
+            text-align: center;
+            align-content: center;
+        }
+        .status-color-label-gauge{
+            height:20px;
+            width:20px;
+        }
+        button.btn-no-hover:hover{
+            background-color: transparent !important;
+            box-shadow: none !important;
+
+        }
+        button.btn-no-hover{
+            background-color: transparent !important;
+            box-shadow: none !important;
+            margin-bottom: 5px !important;
+            margin-top: 5px !important;
+            align-items: center !important;
+            vertical-align: middle !important;
+            align-content: center !important;
+            font-weight: bold !important;
+            cursor: default !important;
+        }
+        body.dark .btn-outline-secondary:hover{
+            color: #805dca !important;
+        }
+        body.dark .btn-outline-secondary{
+            border:none !important;
+            font-size: 18px !important;;
+            padding:0 !important;
+        }
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+        .widget-content-area>p{
+            border-radius: 7px !important;
+            color: #888ea8 !important;
+        }
+    </style>
+</head>
+<body class="layout-boxed">
+<!-- BEGIN LOADER -->
+<div id="load_screen"> <div class="loader"> <div class="loader-content">
+    <div class="spinner-grow align-self-center"></div>
+</div></div></div>
+<!--  END LOADER -->
+
+<!--  BEGIN NAVBAR  -->
+<div class="header-container container-xxl">
+    <header class="header navbar navbar-expand-sm expand-header">
+        <a href="javascript:void(0);" class="sidebarCollapse">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </a>
+        <div class="search-animated toggle-search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <form class="form-inline search-full form-inline search" role="search">
+                <div class="search-bar">
+                    <input type="text" class="form-control search-form-control  ml-lg-auto" placeholder="Search...">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x search-close"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </div>
+            </form>
+        </div>
+    </header>
+</div>
+<div class="main-container" id="container">
+    <div class="overlay"></div>
+    <div class="search-overlay"></div>
+    <div class="sidebar-wrapper sidebar-theme">
+        <nav id="sidebar">
+            <div class="navbar-nav theme-brand flex-row  text-center">
+                <div class="nav-logo">
+                    <div class="nav-item theme-logo">
+                        <a href="./index.html">
+                            <img src="../src/assets/img/logo.svg" class="navbar-logo" alt="logo">
+                        </a>
+                    </div>
+                    <div class="nav-item theme-text">
+                        <a href="./index.html" class="nav-link">  </a>
+                    </div>
+                </div>
+                <div class="nav-item sidebar-toggle">
+                    <div class="btn-toggle sidebarCollapse">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-left"><polyline points="11 17 6 12 11 7"></polyline><polyline points="18 17 13 12 18 7"></polyline></svg>
+                    </div>
+                </div>
+            </div>
+            <div class="shadow-bottom"></div>
+            <ul class="list-unstyled menu-categories" id="accordionExample">
+                <li class="menu active">
+                    <a href="./index.html" aria-expanded="false" class="dropdown-toggle">
+                        <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                            <span>Dashboard</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+    <!--  END SIDEBAR  -->
+    <!--  BEGIN CONTENT AREA  -->
+    <div id="content" class="main-content">
+        <div class="layout-px-spacing">
+            <div class="middle-content container-xxl p-0">
+                <div class="row layout-top-spacing">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="row widget-statistic">
+                            <div class="col-6 col-xs-6 col-md-5 layout-spacing">
+                                <div class="widget widget-one_hybrid widget-followers" style="height: 350px">
+                                    <div class="widget-heading" style="margin-bottom: 40px">
+                                        <p class="text-right" style="float: right">+2.79% Then Yesterday</p>
+                                        <p style="float: left;">Daily Consumption</p>
+                                    </div>
+                                    <div id="canvas-holder w-100">
+                                        <canvas id="daily-consumption-chart" class="mt-2"></canvas>
+                                    </div>
+                                    <p class="row widget-statistic justify-content-center pb-10" id="daily-consumption-color" style="font-size: 26px !important; ">16.000 mW/h</p>
+                                </div>
+                                <div class="mt-2 widget widget-one_hybrid widget-followers">
+                                    <div class="widget-heading">
+                                        <h4 class="text-center">ENERGY COST</h4>
+                                        <h4 class="text-center">Rp. 2.000.000.000</h4>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-6 col-xs-6 col-md-7 layout-spacing">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="widget widget-one_hybrid widget-followers">
+                                            <div class="widget-heading">
+                                                <p class="text-right">Filter Lokasi</p>
+
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-check form-check-primary form-check-inline">
+                                                            <input class="form-check-input" type="checkbox" id="form-check-default-checked" checked="">
+                                                            <label class="form-check-label" for="form-check-default-checked">
+                                                                Sunter 1
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-check form-check-primary form-check-inline">
+                                                            <input class="form-check-input" type="checkbox" id="form-check-default-checked" checked="">
+                                                            <label class="form-check-label" for="form-check-default-checked">
+                                                                Sunter 2
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-check form-check-primary form-check-inline">
+                                                            <input class="form-check-input" type="checkbox" id="form-check-default-checked" checked="">
+                                                            <label class="form-check-label" for="form-check-default-checked">
+                                                                Karawang 1
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-check form-check-primary form-check-inline">
+                                                            <input class="form-check-input" type="checkbox" id="form-check-default-checked" checked="">
+                                                            <label class="form-check-label" for="form-check-default-checked">
+                                                                Karawang 2
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7 mt-2">
+                                        <!--<div class="widget widget-one_hybrid widget-followers">-->
+                                            <!--<div class="widget-heading">-->
+                                                <!--<h4 class="text-center">ENERGY COST</h4>-->
+                                                <!--<h4 class="text-center">Rp. 2.000.000.000</h4>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                        <div class="widget widget-one_hybrid widget-followers">
+                                            <div class="widget-heading" style="padding-bottom: 30px !important;">
+                                                <p class="text-center">UPTIME & STATUS</p>
+                                                <table class="table">
+                                                    <tbody>
+                                                    <tr style="">
+                                                        <td style="padding:3px" width="1%">1.</td>
+                                                        <td style="padding:3px">SUNTER 1</td>
+                                                        <td style="color:green;font-weight: bold;">ON</td>
+                                                        <td style="color:white;font-weight: bold;">6h 37m</td>
+                                                    </tr>
+                                                    <tr style="">
+                                                        <td style="padding:3px" width="1%">2.</td>
+                                                        <td style="padding:3px">SUNTER 2</td>
+                                                        <td style="color:green;font-weight: bold;">ON</td>
+                                                        <td style="color:white;font-weight: bold;">6h 37m</td>
+                                                    </tr>
+                                                    <tr style="">
+                                                        <td style="padding:3px" width="1%">3.</td>
+                                                        <td style="padding:3px">KARAWANG 1</td>
+                                                        <td style="color:green;font-weight: bold;">ON
+                                                        <td style="color:white;font-weight: bold;">6h 37m</td>
+                                                    </tr>
+
+                                                    <tr style="">
+                                                        <td style="padding:3px" width="1%">4.</td>
+                                                        <td style="padding:3px">KARAWANG 2</td>
+                                                        <td style="color:green;font-weight: bold;">ON
+                                                        <td style="color:white;font-weight: bold;">6h 37m</td>
+
+                                                    </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-3 col-xs-3 col-md-3">
+                                <div class="statbox widget box box-shadow">
+                                    <div class="widget-content widget-content-area">
+                                        <p class="text-center">WELDING</p>
+                                        <center>
+                                            <button class="btn btn-outline-secondary btn-no-hover" style="color: white !important;">300 Kw/h</button>
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3 col-xs-3 col-md-3">
+                                <div class="statbox widget box box-shadow">
+                                    <div class="widget-content widget-content-area">
+                                        <p class="text-center">PRESS</p>
+                                        <center>
+                                            <button class="btn btn-outline-secondary btn-no-hover" style="color: white !important;">300 Kw/h</button>
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3 col-xs-3 col-md-3">
+                                <div class="statbox widget box box-shadow">
+                                    <div class="widget-content widget-content-area">
+                                        <p class="text-center">ASSY</p>
+                                        <center>
+                                            <button class="btn btn-outline-secondary btn-no-hover" style="color: white !important;">300 Kw/h</button>
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3 col-xs-3 col-md-3">
+                                <div class="statbox widget box box-shadow">
+                                    <div class="widget-content widget-content-area">
+                                        <p class="text-center">PAINTING</p>
+                                        <center>
+                                            <button class="btn btn-outline-secondary btn-no-hover" style="color: white !important;">300 Kw/h</button>
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+                                <div class="widget widget-one_hybrid widget-followers">
+                                    <div class="widget widget-chart-one">
+                                        <div class="widget-heading">
+                                            <h5 class="">Realtime Trend</h5>
+                                        </div>
+                                        <div class="widget-content pl-10 pr-10">
+                                            <div id="realtime-chart"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div  class="col-xl-12 layout-spacing">
+                        <div class="row" id="widget-middle">
+
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-3 col-xs-3 col-md-3">
+                                        <div class="statbox widget box box-shadow">
+                                            <div class="widget-content widget-content-area">
+                                                <p class="text-center">TODAY</p>
+                                                <center>
+                                                    <button class="btn btn-outline-secondary btn-no-hover">0.79 kWH</button>
+                                                </center>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-xs-3 col-md-3">
+                                        <div class="statbox widget box box-shadow">
+                                            <div class="widget-content widget-content-area">
+                                                <p class="text-center">AVG TODAY</p>
+                                                <center>
+                                                    <button class="btn btn-outline-secondary btn-no-hover">0.81 kWH</button>
+                                                </center>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-xs-3 col-md-3">
+                                        <div class="statbox widget box box-shadow">
+                                            <div class="widget-content widget-content-area">
+                                                <p class="text-center">MONTH</p>
+                                                <center>
+                                                    <button class="btn btn-outline-secondary btn-no-hover">24.37 kWH</button>
+                                                </center>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-xs-3 col-md-3">
+                                        <div class="statbox widget box box-shadow">
+                                            <div class="widget-content widget-content-area">
+                                                <p class="text-center">AVG MONTH</p>
+                                                <center>
+                                                    <button class="btn btn-outline-secondary btn-no-hover">20.40 kWH</button>
+                                                </center>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-xl-7 layout-spacing">
+                        <div class="widget widget-one_hybrid widget-followers">
+                            <div class="widget widget-chart-one">
+                                <div class="widget-heading">
+                                    <h5 class="">Last 30 Days (KWH)</h5>
+                                </div>
+                                <div class="widget-content">
+                                    <div id="last30days" class=""></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-5 layout-spacing">
+                        <div class="widget widget-one_hybrid widget-followers">
+                            <div class="widget widget-chart-one">
+                                <div class="widget-heading">
+                                    <h5 class="">Last 12 Months (KWH)</h5>
+                                </div>
+                                <div class="widget-content">
+                                    <div id="last12months" class=""></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../src/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../src/plugins/src/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="../src/plugins/src/mousetrap/mousetrap.min.js"></script>
+<script src="../layouts/vertical-dark-menu/app.js"></script>
+<script src="../src/plugins/src/apex/apexcharts.min.js"></script>
+<script src="https://unpkg.com/chart.js@2.8.0/dist/Chart.bundle.js"></script>
+<script src="https://unpkg.com/chartjs-gauge@0.3.0/dist/chartjs-gauge.js"></script>
+
+<script>
+    let dataMonth=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    let colorGauge=['#00ab55', '#e7515a'];
+    var randomValueChart = function(num=1000) {
+        return Math.round(Math.random() * num);
+    };
+    var randomValue = function (data) {
+        return Math.max.apply(null, data) * Math.random();
+    };
+
+    window.onload = function() {
+        chartGauge('daily-consumption-chart','daily-consumption-color');
+//        chartGauge('monthly-consumption-chart','monthly-consumption-color');
+        chartRealtime();
+        chart12Months();
+        chart30Days();
+    };
+
+    function chartGauge(idChart,idColor){
+        let htmlGauge='';
+        let dataGauge=[];
+        colorGauge.map(function(res,i){
+            dataGauge.push(randomValueChart(100000));
+            htmlGauge+=`<div class="col-md-3 color-label-gauge" style="color:#888ea8;font-weight:bold;">
+                <div class="status-color-label-gauge " style="background-color:${colorGauge[i]}"></div>&nbsp;${dataGauge[i]}
+            </div>`
+        });
+        var value = randomValue(dataGauge);
+        var config = {
+            type: 'gauge',
+            data: {
+                datasets: [{
+                    data: dataGauge,
+                    value: value,
+                    backgroundColor:colorGauge,
+                    borderWidth: 2,
+                    borderColor:"transparent",
+
+                }]
+            },
+            options: {
+                layout: {
+                    padding: {bottom: 30},
+
+                },
+                needle: {
+                    radiusPercentage: 2,
+                    widthPercentage: 3.2,
+                    lengthPercentage: 80,
+                    color: '#d3d3d3'
+                },
+                valueLabel: {formatter: Math.round}
+            }
+        };
+//        document.getElementById(idColor).innerHTML=htmlGauge;
+        var ctx = document.getElementById(idChart).getContext('2d');
+        window.myGauge = new Chart(ctx, config);
+    }
+    function chartRealtime(){
+        var Theme = "dark";
+        Apex.tooltip = {theme: Theme};
+        let newData=[];
+        let newData1=[];
+        let newData2=[];
+        let newData3=[];
+        dataMonth.map(function(res,i){
+            newData.push(randomValueChart(i*100000))
+            newData1.push(randomValueChart(i*100000))
+            newData2.push(randomValueChart(i*100000))
+            newData3.push(randomValueChart(i*100000))
+        });
+        var options = {
+            chart: {
+                fontFamily: "Nunito, sans-serif",
+                height: 180,
+                type: "area",
+                zoom: {enabled: false},
+                toolbar: {show: false},
+            },
+            colors: ["#e7515a","red","blue",'green'],
+            dataLabels: {
+                enabled: false,
+            },
+
+            series: [
+                {
+                    name: "Sunter 1",
+                    data:newData,
+                },
+                {
+                    name: "Sunter 2",
+                    data:newData1,
+                },
+                {
+                    name: "Karawang 1",
+                    data:newData2,
+                },
+                {
+                    name: "Karawang 2",
+                    data:newData3,
+                }
+            ],
+            labels: dataMonth,
+            yaxis: {
+                labels: {
+                    formatter: function (value, index) {
+                        return value / 1000 + "K";
+                    },
+                    offsetX: -15,
+                    offsetY: 0,
+                    style: {
+                        fontSize: "12px",
+                        fontFamily: "Nunito, sans-serif",
+                        cssClass: "apexcharts-yaxis-title",
+                    },
+                },
+            },
+            grid: {
+                borderColor: "#191e3a",
+                strokeDashArray: 5,
+                xaxis: {
+                    lines: {
+                        show: true,
+                    },
+                },
+                yaxis: {
+                    lines: {
+                        show: false,
+                    },
+                },
+                padding: {
+                    top: -50,
+                    right: 0,
+                    bottom: 0,
+                    left: 5,
+                },
+            },
+
+            tooltip: {
+                theme: Theme,
+                marker: {
+                    show: true,
+                },
+                x: {
+                    show: false,
+                },
+            },
+            fill: {
+                type: "gradient",
+                gradient: {
+                    type: "vertical",
+                    shadeIntensity: 1,
+                    inverseColors: !1,
+                    opacityFrom: 0.19,
+                    opacityTo: 0.05,
+                    stops: [100, 100],
+                },
+            },
+
+        };
+        var chart = new ApexCharts(document.querySelector("#realtime-chart"),options);
+        chart.render();
+    }
+    function chart30Days(){
+        let data={label:[],data:[]};
+        for(let i=1;i<31;i++){
+            let label=i<10?`0${i}`:`${i}`;
+            data.label.push(label+' Jan');
+            data.data.push(randomValueChart(1000000))
+        }
+        chartLast(data.label,data.data,'last30days')
+    }
+    function chart12Months(){
+        let data={label:[],data:[]};
+        for(let i=0;i<dataMonth.length;i++){
+            data.label.push(dataMonth[i])
+            data.data.push(randomValueChart(1000000))
+        }
+        chartLast(data.label,data.data,'last12months')
+    }
+
+
+    function chartLast(label,data,id){
+        var options = {
+            chart: {
+                fontFamily: "Nunito, sans-serif",
+                fontSize: "10px",
+                height: 300,
+                type: 'line',
+                zoom: {
+                    enabled: false,
+                },
+                toolbar: {
+                    show: false,
+                }
+            },
+            colors: ["#e7515a"],
+            series: [{
+                name: '',
+                type: 'column',
+                data: data
+            }],
+            stroke: {
+                width: [0, 4]
+            },
+            labels:label,
+            yaxis: {
+                labels: {
+                    formatter: function (value, index) {
+                        return value / 1000 + "K";
+                    },
+                    offsetX: 5,
+                    offsetY: 5,
+                    style: {
+                        fontSize: "10px",
+                        fontFamily: "Nunito, sans-serif",
+                        cssClass: "apexcharts-yaxis-title",
+                    },
+                },
+            },
+            grid: {
+                borderColor: "#191e3a",
+//                strokeDashArray: 5,
+//                xaxis: {
+//                    lines: {
+//                        show: true,
+//                    },
+//                },
+//                yaxis: {
+//                    lines: {
+//                        show: false,
+//                    },
+//                },
+//                padding: {
+//                    top: -50,
+//                    right: 0,
+//                    bottom: 0,
+//                    left: 5,
+//                },
+            },
+
+            fill: {
+                type: "gradient",
+                gradient: {
+                    type: "vertical",
+                    shadeIntensity: 1,
+                    inverseColors: !1,
+//                    opacityFrom: 0.19,
+//                    opacityTo: 0.05,
+                    stops: [100, 100],
+                },
+            },
+        };
+        var chart = new ApexCharts(document.querySelector(`#${id}`),options);
+        chart.render();
+    }
+
+
+</script>
+</body>
+</html>
