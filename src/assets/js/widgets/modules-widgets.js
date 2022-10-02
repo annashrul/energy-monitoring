@@ -1,39 +1,39 @@
-/** 
- * 
+/**
+ *
  * Analytics
- * 
+ *
 **/
 
 window.addEventListener("load", function(){
     try {
-  
+
       getcorkThemeObject = localStorage.getItem("theme");
       getParseObject = JSON.parse(getcorkThemeObject)
       ParsedObject = getParseObject;
-  
+
       if (ParsedObject.settings.layout.darkMode) {
-  
+
         var Theme = 'dark';
-  
+
         Apex.tooltip = {
             theme: Theme
         }
-        
+
         /**
           ==============================
           |    @Options Charts Script   |
           ==============================
         */
-        
+
         /*
           ======================================
               Visitor Statistics | Options
           ======================================
         */
-        
-        
+
+
         // Total Visits
-        
+
         var spark1 = {
         chart: {
             id: 'unique-visits',
@@ -127,12 +127,12 @@ window.addEventListener("load", function(){
               },
             },
         }
-        
+
         ]
         }
-        
+
         // Paid Visits
-        
+
         var spark2 = {
         chart: {
           id: 'total-users',
@@ -228,14 +228,14 @@ window.addEventListener("load", function(){
         }
         ]
         }
-        
-        
+
+
         /*
           ===================================
               Unique Visitors | Options
           ===================================
         */
-        
+
         var d_1options1 = {
         chart: {
             height: 350,
@@ -251,7 +251,7 @@ window.addEventListener("load", function(){
                 columnWidth: '55%',
                 endingShape: 'rounded',
                 borderRadius: 10,
-        
+
             },
         },
         dataLabels: {
@@ -314,7 +314,7 @@ window.addEventListener("load", function(){
             }
         },
         responsive: [
-            { 
+            {
                 breakpoint: 767,
                 options: {
                     plotOptions: {
@@ -327,15 +327,15 @@ window.addEventListener("load", function(){
             },
         ]
         }
-        
+
         /*
           ==============================
               Statistics | Options
           ==============================
         */
-        
+
         // Followers
-        
+
         var d_1options3 = {
         chart: {
           id: 'sparkline1',
@@ -374,7 +374,7 @@ window.addEventListener("load", function(){
             top: 5,
             right: 0,
             left: 0
-            }, 
+            },
         },
         fill: {
           type:"gradient",
@@ -388,9 +388,9 @@ window.addEventListener("load", function(){
           }
         }
         }
-        
+
         // Referral
-        
+
         var d_1options4 = {
         chart: {
           id: 'sparkline1',
@@ -429,7 +429,7 @@ window.addEventListener("load", function(){
             top: 5,
             right: 0,
             left: 0
-            }, 
+            },
         },
         fill: {
           type:"gradient",
@@ -443,9 +443,9 @@ window.addEventListener("load", function(){
           }
         }
         }
-        
+
         // Engagement Rate
-        
+
         var d_1options5 = {
           chart: {
             id: 'sparkline1',
@@ -487,7 +487,7 @@ window.addEventListener("load", function(){
               top: 5,
               right: 0,
               left: 0
-              }, 
+              },
           },
           fill: {
             type:"gradient",
@@ -501,31 +501,31 @@ window.addEventListener("load", function(){
             }
           }
         }
-        
-  
+
+
       } else {
-        
+
         var Theme = 'dark';
-        
+
         Apex.tooltip = {
             theme: Theme
         }
-        
+
         /**
           ==============================
           |    @Options Charts Script   |
           ==============================
         */
-        
+
         /*
           ======================================
               Visitor Statistics | Options
           ======================================
         */
-        
-        
+
+
         // Total Visits
-        
+
         var spark1 = {
         chart: {
             id: 'unique-visits',
@@ -619,12 +619,12 @@ window.addEventListener("load", function(){
               },
             },
         }
-        
+
         ]
         }
-        
+
         // Paid Visits
-        
+
         var spark2 = {
         chart: {
           id: 'total-users',
@@ -720,14 +720,14 @@ window.addEventListener("load", function(){
         }
         ]
         }
-        
-        
+
+
         /*
           ===================================
               Unique Visitors | Options
           ===================================
         */
-        
+
         var d_1options1 = {
         chart: {
             height: 350,
@@ -743,7 +743,7 @@ window.addEventListener("load", function(){
                 columnWidth: '55%',
                 endingShape: 'rounded',
                 borderRadius: 10,
-        
+
             },
         },
         dataLabels: {
@@ -806,7 +806,7 @@ window.addEventListener("load", function(){
             }
         },
         responsive: [
-            { 
+            {
                 breakpoint: 767,
                 options: {
                     plotOptions: {
@@ -819,15 +819,15 @@ window.addEventListener("load", function(){
             },
         ]
         }
-        
+
         /*
           ==============================
               Statistics | Options
           ==============================
         */
-        
+
         // Followers
-        
+
         var d_1options3 = {
         chart: {
           id: 'sparkline1',
@@ -866,7 +866,7 @@ window.addEventListener("load", function(){
             top: 5,
             right: 0,
             left: 0
-            }, 
+            },
         },
         fill: {
           type:"gradient",
@@ -880,9 +880,9 @@ window.addEventListener("load", function(){
           }
         }
         }
-        
+
         // Referral
-        
+
         var d_1options4 = {
         chart: {
           id: 'sparkline1',
@@ -921,7 +921,7 @@ window.addEventListener("load", function(){
             top: 5,
             right: 0,
             left: 0
-            }, 
+            },
         },
         fill: {
           type:"gradient",
@@ -935,9 +935,9 @@ window.addEventListener("load", function(){
           }
         }
         }
-        
+
         // Engagement Rate
-        
+
         var d_1options5 = {
           chart: {
             id: 'sparkline1',
@@ -979,7 +979,7 @@ window.addEventListener("load", function(){
               top: 5,
               right: 0,
               left: 0
-              }, 
+              },
           },
           fill: {
             type:"gradient",
@@ -993,122 +993,121 @@ window.addEventListener("load", function(){
             }
           }
         }
-  
+
       }
-        
+
         /**
             ==============================
             |    @Render Charts Script    |
             ==============================
         */
-  
-  
+
+
         /*
             ======================================
                 Visitor Statistics | Script
             ======================================
         */
-  
+
         // Total Visits
         d_1C_1 = new ApexCharts(document.querySelector("#total-users"), spark1);
         d_1C_1.render();
-  
+
         // Paid Visits
         d_1C_2 = new ApexCharts(document.querySelector("#paid-visits"), spark2);
         d_1C_2.render();
-  
+
         /*
             ===================================
                 Unique Visitors | Script
             ===================================
         */
-  
+
         var d_1C_3 = new ApexCharts(
             document.querySelector("#uniqueVisits"),
             d_1options1
         );
         d_1C_3.render();
-  
-  
+
+
         /*
             ==============================
                 Statistics | Script
             ==============================
         */
-  
-  
+
+
         // Followers
-  
+
         var d_1C_5 = new ApexCharts(document.querySelector("#hybrid_followers"), d_1options3);
         d_1C_5.render()
-  
+
         // Referral
-  
+
         var d_1C_6 = new ApexCharts(document.querySelector("#hybrid_followers1"), d_1options4);
         d_1C_6.render()
-  
+
         // Engagement Rate
-  
+
         var d_1C_7 = new ApexCharts(document.querySelector("#hybrid_followers3"), d_1options5);
         d_1C_7.render()
 
         var d_1C_8 = new ApexCharts(document.querySelector("#hybrid_followers4"), d_1options5);
         d_1C_8.render()
-  
-  
-  
+
+
       /*
           =============================================
               Perfect Scrollbar | Notifications
           =============================================
       */
       const ps = new PerfectScrollbar(document.querySelector('.mt-container'));
-  
-  
-  
+
+
+
       /**
        * =================================================================================================
        * |     @Re_Render | Re render all the necessary JS when clicked to switch/toggle theme           |
        * =================================================================================================
        */
-  
+
       document.querySelector('.theme-toggle').addEventListener('click', function() {
-  
+
         getcorkThemeObject = localStorage.getItem("theme");
         getParseObject = JSON.parse(getcorkThemeObject)
         ParsedObject = getParseObject;
-  
+
         // console.log(ParsedObject.settings.layout.darkMode)
-  
+
         if (ParsedObject.settings.layout.darkMode) {
-  
+
              /*
                 ==============================
                 |    @Re-Render Charts Script    |
                 ==============================
             */
-        
+
             /*
                 ===================================
                     Unique Visitors | Script
                 ===================================
             */
-        
+
             d_1C_3.updateOptions({
             grid: {
                     borderColor: '#191e3a',
                 },
             })
-            
+
             /*
                 ==============================
                     Statistics | Script
                 ==============================
             */
-        
-        
+
+
             // Followers
-  
+
             d_1C_5.updateOptions({
                 fill: {
                     type:"gradient",
@@ -1117,9 +1116,9 @@ window.addEventListener("load", function(){
                     }
                 }
             })
-        
+
             // Referral
-  
+
             d_1C_6.updateOptions({
                 fill: {
                     type:"gradient",
@@ -1128,9 +1127,9 @@ window.addEventListener("load", function(){
                     }
                 }
             })
-        
+
             // Engagement Rate
-  
+
             d_1C_7.updateOptions({
                 fill: {
                     type:"gradient",
@@ -1139,36 +1138,36 @@ window.addEventListener("load", function(){
                     }
                 }
             })
-            
+
         } else {
-            
+
             /*
                 ==============================
                 |    @Re-Render Charts Script    |
                 ==============================
             */
-        
+
             /*
                 ===================================
                     Unique Visitors | Script
                 ===================================
             */
-        
+
             d_1C_3.updateOptions({
             grid: {
                     borderColor: '#e0e6ed',
                 },
             })
-          
+
             /*
                 ==============================
                     Statistics | Script
                 ==============================
             */
-        
-        
+
+
             // Followers
-  
+
             d_1C_5.updateOptions({
                 fill: {
                     type:"gradient",
@@ -1177,9 +1176,9 @@ window.addEventListener("load", function(){
                     }
                 }
             })
-        
+
             // Referral
-  
+
             d_1C_6.updateOptions({
                 fill: {
                     type:"gradient",
@@ -1188,9 +1187,9 @@ window.addEventListener("load", function(){
                     }
                 }
             })
-        
+
             // Engagement Rate
-  
+
             d_1C_7.updateOptions({
                 fill: {
                     type:"gradient",
@@ -1199,12 +1198,12 @@ window.addEventListener("load", function(){
                     }
                 }
             })
-  
+
         }
-       
+
     })
-  
-  
+
+
     } catch(e) {
       // statements
       console.log(e);
@@ -1212,33 +1211,33 @@ window.addEventListener("load", function(){
 })
 
 
-/** 
- * 
+/**
+ *
  * Sales
- * 
+ *
 **/
 
 window.addEventListener("load", function(){
     try {
-  
+
       getcorkThemeObject = localStorage.getItem("theme");
       getParseObject = JSON.parse(getcorkThemeObject)
       ParsedObject = getParseObject;
-  
+
       if (ParsedObject.settings.layout.darkMode) {
-        
+
         var Theme = 'dark';
-    
+
         Apex.tooltip = {
             theme: Theme
         }
-    
+
         /**
             ==============================
             |    @Options Charts Script   |
             ==============================
         */
-        
+
         /*
             =============================
                 Daily Sales | Options
@@ -1307,7 +1306,7 @@ window.addEventListener("load", function(){
               right: 0,
               bottom: -40,
               left: 0
-              }, 
+              },
           },
           responsive: [
               {
@@ -1323,7 +1322,7 @@ window.addEventListener("load", function(){
               },
           ],
         }
-        
+
         /*
             =============================
                 Total Orders | Options
@@ -1368,7 +1367,7 @@ window.addEventListener("load", function(){
               right: 0,
               bottom: 0,
               left: 0
-            }, 
+            },
           },
           tooltip: {
             x: {
@@ -1378,7 +1377,7 @@ window.addEventListener("load", function(){
           },
           colors: ['#00ab55']
         }
-        
+
         /*
             =================================
                 Revenue Monthly | Options
@@ -1501,7 +1500,7 @@ window.addEventListener("load", function(){
                 lines: {
                     show: true
                 }
-            },   
+            },
             yaxis: {
                 lines: {
                     show: false,
@@ -1513,7 +1512,7 @@ window.addEventListener("load", function(){
               bottom: 0,
               left: 5
             },
-          }, 
+          },
           legend: {
             position: 'top',
             horizontalAlign: 'right',
@@ -1530,12 +1529,12 @@ window.addEventListener("load", function(){
               onClick: undefined,
               offsetX: -5,
               offsetY: 0
-            },    
+            },
             itemMargin: {
               horizontal: 10,
               vertical: 20
             }
-            
+
           },
           tooltip: {
             theme: Theme,
@@ -1566,7 +1565,7 @@ window.addEventListener("load", function(){
             },
           }]
         }
-        
+
         /*
             ==================================
                 Sales By Category | Options
@@ -1643,23 +1642,23 @@ window.addEventListener("load", function(){
             },
             series: [985, 737, 270],
             labels: ['Apparel', 'Sports', 'Others'],
-      
+
             responsive: [
-              { 
+              {
                 breakpoint: 1440, options: {
                   chart: {
                     width: 325
                   },
                 }
               },
-              { 
+              {
                 breakpoint: 1199, options: {
                   chart: {
                     width: 380
                   },
                 }
               },
-              { 
+              {
                 breakpoint: 575, options: {
                   chart: {
                     width: 320
@@ -1668,21 +1667,21 @@ window.addEventListener("load", function(){
               },
             ],
         }
-  
+
       } else {
-  
+
         var Theme = 'dark';
-    
+
         Apex.tooltip = {
             theme: Theme
         }
-    
+
         /**
             ==============================
             |    @Options Charts Script   |
             ==============================
         */
-        
+
         /*
             =============================
                 Daily Sales | Options
@@ -1751,7 +1750,7 @@ window.addEventListener("load", function(){
               right: 0,
               bottom: -40,
               left: 0
-              }, 
+              },
           },
           responsive: [
               {
@@ -1767,7 +1766,7 @@ window.addEventListener("load", function(){
               },
           ],
         }
-        
+
         /*
             =============================
                 Total Orders | Options
@@ -1813,7 +1812,7 @@ window.addEventListener("load", function(){
               right: 0,
               bottom: 0,
               left: 0
-            }, 
+            },
           },
           tooltip: {
             x: {
@@ -1823,7 +1822,7 @@ window.addEventListener("load", function(){
           },
           colors: ['#00ab55']
         }
-        
+
         /*
             =================================
                 Revenue Monthly | Options
@@ -1946,7 +1945,7 @@ window.addEventListener("load", function(){
                 lines: {
                     show: true
                 }
-            },   
+            },
             yaxis: {
                 lines: {
                     show: false,
@@ -1958,7 +1957,7 @@ window.addEventListener("load", function(){
               bottom: 0,
               left: 5
             },
-          }, 
+          },
           legend: {
             position: 'top',
             horizontalAlign: 'right',
@@ -1975,12 +1974,12 @@ window.addEventListener("load", function(){
               onClick: undefined,
               offsetX: -5,
               offsetY: 0
-            },    
+            },
             itemMargin: {
               horizontal: 10,
               vertical: 20
             }
-            
+
           },
           tooltip: {
             theme: Theme,
@@ -2011,7 +2010,7 @@ window.addEventListener("load", function(){
             },
           }]
         }
-        
+
         /*
             ==================================
                 Sales By Category | Options
@@ -2088,23 +2087,23 @@ window.addEventListener("load", function(){
             },
             series: [985, 737, 270],
             labels: ['Apparel', 'Sports', 'Others'],
-      
+
             responsive: [
-              { 
+              {
                 breakpoint: 1440, options: {
                   chart: {
                     width: 325
                   },
                 }
               },
-              { 
+              {
                 breakpoint: 1199, options: {
                   chart: {
                     width: 380
                   },
                 }
               },
-              { 
+              {
                 breakpoint: 575, options: {
                   chart: {
                     width: 320
@@ -2114,15 +2113,15 @@ window.addEventListener("load", function(){
             ],
         }
       }
-      
-    
+
+
     /**
         ==============================
         |    @Render Charts Script    |
         ==============================
     */
-    
-    
+
+
     /*
         ============================
             Daily Sales | Render
@@ -2130,7 +2129,7 @@ window.addEventListener("load", function(){
     */
     var d_2C_1 = new ApexCharts(document.querySelector("#daily-sales"), d_2options1);
     d_2C_1.render();
-    
+
     /*
         ============================
             Total Orders | Render
@@ -2138,7 +2137,7 @@ window.addEventListener("load", function(){
     */
     var d_2C_2 = new ApexCharts(document.querySelector("#total-orders"), d_2options2);
     d_2C_2.render();
-    
+
     /*
         ================================
             Revenue Monthly | Render
@@ -2148,9 +2147,9 @@ window.addEventListener("load", function(){
         document.querySelector("#revenueMonthly"),
         options1
     );
-    
+
     chart1.render();
-    
+
     /*
         =================================
             Sales By Category | Render
@@ -2160,51 +2159,51 @@ window.addEventListener("load", function(){
         document.querySelector("#chart-2"),
         options
     );
-    
+
     chart.render();
-    
+
     /*
         =============================================
             Perfect Scrollbar | Recent Activities
         =============================================
     */
     const ps = new PerfectScrollbar(document.querySelector('.mt-container-ra'));
-    
+
     // const topSellingProduct = new PerfectScrollbar('.widget-table-three .table-scroll table', {
     //   wheelSpeed:.5,
     //   swipeEasing:!0,
     //   minScrollbarLength:40,
     //   maxScrollbarLength:100,
     //   suppressScrollY: true
-    
+
     // });
-  
-  
-  
-  
-  
+
+
+
+
+
     /**
        * =================================================================================================
        * |     @Re_Render | Re render all the necessary JS when clicked to switch/toggle theme           |
        * =================================================================================================
        */
-    
+
     document.querySelector('.theme-toggle').addEventListener('click', function() {
-  
+
       // console.log(localStorage);
-  
+
       getcorkThemeObject = localStorage.getItem("theme");
       getParseObject = JSON.parse(getcorkThemeObject)
       ParsedObject = getParseObject;
-  
+
       if (ParsedObject.settings.layout.darkMode) {
-  
+
         /*
         =================================
             Revenue Monthly | Options
         =================================
       */
-  
+
         chart1.updateOptions({
           colors: ['#e7515a', '#2196f3'],
           subtitle: {
@@ -2221,14 +2220,14 @@ window.addEventListener("load", function(){
             borderColor: '#191e3a',
           }
         })
-  
-  
+
+
         /*
         ==================================
             Sales By Category | Options
         ==================================
         */
-  
+
         chart.updateOptions({
           stroke: {
             colors: '#0e1726'
@@ -2245,14 +2244,14 @@ window.addEventListener("load", function(){
             }
           }
         })
-  
-  
+
+
         /*
             =============================
                 Total Orders | Options
             =============================
         */
-  
+
         d_2C_2.updateOptions({
           fill: {
             type:"gradient",
@@ -2266,15 +2265,15 @@ window.addEventListener("load", function(){
             }
           }
         })
-  
+
       } else {
-  
+
         /*
         =================================
             Revenue Monthly | Options
         =================================
       */
-  
+
         chart1.updateOptions({
           colors: ['#1b55e2', '#e7515a'],
           subtitle: {
@@ -2291,14 +2290,14 @@ window.addEventListener("load", function(){
             borderColor: '#e0e6ed',
           }
         })
-  
-  
+
+
         /*
         ==================================
             Sales By Category | Options
         ==================================
         */
-  
+
         chart.updateOptions({
           stroke: {
             colors: '#fff'
@@ -2315,14 +2314,14 @@ window.addEventListener("load", function(){
             }
           }
         })
-  
-  
+
+
         /*
             =============================
                 Total Orders | Options
             =============================
         */
-  
+
         d_2C_2.updateOptions({
           fill: {
             type:"gradient",
@@ -2337,13 +2336,13 @@ window.addEventListener("load", function(){
             }
           }
         })
-        
-        
+
+
       }
-  
+
     })
-    
-    
+
+
     } catch(e) {
         console.log(e);
     }

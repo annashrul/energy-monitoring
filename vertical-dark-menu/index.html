@@ -7,7 +7,6 @@
     <title>ENERGY MONITORING </title>
     <link rel="icon" type="image/x-icon" href="../src/assets/img/favicon.ico"/>
     <link href="../layouts/vertical-dark-menu/css/light/loader.css" rel="stylesheet" type="text/css" />
-    <script src="../layouts/vertical-dark-menu/loader.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
     <link href="../src/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="../layouts/vertical-dark-menu/css/light/plugins.css" rel="stylesheet" type="text/css" />
@@ -16,30 +15,33 @@
     <link href="../src/assets/css/dark/dashboard/dash_1.css" rel="stylesheet" type="text/css" />
     <link href="../src/assets/css/light/scrollspyNav.css" rel="stylesheet" type="text/css" />
     <link href="../src/assets/css/dark/components/font-icons.css" rel="stylesheet" type="text/css">
-    <script src="../src/plugins/src/font-icons/feather/feather.min.js"></script>
-
-    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     <link href="../src/plugins/src/apex/apexcharts.css" rel="stylesheet" type="text/css">
 
     <link href="../src/assets/css/light/components/list-group.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../src/assets/css/light/widgets/modules-widgets.css">
-
     <link href="../src/assets/css/dark/components/list-group.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../src/assets/css/dark/widgets/modules-widgets.css">
-    <script src="../src/assets/js/widgets/modules-widgets.js"></script>
-
     <link href="../src/assets/css/light/components/list-group.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../src/assets/css/light/widgets/modules-widgets.css">
-
     <link href="../src/assets/css/dark/components/list-group.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../src/assets/css/dark/widgets/modules-widgets.css">
-    <style>
+    <link href="../src/assets/css/dark/apps/mailbox.css" rel="stylesheet" type="text/css" />
+    <link href="../src/plugins/css/light/apex/custom-apexcharts.css" rel="stylesheet" type="text/css">
+    <link href="../src/plugins/css/dark/apex/custom-apexcharts.css" rel="stylesheet" type="text/css">
 
+
+    <style>
+        .p-0{
+            padding: 0 !important;
+        }
         .pl-10{
             padding-left: 10px !important;
         }
         .pr-10{
             padding-right: 10px !important;
+        }
+        .pt-3{
+            padding-top: 3px !important;
         }
         .pb-10{
             padding-bottom: 10px !important;
@@ -94,10 +96,39 @@
         body.dark .widget-card-four .progress-bar:before{
             background-color: transparent !important;
         }
+        .bold{
+            font-weight: bold !important;
+        }
+        .ml-0{
+            margin-left: 0 !important;
+        }
+        .mt-0{
+            margin-top: 0 !important;
+        }
+        .green{
+            color: green !important;
+        }
+        .pr-0{
+            padding-right: 0 !important;
+        }
+        .white{color:white !important;}
+        .fs-14{font-size: 14px !important;}
+        .fs-17{font-size: 17px !important;}
+        .fs-20{font-size: 20px !important;}
+        .fs-34{font-size: 34px !important;}
+        .hr-location{
+            margin-bottom: 5px !important;margin-top: 5px !important;
+        }
+        .mtm-20{
+            margin-top: -20px !important;
+        }
+
+
+
 
     </style>
 </head>
-<body class="layout-boxed" style="padding: 0 !important;">
+<body class="layout-boxed mb-5">
 <div id="load_screen">
     <div class="loader">
         <div class="loader-content">
@@ -105,13 +136,13 @@
         </div>
     </div>
 </div>
-<div class="main-container" id="container" style="padding: 0 !important;zoom:80% !important;">
-    <div id="content" class="main-content" style="padding: 0 !important;width: 0 !important;margin-left: 0 !important;margin-top: 0 !important;">
-        <div class="layout-px-spacing" style="margin-left: 0 !important;">
+<div class="main-container p-0" id="container" style="zoom:80% !important;">
+    <div id="content" class="main-content ml-0 mt-0 p-0">
+        <div class="layout-px-spacing ml-0">
             <div class="middle-content container-xxl p-0">
                 <div class="row layout-top-spacing">
                     <div class="col-12 col-xs-12 col-md-12">
-                        <h3 class="text-left">Energy Monitoring Dashboard</h3>
+                        <h3 class="text-left bold">Energy Monitoring Dashboard</h3>
                     </div>
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="row">
@@ -120,51 +151,55 @@
                                     <div class="widget-content">
                                         <div class="w-header">
                                             <div class="w-info">
-                                                <h5 class="value">Daily Consumption</h5>
+                                                <h5 class="value bold">Daily Consumption</h5>
                                             </div>
-                                            <div class="task-action">
+                                            <div class="task-action bold">
                                                 19/09/2022 08:54 AM
                                             </div>
                                         </div>
 
                                         <div class="w-content">
-                                            <div class="w-info">
-                                                <p class="value" style="font-size: 34px;color:green">8.000 <span style="">mW/h</span> </p>
+                                            <div class="w-info bold">
+                                                <p class="value bold green fs-34">8.000 <span>mW/h</span> </p>
                                                 +0% Than Yesterday
                                             </div>
 
                                         </div>
                                         <div class="w-progress-stats">
                                             <div class="progress" style="background-color: #0a0d26">
-                                                <div class="progress-bar" role="progressbar" style="background-color:green;width: 57%" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div class="progress-bar" role="progressbar" style="box-shadow: none !important;background-color:green;width: 57%" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <div class="">
                                                 <div class="w-icon">
-                                                    <p style="color: green">40%</p>
+                                                    <p class="green bold">40%</p>
                                                 </div>
                                             </div>
                                         </div>
+                                        <br>
                                     </div>
                                 </div>
                                 <div class="widget widget-wallet-one mt-3">
                                     <ul class="list-group list-group-media">
                                         <li class="list-group-item ">
                                             <div class="media">
-                                                <div class="me-3"><i data-feather="zap"></i><span class="icon-name"></span></div>
+                                                <div class="me-3">
+                                                    <i data-feather="zap"></i>
+                                                </div>
                                                 <div class="media-body">
-                                                    <h6 class="tx-inverse">ENERGY CAPACITY</h6>
-                                                    <p class="mg-b-0">(mW/h)</p>
-                                                    <h6 class="amount">20.000 m/Wh</h6>
+                                                    <h6 class="tx-inverse bold">ENERGY CAPACITY</h6>
+                                                    <p class="mg-b-0 bold">(mW/h)</p>
+                                                    <h6 class="amount bold">20.000 m/Wh</h6>
                                                 </div>
                                             </div>
                                         </li>
-                                        <li class="list-group-item">
+                                        <hr/>
+                                        <li class="list-group-item" style="">
                                             <div class="media">
                                                 <div class="me-3"><i data-feather="target"></i><span class="icon-name"></span></div>
                                                 <div class="media-body">
-                                                    <h6 class="tx-inverse">TARGET LIMIT</h6>
-                                                    <p class="mg-b-0">(Percentage)</p>
-                                                    <h6 class="amount">80%</h6>
+                                                    <h6 class="tx-inverse bold">TARGET LIMIT</h6>
+                                                    <p class="mg-b-0 bold">(Percentage)</p>
+                                                    <h6 class="amount bold">80%</h6>
                                                 </div>
                                             </div>
                                         </li>
@@ -174,7 +209,7 @@
                             <div class="col-5 col-xs-5 col-md-4">
                                 <div class="row">
                                     <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                        <div class="widget widget-table-one" style="padding-bottom: 0">
+                                        <div class="widget widget-table-one pb-0">
                                             <div class="widget-heading" style="">
                                                 <h5 class="">Filter Location</h5>
                                                 <div class="task-action">
@@ -191,8 +226,8 @@
                                                         <div class="t-company-name">
                                                             <div class="t-name">
                                                                 <div class="form-check form-check-primary form-check-inline">
-                                                                    <input class="form-check-input" type="checkbox" id="form-check-default-checked" checked="">
-                                                                    <label class="form-check-label" for="form-check-default-checked">
+                                                                    <input class="form-check-input" type="checkbox" checked="">
+                                                                    <label class="form-check-label bold">
                                                                         Sunter 1
                                                                     </label>
                                                                 </div>
@@ -204,8 +239,8 @@
                                                         <div class="t-company-name">
                                                             <div class="t-name">
                                                                 <div class="form-check form-check-primary form-check-inline">
-                                                                    <input class="form-check-input" type="checkbox" id="form-check-default-checked" checked="">
-                                                                    <label class="form-check-label" for="form-check-default-checked">
+                                                                    <input class="form-check-input" type="checkbox" checked="">
+                                                                    <label class="form-check-label bold">
                                                                         Sunter 2
                                                                     </label>
                                                                 </div>
@@ -217,8 +252,8 @@
                                                         <div class="t-company-name">
                                                             <div class="t-name">
                                                                 <div class="form-check form-check-primary form-check-inline">
-                                                                    <input class="form-check-input" type="checkbox" id="form-check-default-checked" checked="">
-                                                                    <label class="form-check-label" for="form-check-default-checked">
+                                                                    <input class="form-check-input" type="checkbox" checked="">
+                                                                    <label class="form-check-label bold">
                                                                         Karawang 1
                                                                     </label>
                                                                 </div>
@@ -230,8 +265,8 @@
                                                         <div class="t-company-name">
                                                             <div class="t-name">
                                                                 <div class="form-check form-check-primary form-check-inline">
-                                                                    <input class="form-check-input" type="checkbox" id="form-check-default-checked" checked="">
-                                                                    <label class="form-check-label" for="form-check-default-checked">
+                                                                    <input class="form-check-input" type="checkbox" checked="">
+                                                                    <label class="form-check-label bold">
                                                                         Karawang 2
                                                                     </label>
                                                                 </div>
@@ -249,58 +284,67 @@
                                                 <h5 class="">Uptime & Status</h5>
                                                 <div class="task-action">
                                                     <div class="dropdown">
-                                                        <a class="dropdown-toggle" href="#" role="button" id="transactions" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                             <i data-feather="alert-circle"></i>
                                                         </a>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="widget-content" style="margin-top: -20px">
+                                            <div class="widget-content mtm-20">
                                                 <div class="transactions-list">
                                                     <div class="t-item">
                                                         <div class="t-company-name">
                                                             <div class="t-name">
-                                                                <h4>Sunter 1</h4>
-                                                                <p class="meta-date">6h 37m</p>
+                                                                <h4 class="bold">Sunter 1</h4>
+                                                                <p class="meta-date bold">6h 37m</p>
                                                             </div>
                                                         </div>
                                                         <div class="t-rate rate-dec">
-                                                            <span style="color: green;font-weight: bold">ON</span>
+                                                            <span class="group-list bold p-0 ">
+                                                               <a class="pr-0 nav-link list-actions g-dot-success"><p class="bold white fs-14 pt-3">ON</p></a>
+                                                            </span>
                                                         </div>
                                                     </div>
+                                                    <hr class="hr-location">
                                                     <div class="t-item">
                                                         <div class="t-company-name">
                                                             <div class="t-name">
-                                                                <h4>Sunter 1</h4>
-                                                                <p class="meta-date">6h 37m</p>
+                                                                <h4>Sunter 2</h4>
+                                                                <p class="meta-date bold">6h 37m</p>
                                                             </div>
                                                         </div>
                                                         <div class="t-rate rate-dec">
-                                                            <span style="color: green;font-weight: bold">ON</span>
+                                                            <span class="p-0 bold group-list">
+                                                               <a class="pr-0 nav-link list-actions g-dot-success" ><p class="fs-14 white bold pt-3">ON</p></a>
+                                                            </span>
                                                         </div>
                                                     </div>
-                                                    <div class="t-item">
-                                                        <div class="t-company-name">
-                                                            <div class="t-name">
-                                                                <h4>Karawang 1</h4>
-                                                                <p class="meta-date">6h 37m</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="t-rate rate-dec">
-                                                            <span style="color: green;font-weight: bold">ON</span>
-
-                                                        </div>
-                                                    </div>
+                                                    <hr class="hr-location">
                                                     <div class="t-item">
                                                         <div class="t-company-name">
                                                             <div class="t-name">
                                                                 <h4>Karawang 1</h4>
-                                                                <p class="meta-date">6h 37m</p>
+                                                                <p class="meta-date bold">6h 37m</p>
                                                             </div>
                                                         </div>
                                                         <div class="t-rate rate-dec">
-                                                            <span style="color: green;font-weight: bold">ON</span>
-
+                                                            <span class="p-0 bold group-list">
+                                                               <a class="pr-0 nav-link list-actions g-dot-success" ><p class="fs-14 white bold pt-3">ON</p></a>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <hr class="hr-location">
+                                                    <div class="t-item">
+                                                        <div class="t-company-name">
+                                                            <div class="t-name">
+                                                                <h4>Karawang 2</h4>
+                                                                <p class="meta-date bold">6h 37m</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="t-rate rate-dec">
+                                                            <span class="bold p-0 group-list">
+                                                               <a class="pr-0 nav-link list-actions g-dot-danger" id="work"><p class="fs-14 white bold pt-3">OFF</p></a>
+                                                            </span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -313,7 +357,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-xs-12 col-md-12 mt-3">
-                        <h3 class="text-left">Energy Consumption By Sector</h3>
+                        <h3 class="text-left bold">Energy Consumption By Sector</h3>
                     </div>
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3">
                         <div class="row widget-statistic">
@@ -323,7 +367,6 @@
                                         <div class="widget widget-one_hybrid widget-followers">
                                             <div class="widget-heading">
                                                 <div class="w-title">
-
                                                     <div class="">
                                                         <h5 class="">Painting</h5>
                                                         <p class="w-value">1800 mW/h</p>
@@ -398,17 +441,13 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
-
                         </div>
                     </div>
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3">
                         <div class="widget widget-one_hybrid widget-followers">
                             <div class="widget widget-chart-one">
                                 <div class="widget-heading">
-                                    <h5 class="" style="font-weight: bold !important;font-size: 17px !important;color:white !important;">Monthly Used Energy By Plant
+                                    <h5 class="bold white fs-17">Monthly Used Energy By Plant
                                     </h5>
                                 </div>
                                 <div class="widget-content pl-10 pr-10">
@@ -426,35 +465,32 @@
                                             <div class="widget-content">
                                                 <div class="w-header">
                                                     <div class="w-info">
-                                                        <h5 class="value">Today</h5>
+                                                        <h5 class="value bold">Today</h5>
                                                     </div>
-                                                    <div class="task-action">
+                                                    <div class="task-action bold">
                                                         +0% Than Yesterday
                                                     </div>
                                                 </div>
                                                 <div class="w-content">
-                                                    <div class="w-info">
-                                                        <p class="value" style="font-size: 34px;color:green">8.000 <span style="">mW/h</span> </p>
+                                                    <div class="w-info bold">
+                                                        <p class="value fs-34 green bold">8.000 <span>mW / h</span> </p>
                                                     </div>
-
                                                 </div>
-
                                             </div>
                                             <hr>
                                             <div class="widget-content mt-3">
                                                 <div class="w-header">
                                                     <div class="w-info">
-                                                        <h5 class="value">Avg Today</h5>
+                                                        <h5 class="value bold">Avg Today</h5>
                                                     </div>
-                                                    <div class="task-action">
+                                                    <div class="task-action bold">
                                                         +0% Than Yesterday
                                                     </div>
                                                 </div>
                                                 <div class="w-content">
-                                                    <div class="w-info">
-                                                        <p class="value" style="font-size: 34px;color:green">8.000 <span style="">mW/h</span> </p>
+                                                    <div class="w-info bold">
+                                                        <p class="value fs-34 green bold">8.000 <span>mW / h</span> </p>
                                                     </div>
-
                                                 </div>
 
                                             </div>
@@ -466,15 +502,15 @@
                                             <div class="widget-content">
                                                 <div class="w-header">
                                                     <div class="w-info">
-                                                        <h5 class="value">Month</h5>
+                                                        <h5 class="value bold">Month</h5>
                                                     </div>
-                                                    <div class="task-action">
+                                                    <div class="task-action bold">
                                                         +0% Than Yesterday
                                                     </div>
                                                 </div>
                                                 <div class="w-content">
-                                                    <div class="w-info">
-                                                        <p class="value" style="font-size: 34px;color:green">8.000 <span style="">mW/h</span> </p>
+                                                    <div class="w-info bold">
+                                                        <p class="value fs-34 green bold">8.000 <span>mW / h</span> </p>
                                                     </div>
 
                                                 </div>
@@ -484,15 +520,15 @@
                                             <div class="widget-content">
                                                 <div class="w-header">
                                                     <div class="w-info">
-                                                        <h5 class="value">Avg Month</h5>
+                                                        <h5 class="value bold">Avg Month</h5>
                                                     </div>
-                                                    <div class="task-action">
+                                                    <div class="task-action bold">
                                                         +0% Than Yesterday
                                                     </div>
                                                 </div>
                                                 <div class="w-content">
-                                                    <div class="w-info">
-                                                        <p class="value" style="font-size: 34px;color:green">8.000 <span style="">mW/h</span> </p>
+                                                    <div class="w-info bold">
+                                                        <p class="value fs-34 green bold">8.000 <span>mW / h</span> </p>
                                                     </div>
 
                                                 </div>
@@ -512,7 +548,7 @@
                                 <div class="widget widget-one_hybrid widget-followers">
                                     <div class="widget widget-chart-one">
                                         <div class="widget-heading">
-                                            <h5 style="font-size: 17px !important;color: white !important;font-weight: bold !important;">Last 30 Days (KWH)</h5>
+                                            <h5 class="fs-17 white bold">Last 30 Days (KWH)</h5>
                                         </div>
                                         <div class="widget-content">
                                             <div id="last30days" class=""></div>
@@ -524,18 +560,16 @@
                                 <div class="widget widget-one_hybrid widget-followers">
                                     <div class="widget widget-chart-one">
                                         <div class="widget-heading">
-                                            <h5 style="font-size: 17px !important;color: white !important;font-weight: bold !important;">Last 12 Months (KWH)</h5>
+                                            <h5 class="fs-17 white bold">Last 12 Months (KWH)</h5>
                                         </div>
                                         <div class="widget-content">
-                                            <div id="last12months" class=""></div>
+                                            <div id="last12months"></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -544,72 +578,28 @@
 <script src="../src/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="../src/plugins/src/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script src="../src/plugins/src/mousetrap/mousetrap.min.js"></script>
-<script src="../layouts/vertical-dark-menu/app.js"></script>
-<script src="../src/plugins/src/apex/apexcharts.min.js"></script>
 <script src="https://unpkg.com/chart.js@2.8.0/dist/Chart.bundle.js"></script>
-<script src="https://unpkg.com/chartjs-gauge@0.3.0/dist/chartjs-gauge.js"></script>
+<script src="../src/plugins/src/apex/apexcharts.min.js"></script>
+<script src="../src/plugins/src/font-icons/feather/feather.min.js"></script>
+<script src="../layouts/vertical-dark-menu/loader.js"></script>
 
 <script>
     let dataMonth=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-    let colorGauge=['#00ab55', '#e7515a'];
     var randomValueChart = function(num=1000) {
         return Math.round(Math.random() * num);
     };
-    var randomValue = function (data) {
-        return Math.max.apply(null, data) * Math.random();
-    };
-
     window.onload = function() {
         feather.replace();
-
-//        chartGauge('daily-consumption-chart','daily-consumption-color');
-//        chartGauge('monthly-consumption-chart','monthly-consumption-color');
         chartRealtime();
         chart12Months();
         chart30Days();
+        chartBySector("hybrid_followers");
+        chartBySector("hybrid_followers1");
+        chartBySector("hybrid_followers3");
+        chartBySector("hybrid_followers4");
     };
 
-    function chartGauge(idChart,idColor){
-        let htmlGauge='';
-        let dataGauge=[];
-        colorGauge.map(function(res,i){
-            dataGauge.push(randomValueChart(100000));
-            htmlGauge+=`<div class="col-md-3 color-label-gauge" style="color:#888ea8;font-weight:bold;">
-                <div class="status-color-label-gauge " style="background-color:${colorGauge[i]}"></div>&nbsp;${dataGauge[i]}
-            </div>`
-        });
-        var value = randomValue(dataGauge);
-        console.log(value)
-        var config = {
-            type: 'gauge',
-            data: {
-                datasets: [{
-                    data: dataGauge,
-                    value: 73095.02000193519,
-                    backgroundColor:colorGauge,
-                    borderWidth: 2,
-                    borderColor:"transparent",
 
-                }]
-            },
-            options: {
-                layout: {
-                    padding: {bottom: 30},
-
-                },
-                needle: {
-                    radiusPercentage: 2,
-                    widthPercentage: 3.2,
-                    lengthPercentage: 80,
-                    color: '#d3d3d3'
-                },
-                valueLabel: {formatter: Math.round}
-            }
-        };
-//        document.getElementById(idColor).innerHTML=htmlGauge;
-        var ctx = document.getElementById(idChart).getContext('2d');
-        window.myGauge = new Chart(ctx, config);
-    }
     function chartRealtime(){
         var Theme = "dark";
         Apex.tooltip = {theme: Theme};
@@ -688,18 +678,10 @@
                 width: 2,
                 lineCap: 'square'
             },
-
-//            chart: {
-//                fontFamily: "Nunito, sans-serif",
-//                type: "area",
-//                zoom: {enabled: false},
-//                toolbar: {show: false},
-//            },
             colors: ["rgb(231, 81, 90)","rgb(33, 150, 243)","rgb(226, 160, 63)",'rgb(98, 43, 215)'],
             dataLabels: {
                 enabled: false,
             },
-//
             series: [
                 {
                     name: "Sunter 1",
@@ -824,86 +806,6 @@
                     },
                 },
             }]
-//            yaxis: {
-//                labels: {
-//                    formatter: function (value, index) {
-//                        return value / 1000 + "K";
-//                    },
-//                    offsetX: 0,
-//                    offsetY: 5,
-//                    style: {
-//                        fontSize: "12px",
-//                        fontFamily: "Nunito, sans-serif",
-//                        cssClass: "apexcharts-yaxis-title",
-//                    },
-//                },
-//            },
-//            grid: {
-//                borderColor: "#191e3a",
-//                strokeDashArray: 5,
-//                xaxis: {
-//                    lines: {
-//                        show: true,
-//                    },
-//                },
-//                yaxis: {
-//                    lines: {
-//                        show: false,
-//                    },
-//                },
-//                padding: {
-//                    top: -50,
-//                    right: 0,
-//                    bottom: 0,
-//                    left: 5,
-//                },
-//            },
-//
-//            tooltip: {
-//                theme: Theme,
-//                marker: {
-//                    show: true,
-//                },
-//                x: {
-//                    show: false,
-//                },
-//            },
-//            fill: {
-//                type: "gradient",
-//                gradient: {
-//                    type: "vertical",
-//                    shadeIntensity: 1,
-//                    inverseColors: !1,
-//                    opacityFrom: 0.19,
-//                    opacityTo: 0.05,
-//                    stops: [100, 100],
-//                },
-//            },
-//            subtitle: {
-//                text: '$10,840',
-//                align: 'left',
-//                margin: 0,
-//                offsetX: 100,
-//                offsetY: 20,
-//                floating: false,
-//                style: {
-//                    fontSize: '18px',
-//                    color:  '#00ab55'
-//                }
-//            },
-//            title: {
-//                text: 'Total Profit',
-//                align: 'left',
-//                margin: 0,
-//                offsetX: -10,
-//                offsetY: 20,
-//                floating: false,
-//                style: {
-//                    fontSize: '18px',
-//                    color:  '#bfc9d4'
-//                },
-//            },
-
         };
         var chart = new ApexCharts(document.querySelector("#realtime-chart"),options);
         chart.render();
@@ -925,13 +827,11 @@
         }
         chartLast(data.label,data.data,'last12months')
     }
-
-
     function chartLast(label,data,id){
         var options = {
             chart: {
                 fontFamily: "Nunito, sans-serif",
-                fontSize: "10px",
+                fontSize: "30px",
                 height: 300,
                 type: 'line',
                 zoom: {
@@ -959,7 +859,19 @@
                     offsetX: 5,
                     offsetY: 5,
                     style: {
-                        fontSize: "10px",
+                        fontSize: "14px",
+                        fontFamily: "Nunito, sans-serif",
+                        cssClass: "apexcharts-yaxis-title",
+                    },
+                },
+            },
+            xaxis: {
+                labels: {
+
+//                    offsetX: 5,
+//                    offsetY: 5,
+                    style: {
+                        fontSize: "14px",
                         fontFamily: "Nunito, sans-serif",
                         cssClass: "apexcharts-yaxis-title",
                     },
@@ -967,23 +879,23 @@
             },
             grid: {
                 borderColor: "#191e3a",
-//                strokeDashArray: 5,
-//                xaxis: {
-//                    lines: {
-//                        show: true,
-//                    },
-//                },
-//                yaxis: {
-//                    lines: {
-//                        show: false,
-//                    },
-//                },
-//                padding: {
-//                    top: -50,
-//                    right: 0,
-//                    bottom: 0,
-//                    left: 5,
-//                },
+                strokeDashArray: 5,
+                xaxis: {
+                    lines: {
+                        show: true,
+                    },
+                },
+                yaxis: {
+                    lines: {
+                        show: false,
+                    },
+                },
+                padding: {
+                    top: -50,
+                    right: 0,
+                    bottom: 0,
+                    left: 5,
+                },
             },
 
             fill: {
@@ -992,15 +904,80 @@
                     type: "vertical",
                     shadeIntensity: 1,
                     inverseColors: !1,
-//                    opacityFrom: 0.19,
-//                    opacityTo: 0.05,
+                    opacityFrom: 0.90,
+                    opacityTo: 1,
                     stops: [100, 100],
                 },
             },
         };
+
+
+
         var chart = new ApexCharts(document.querySelector(`#${id}`),options);
         chart.render();
     }
+    function chartBySector(id){
+        var d_1options3 = {
+            chart: {
+                id: 'sparkline1',
+                type: 'area',
+                height: 160,
+                sparkline: {
+                    enabled: true
+                },
+            },
+            stroke: {
+                curve: 'smooth',
+                width: 2,
+            },
+            series: [{
+                name: 'Sales',
+                data: [38, 60, 38, 52, 36, 40, 28 ]
+            }],
+            labels: ['1', '2', '3', '4', '5', '6', '7'],
+            yaxis: {
+                min: 0
+            },
+            colors: ['#00ab55'],
+            tooltip: {
+                x: {
+                    show: false,
+                }
+            },
+            grid: {
+                show: false,
+                xaxis: {
+                    lines: {
+                        show: false
+                    }
+                },
+                padding: {
+                    top: 5,
+                    right: 0,
+                    left: 0
+                },
+            },
+            fill: {
+                type:"gradient",
+                gradient: {
+                    type: "vertical",
+                    shadeIntensity: 1,
+                    inverseColors: !1,
+                    opacityFrom: .30,
+                    opacityTo: .05,
+                    stops: [100, 100]
+                }
+            }
+        };
+
+
+
+        var newChart = new ApexCharts(document.querySelector(`#${id}`), d_1options3);
+        newChart.render()
+    }
+
+
+
 
 
 </script>

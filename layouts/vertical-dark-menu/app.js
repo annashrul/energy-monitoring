@@ -23,12 +23,12 @@ var App = function() {
 
     var categoryScroll = {
         scrollCat: function() {
-            var sidebarWrapper = document.querySelectorAll('.sidebar-wrapper li.active')[0];
-            var sidebarWrapperTop = sidebarWrapper.offsetTop - 12;
-            setTimeout(() => {
-                const scroll = document.querySelector('.menu-categories');
-                scroll.scrollTop = sidebarWrapperTop;
-            }, 50);
+            // var sidebarWrapper = document.querySelectorAll('.sidebar-wrapper li.active')[0];
+            // var sidebarWrapperTop = sidebarWrapper.offsetTop - 12;
+            // setTimeout(() => {
+            //     const scroll = document.querySelector('.menu-categories');
+            //     scroll.scrollTop = sidebarWrapperTop;
+            // }, 50);
         }
     }
 
@@ -282,8 +282,8 @@ var App = function() {
                 sidebar.scrollTop -= e. wheelDeltaY; 
             }
 
-            sidebar.addEventListener('mousewheel', preventScrolling);
-            sidebar.addEventListener('DOMMouseScroll', preventScrolling);
+            // sidebar.addEventListener('mousewheel', preventScrolling);
+            // sidebar.addEventListener('DOMMouseScroll', preventScrolling);
         },
         searchKeyBind: function() {
 
@@ -381,10 +381,10 @@ var App = function() {
                 if (!document.querySelector('body').classList.contains('alt-menu')) {
 
                     Dom.id.container.classList.remove("sidebar-closed");
-                    Dom.class.navbar.classList.remove("expand-header");
-                    Dom.class.overlay.classList.remove('show');
-                    Dom.id.container.classList.remove('sbar-open');
-                    Dom.main.classList.remove('sidebar-noneoverflow');
+                    // Dom.class.navbar.classList.remove("expand-header");
+                    // Dom.class.overlay.classList.remove('show');
+                    // Dom.id.container.classList.remove('sbar-open');
+                    // Dom.main.classList.remove('sidebar-noneoverflow');
                 } else {
                     Dom.main.classList.add('sidebar-noneoverflow');
                     Dom.id.container.classList.add("sidebar-closed");
