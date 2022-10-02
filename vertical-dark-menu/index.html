@@ -28,6 +28,11 @@
     <link rel="stylesheet" type="text/css" href="../src/assets/css/dark/widgets/modules-widgets.css">
     <script src="../src/assets/js/widgets/modules-widgets.js"></script>
 
+    <link href="../src/assets/css/light/components/list-group.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../src/assets/css/light/widgets/modules-widgets.css">
+
+    <link href="../src/assets/css/dark/components/list-group.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../src/assets/css/dark/widgets/modules-widgets.css">
     <style>
 
         .pl-10{
@@ -86,6 +91,10 @@
             border-radius: 7px !important;
             color: #888ea8 !important;
         }
+        body.dark .widget-card-four .progress-bar:before{
+            background-color: transparent !important;
+        }
+
     </style>
 </head>
 <body class="layout-boxed">
@@ -96,70 +105,57 @@
 <!--  END LOADER -->
 
 <!--  BEGIN NAVBAR  -->
-<div class="header-container container-xxl">
-    <header class="header navbar navbar-expand-sm expand-header">
-        <!--<a href="javascript:void(0);" class="sidebarCollapse">-->
-            <!--<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>-->
-        <!--</a>-->
-        <!--<div class="search-animated toggle-search">-->
-            <!--<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>-->
-            <!--<form class="form-inline search-full form-inline search" role="search">-->
-                <!--<div class="search-bar">-->
-                    <!--<input type="text" class="form-control search-form-control  ml-lg-auto" placeholder="Search...">-->
-                    <!--<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x search-close"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>-->
-                <!--</div>-->
-            <!--</form>-->
-        <!--</div>-->
-    </header>
-</div>
-<div class="main-container" id="container">
-    <div class="overlay"></div>
-    <div class="search-overlay"></div>
-    <div class="sidebar-wrapper sidebar-theme">
-        <nav id="sidebar">
-            <div class="navbar-nav theme-brand flex-row  text-center">
-                <div class="nav-logo">
-                    <div class="nav-item theme-logo">
-                        <a href="./index.html">
-                            <img src="../src/assets/img/logo.svg" class="navbar-logo" alt="logo">
-                        </a>
-                    </div>
-                    <div class="nav-item theme-text">
-                        <a href="./index.html" class="nav-link">  </a>
-                    </div>
-                </div>
-                <div class="nav-item sidebar-toggle">
-                    <div class="btn-toggle sidebarCollapse">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-left"><polyline points="11 17 6 12 11 7"></polyline><polyline points="18 17 13 12 18 7"></polyline></svg>
-                    </div>
-                </div>
-            </div>
-            <div class="shadow-bottom"></div>
-            <ul class="list-unstyled menu-categories" id="accordionExample">
-                <li class="menu active">
-                    <a href="./index.html" aria-expanded="false" class="dropdown-toggle">
-                        <div class="">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                            <span>Dashboard</span>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+<!--<div class="header-container container-xxl">-->
+    <!--<header class="header navbar navbar-expand-sm expand-header">-->
 
-    </div>
+    <!--</header>-->
+<!--</div>-->
+<div class="main-container" id="container" style="border:1px solid red;padding: 0 !important;">
+    <!--<div class="overlay"></div>-->
+    <!--<div class="search-overlay"></div>-->
+    <!--<div class="sidebar-wrapper sidebar-theme">-->
+        <!--<nav id="sidebar">-->
+            <!--<div class="navbar-nav theme-brand flex-row  text-center">-->
+                <!--<div class="nav-logo">-->
+                    <!--<div class="nav-item theme-logo">-->
+                        <!--<a href="./index.html">-->
+                            <!--<img src="../src/assets/img/logo.svg" class="navbar-logo" alt="logo">-->
+                        <!--</a>-->
+                    <!--</div>-->
+                    <!--<div class="nav-item theme-text">-->
+                        <!--<a href="./index.html" class="nav-link">  </a>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="nav-item sidebar-toggle">-->
+                    <!--<div class="btn-toggle sidebarCollapse">-->
+                        <!--<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-left"><polyline points="11 17 6 12 11 7"></polyline><polyline points="18 17 13 12 18 7"></polyline></svg>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="shadow-bottom"></div>-->
+            <!--<ul class="list-unstyled menu-categories" id="accordionExample">-->
+                <!--<li class="menu active">-->
+                    <!--<a href="./index.html" aria-expanded="false" class="dropdown-toggle">-->
+                        <!--<div class="">-->
+                            <!--<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>-->
+                            <!--<span>Dashboard</span>-->
+                        <!--</div>-->
+                    <!--</a>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</nav>-->
+
+    <!--</div>-->
+
     <!--  END SIDEBAR  -->
     <!--  BEGIN CONTENT AREA  -->
-    <div id="content" class="main-content">
+    <div id="content" class="main-content" style="border:1px solid red;padding: 0 !important;">
         <div class="layout-px-spacing">
             <div class="middle-content container-xxl p-0">
-                <!--<div class="col-6 col-xs-6 layout-spacing">-->
-                    <!---->
-                <!--</div>-->
                 <div class="row layout-top-spacing">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="row widget-statistic">
-                            <div class="col-7 col-xs-7 col-md-5 layout-spacing">
+                        <div class="row">
+                            <div class="col-7 col-xs-7 col-md-6">
                                 <div class="widget widget-card-four">
                                     <div class="widget-content">
                                         <div class="w-header">
@@ -190,223 +186,370 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!--<div class="widget widget-one_hybrid widget-followers" style="height: 350px">-->
-                                    <!--<div class="widget-heading" style="margin-bottom: 40px">-->
-                                        <!--<p class="text-right" style="float: right">+2.79% Then Yesterday <i data-feather="arrow-up-right" style="color: rgb(231, 81, 90)"></i></p>-->
-                                        <!--<p style="float: left;">Daily Consumption</p>-->
-                                    <!--</div>-->
-                                    <!--<div id="canvas-holder w-100">-->
-                                        <!--<canvas id="daily-consumption-chart" class="mt-2"></canvas>-->
-                                    <!--</div>-->
-                                    <!--<p class="row widget-statistic justify-content-center pb-10" id="daily-consumption-color" style="font-size: 26px !important; ">16.000 mW/h</p>-->
-                                <!--</div>-->
-                                <div class="mt-2 widget widget-one_hybrid widget-followers">
-                                    <div class="widget-heading">
-                                        <h4 class="text-center">ENERGY COST</h4>
-                                        <h4 class="text-center">Rp. 2.000.000.000</h4>
-                                    </div>
+                                <div class="widget widget-wallet-one mt-2">
+                                    <ul class="list-group list-group-media">
+                                        <li class="list-group-item ">
+                                            <div class="media">
+                                                <div class="me-3"><i data-feather="zap"></i><span class="icon-name"></span></div>
+                                                <div class="media-body">
+                                                    <h6 class="tx-inverse">ENERGY CAPACITY</h6>
+                                                    <p class="mg-b-0">(mW/h)</p>
+                                                    <h6 class="amount">20.000 m/Wh</h6>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="media">
+                                                <div class="me-3"><i data-feather="target"></i><span class="icon-name"></span></div>
+                                                <div class="media-body">
+                                                    <h6 class="tx-inverse">TARGET LIMIT</h6>
+                                                    <p class="mg-b-0">(Percentage)</p>
+                                                    <h6 class="amount">80%</h6>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </div>
-
                             </div>
-                            <div class="col-5 col-xs-5 col-md-7 layout-spacing">
+                            <div class="col-5 col-xs-5 col-md-6">
                                 <div class="row">
-                                    <div class="col-md-5">
-                                        <div class="widget widget-one_hybrid widget-followers">
+                                    <div class="col-md-6">
+                                        <div class="widget widget-table-one" style="padding-bottom: 0">
+                                            <div class="widget-heading" style="">
+                                                <h5 class="">Filter Location</h5>
+                                                <div class="task-action">
+                                                    <div class="dropdown">
+                                                        <a class="dropdown-toggle" href="#" role="button" id="transactions" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i data-feather="filter"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="widget-content" style="margin-top: -20px">
+                                                <div class="transactions-list">
+                                                    <div class="t-item">
+                                                        <div class="t-company-name">
+                                                            <div class="t-name">
+                                                                <div class="form-check form-check-primary form-check-inline">
+                                                                    <input class="form-check-input" type="checkbox" id="form-check-default-checked" checked="">
+                                                                    <label class="form-check-label" for="form-check-default-checked">
+                                                                        Sunter 1
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="t-item">
+                                                        <div class="t-company-name">
+                                                            <div class="t-name">
+                                                                <div class="form-check form-check-primary form-check-inline">
+                                                                    <input class="form-check-input" type="checkbox" id="form-check-default-checked" checked="">
+                                                                    <label class="form-check-label" for="form-check-default-checked">
+                                                                        Sunter 2
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="t-item">
+                                                        <div class="t-company-name">
+                                                            <div class="t-name">
+                                                                <div class="form-check form-check-primary form-check-inline">
+                                                                    <input class="form-check-input" type="checkbox" id="form-check-default-checked" checked="">
+                                                                    <label class="form-check-label" for="form-check-default-checked">
+                                                                        Karawang 1
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="t-item">
+                                                        <div class="t-company-name">
+                                                            <div class="t-name">
+                                                                <div class="form-check form-check-primary form-check-inline">
+                                                                    <input class="form-check-input" type="checkbox" id="form-check-default-checked" checked="">
+                                                                    <label class="form-check-label" for="form-check-default-checked">
+                                                                        Karawang 2
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mt-2">
+                                        <div class="widget widget-table-one">
                                             <div class="widget-heading">
-                                                <p>Filter Lokasi</p>
-
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="form-check form-check-primary form-check-inline">
-                                                            <input class="form-check-input" type="checkbox" id="form-check-default-checked" checked="">
-                                                            <label class="form-check-label" for="form-check-default-checked">
-                                                                Sunter 1
-                                                            </label>
-                                                        </div>
+                                                <h5 class="">Uptime & Status</h5>
+                                                <div class="task-action">
+                                                    <div class="dropdown">
+                                                        <a class="dropdown-toggle" href="#" role="button" id="transactions" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i data-feather="alert-circle"></i>
+                                                        </a>
                                                     </div>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="form-check form-check-primary form-check-inline">
-                                                            <input class="form-check-input" type="checkbox" id="form-check-default-checked" checked="">
-                                                            <label class="form-check-label" for="form-check-default-checked">
-                                                                Sunter 2
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="form-check form-check-primary form-check-inline">
-                                                            <input class="form-check-input" type="checkbox" id="form-check-default-checked" checked="">
-                                                            <label class="form-check-label" for="form-check-default-checked">
-                                                                Karawang 1
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="form-check form-check-primary form-check-inline">
-                                                            <input class="form-check-input" type="checkbox" id="form-check-default-checked" checked="">
-                                                            <label class="form-check-label" for="form-check-default-checked">
-                                                                Karawang 2
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7 mt-2">
-                                        <div class="widget widget-one_hybrid widget-followers">
-                                            <div class="widget-heading" style="padding-bottom: 30px !important;">
-                                                <p class="text-center">Uptime & Status</p>
-                                                <table class="table">
-                                                    <tbody>
-                                                    <tr style="">
-                                                        <td style="padding:3px" width="1%">1.</td>
-                                                        <td style="padding:3px">Sunter 1</td>
-                                                        <td style="color:green;font-weight: bold;">ON</td>
-                                                        <td style="color:white;">6h 37m</td>
-                                                    </tr>
-                                                    <tr style="">
-                                                        <td style="padding:3px" width="1%">2.</td>
-                                                        <td style="padding:3px">Sunter 2</td>
-                                                        <td style="color:green;font-weight: bold;">ON</td>
-                                                        <td style="color:white;">6h 37m</td>
-                                                    </tr>
-                                                    <tr style="">
-                                                        <td style="padding:3px" width="1%">3.</td>
-                                                        <td style="padding:3px">Karawang 1</td>
-                                                        <td style="color:green;font-weight: bold;">ON
-                                                        <td style="color:white;">6h 37m</td>
-                                                    </tr>
+                                            <div class="widget-content" style="margin-top: -20px">
+                                                <div class="transactions-list">
+                                                    <div class="t-item">
+                                                        <div class="t-company-name">
+                                                            <div class="t-name">
+                                                                <h4>Sunter 1</h4>
+                                                                <p class="meta-date">6h 37m</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="t-rate rate-dec">
+                                                            <span style="color: green;font-weight: bold">ON</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="t-item">
+                                                        <div class="t-company-name">
+                                                            <div class="t-name">
+                                                                <h4>Sunter 1</h4>
+                                                                <p class="meta-date">6h 37m</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="t-rate rate-dec">
+                                                            <span style="color: green;font-weight: bold">ON</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="t-item">
+                                                        <div class="t-company-name">
+                                                            <div class="t-name">
+                                                                <h4>Karawang 1</h4>
+                                                                <p class="meta-date">6h 37m</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="t-rate rate-dec">
+                                                            <span style="color: green;font-weight: bold">ON</span>
 
-                                                    <tr style="">
-                                                        <td style="padding:3px" width="1%">4.</td>
-                                                        <td style="padding:3px">Karawang 2</td>
-                                                        <td style="color:green;font-weight: bold;">ON
-                                                        <td style="color:white;">6h 37m</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
+                                                        </div>
+                                                    </div>
+                                                    <div class="t-item">
+                                                        <div class="t-company-name">
+                                                            <div class="t-name">
+                                                                <h4>Karawang 1</h4>
+                                                                <p class="meta-date">6h 37m</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="t-rate rate-dec">
+                                                            <span style="color: green;font-weight: bold">ON</span>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-3 col-xs-3 col-md-3">
-                                <div class="statbox widget box box-shadow">
-                                    <div class="widget-content widget-content-area" style="border-radius: 7px">
-                                        <p class="text-center">WELDING</p>
-                                        <center>
-                                            <button class="btn btn-outline-secondary btn-no-hover" style="color: white !important;">300 Kw/h</button>
-                                        </center>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-3 col-xs-3 col-md-3">
-                                <div class="statbox widget box box-shadow">
-                                    <div class="widget-content widget-content-area" style="border-radius: 7px">
-                                        <p class="text-center">PRESS</p>
-                                        <center>
-                                            <button class="btn btn-outline-secondary btn-no-hover" style="color: white !important;">300 Kw/h</button>
-                                        </center>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-3 col-xs-3 col-md-3">
-                                <div class="statbox widget box box-shadow">
-                                    <div class="widget-content widget-content-area" style="border-radius: 7px">
-                                        <p class="text-center">ASSY</p>
-                                        <center>
-                                            <button class="btn btn-outline-secondary btn-no-hover" style="color: white !important;">300 Kw/h</button>
-                                        </center>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-3 col-xs-3 col-md-3">
-                                <div class="statbox widget box box-shadow">
-                                    <div class="widget-content widget-content-area" style="border-radius: 7px">
-                                        <p class="text-center">PAINTING</p>
-                                        <center>
-                                            <button class="btn btn-outline-secondary btn-no-hover" style="color: white !important;">300 Kw/h</button>
-                                        </center>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr/>
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
-                                <div class="widget widget-one_hybrid widget-followers">
-                                    <div class="widget widget-chart-one">
-                                        <div class="widget-heading">
-                                            <h5 class="">Realtime Trend</h5>
-                                        </div>
-                                        <div class="widget-content pl-10 pr-10">
-                                            <div id="realtime-chart"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
-                    <div  class="col-xl-12 layout-spacing">
-                        <div class="row" id="widget-middle">
-
+                    <div class="col-12 col-xs-12 col-md-12 mt-3">
+                        <h3 class="text-center">Energy Consumptoin By Sector</h3>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-2">
+                        <div class="row widget-statistic">
                             <div class="col-md-12">
                                 <div class="row">
-                                    <div class="col-3 col-xs-3 col-md-3">
-                                        <div class="statbox widget box box-shadow">
-                                            <div class="widget-content widget-content-area" style="border-radius: 7px">
-                                                <p class="text-center">TODAY</p>
-                                                <center>
-                                                    <button class="btn btn-outline-secondary btn-no-hover" style="color:white !important;">0.79 kWH</button>
-                                                </center>
+                                    <div class="col-6 col-xs-6 col-md-6">
+                                        <div class="widget widget-one_hybrid widget-followers">
+                                            <div class="widget-heading">
+                                                <div class="w-title">
+
+                                                    <div class="">
+                                                        <h5 class="">Painting</h5>
+                                                        <p class="w-value">1800 mW/h</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="widget-content">
+                                                <div class="w-chart">
+                                                    <div id="hybrid_followers"></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-3 col-xs-3 col-md-3">
-                                        <div class="statbox widget box box-shadow">
-                                            <div class="widget-content widget-content-area" style="border-radius: 7px">
-                                                <p class="text-center">AVG TODAY</p>
-                                                <center>
-                                                    <button class="btn btn-outline-secondary btn-no-hover" style="color:white !important;">0.81 kWH</button>
-                                                </center>
+                                    <div class="col-6 col-xs-6 col-md-6">
+                                        <div class="widget widget-one_hybrid widget-followers">
+                                            <div class="widget-heading">
+                                                <div class="w-title">
+
+                                                    <div class="">
+                                                        <h5 class="">Welding</h5>
+                                                        <p class="w-value">2200 mW/h</p>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-3 col-xs-3 col-md-3">
-                                        <div class="statbox widget box box-shadow">
-                                            <div class="widget-content widget-content-area" style="border-radius: 7px">
-                                                <p class="text-center">MONTH</p>
-                                                <center>
-                                                    <button class="btn btn-outline-secondary btn-no-hover" style="color:white !important;">24.37 kWH</button>
-                                                </center>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-3 col-xs-3 col-md-3">
-                                        <div class="statbox widget box box-shadow">
-                                            <div class="widget-content widget-content-area" style="border-radius: 7px">
-                                                <p class="text-center">AVG MONTH</p>
-                                                <center>
-                                                    <button class="btn btn-outline-secondary btn-no-hover" style="color:white !important;">20.40 kWH</button>
-                                                </center>
+                                            <div class="widget-content">
+                                                <div class="w-chart">
+                                                    <div id="hybrid_followers1"></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
+                            <div class="col-md-12 mt-2">
+                                <div class="row">
+                                    <div class="col-6 col-xs-6 col-md-6">
+                                        <div class="widget widget-one_hybrid widget-followers">
+                                            <div class="widget-heading">
+                                                <div class="w-title">
+
+                                                    <div class="">
+                                                        <h5 class="">Press</h5>
+                                                        <p class="w-value">800 mW/h</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="widget-content">
+                                                <div class="w-chart">
+                                                    <div id="hybrid_followers3"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-xs-6 col-md-6">
+                                        <div class="widget widget-one_hybrid widget-followers">
+                                            <div class="widget-heading">
+                                                <div class="w-title">
+
+                                                    <div class="">
+                                                        <h5 class="">Assy</h5>
+                                                        <p class="w-value">1200 mW/h</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="widget-content">
+                                                <div class="w-chart">
+                                                    <div id="hybrid_followers4"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
                         </div>
                     </div>
-                    <div class="col-xl-7 layout-spacing">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3">
                         <div class="widget widget-one_hybrid widget-followers">
                             <div class="widget widget-chart-one">
                                 <div class="widget-heading">
-                                    <h5 class="">Last 30 Days (KWH)</h5>
+                                    <h5 class="" style="font-weight: bold !important;font-size: 17px !important;color:white !important;">Realtime Trend</h5>
+                                </div>
+                                <div class="widget-content pl-10 pr-10">
+                                    <div id="realtime-chart"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div  class="col-xl-12 mt-3">
+                        <div class="row" id="widget-middle">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-6 col-xs-6 col-md-6">
+                                        <div class="widget widget-card-four">
+                                            <div class="widget-content">
+                                                <div class="w-header">
+                                                    <div class="w-info">
+                                                        <h5 class="value">Today</h5>
+                                                    </div>
+                                                    <div class="task-action">
+                                                        +0% Than Yesterday
+                                                    </div>
+                                                </div>
+                                                <div class="w-content">
+                                                    <div class="w-info">
+                                                        <p class="value" style="font-size: 34px;color:green">8.000 <span style="">mW/h</span> </p>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            <hr>
+                                            <div class="widget-content mt-2">
+                                                <div class="w-header">
+                                                    <div class="w-info">
+                                                        <h5 class="value">Avg Today</h5>
+                                                    </div>
+                                                    <div class="task-action">
+                                                        +0% Than Yesterday
+                                                    </div>
+                                                </div>
+                                                <div class="w-content">
+                                                    <div class="w-info">
+                                                        <p class="value" style="font-size: 34px;color:green">8.000 <span style="">mW/h</span> </p>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-6 col-xs-6 col-md-6">
+                                        <div class="widget widget-card-four">
+                                            <div class="widget-content">
+                                                <div class="w-header">
+                                                    <div class="w-info">
+                                                        <h5 class="value">Month</h5>
+                                                    </div>
+                                                    <div class="task-action">
+                                                        +0% Than Yesterday
+                                                    </div>
+                                                </div>
+                                                <div class="w-content">
+                                                    <div class="w-info">
+                                                        <p class="value" style="font-size: 34px;color:green">8.000 <span style="">mW/h</span> </p>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            <hr>
+                                            <div class="widget-content">
+                                                <div class="w-header">
+                                                    <div class="w-info">
+                                                        <h5 class="value">Avg Month</h5>
+                                                    </div>
+                                                    <div class="task-action">
+                                                        +0% Than Yesterday
+                                                    </div>
+                                                </div>
+                                                <div class="w-content">
+                                                    <div class="w-info">
+                                                        <p class="value" style="font-size: 34px;color:green">8.000 <span style="">mW/h</span> </p>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="col-xl-7 mt-3">
+                        <div class="widget widget-one_hybrid widget-followers">
+                            <div class="widget widget-chart-one">
+                                <div class="widget-heading">
+                                    <h5 style="font-size: 17px !important;color: white !important;font-weight: bold !important;">Last 30 Days (KWH)</h5>
                                 </div>
                                 <div class="widget-content">
                                     <div id="last30days" class=""></div>
@@ -414,11 +557,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-5 layout-spacing">
+                    <div class="col-xl-5 mt-2">
                         <div class="widget widget-one_hybrid widget-followers">
                             <div class="widget widget-chart-one">
                                 <div class="widget-heading">
-                                    <h5 class="">Last 12 Months (KWH)</h5>
+                                    <h5 style="font-size: 17px !important;color: white !important;font-weight: bold !important;">Last 12 Months (KWH)</h5>
                                 </div>
                                 <div class="widget-content">
                                     <div id="last12months" class=""></div>
@@ -515,17 +658,81 @@
         });
         var options = {
             chart: {
-                fontFamily: "Nunito, sans-serif",
-                height: 180,
-                type: "area",
-                zoom: {enabled: false},
-                toolbar: {show: false},
+                fontFamily: 'Nunito, sans-serif',
+                height: 365,
+                type: 'area',
+                zoom: {
+                    enabled: false
+                },
+                dropShadow: {
+                    enabled: true,
+                    opacity: 0.2,
+                    blur: 10,
+                    left: -7,
+                    top: 22
+                },
+                toolbar: {
+                    show: false
+                },
             },
-            colors: ["#e7515a","red","blue",'green'],
+
+            markers: {
+                discrete: [{
+                    seriesIndex: 0,
+                    dataPointIndex: 7,
+                    fillColor: '#000',
+                    strokeColor: '#000',
+                    size: 5
+                }, {
+                    seriesIndex: 2,
+                    dataPointIndex: 11,
+                    fillColor: '#000',
+                    strokeColor: '#000',
+                    size: 4
+                }]
+            },
+            subtitle: {
+                text: '$10,840',
+                align: 'left',
+                margin: 0,
+                offsetX: 100,
+                offsetY: 20,
+                floating: false,
+                style: {
+                    fontSize: '18px',
+                    color:  '#00ab55'
+                }
+            },
+            title: {
+                text: 'Total Profit',
+                align: 'left',
+                margin: 0,
+                offsetX: -10,
+                offsetY: 20,
+                floating: false,
+                style: {
+                    fontSize: '18px',
+                    color:  '#bfc9d4'
+                },
+            },
+            stroke: {
+                show: true,
+                curve: 'smooth',
+                width: 2,
+                lineCap: 'square'
+            },
+
+//            chart: {
+//                fontFamily: "Nunito, sans-serif",
+//                type: "area",
+//                zoom: {enabled: false},
+//                toolbar: {show: false},
+//            },
+            colors: ["rgb(231, 81, 90)","rgb(33, 150, 243)","rgb(226, 160, 63)",'rgb(98, 43, 215)'],
             dataLabels: {
                 enabled: false,
             },
-
+//
             series: [
                 {
                     name: "Sunter 1",
@@ -545,41 +752,83 @@
                 }
             ],
             labels: dataMonth,
+            xaxis: {
+                axisBorder: {
+                    show: false
+                },
+                axisTicks: {
+                    show: false
+                },
+                crosshairs: {
+                    show: true
+                },
+                labels: {
+                    offsetX: 0,
+                    offsetY: 5,
+                    style: {
+                        fontSize: '12px',
+                        fontFamily: 'Nunito, sans-serif',
+                        cssClass: 'apexcharts-xaxis-title',
+                    },
+                }
+            },
             yaxis: {
                 labels: {
-                    formatter: function (value, index) {
-                        return value / 1000 + "K";
+                    formatter: function(value, index) {
+                        return (value / 1000) + 'K'
                     },
                     offsetX: -15,
                     offsetY: 0,
                     style: {
-                        fontSize: "12px",
-                        fontFamily: "Nunito, sans-serif",
-                        cssClass: "apexcharts-yaxis-title",
+                        fontSize: '12px',
+                        fontFamily: 'Nunito, sans-serif',
+                        cssClass: 'apexcharts-yaxis-title',
                     },
-                },
+                }
             },
             grid: {
-                borderColor: "#191e3a",
+                borderColor: '#191e3a',
                 strokeDashArray: 5,
                 xaxis: {
                     lines: {
-                        show: true,
-                    },
+                        show: true
+                    }
                 },
                 yaxis: {
                     lines: {
                         show: false,
-                    },
+                    }
                 },
                 padding: {
                     top: -50,
                     right: 0,
                     bottom: 0,
-                    left: 5,
+                    left: 5
                 },
             },
+            legend: {
+                position: 'top',
+                horizontalAlign: 'right',
+                offsetY: -50,
+                fontSize: '16px',
+                fontFamily: 'Quicksand, sans-serif',
+                markers: {
+                    width: 10,
+                    height: 10,
+                    strokeWidth: 0,
+                    strokeColor: '#fff',
+                    fillColors: undefined,
+                    radius: 12,
+                    onClick: undefined,
+                    offsetX: -5,
+                    offsetY: 0
+                },
+                itemMargin: {
+                    horizontal: 10,
+                    vertical: 20
+                }
 
+            },
             tooltip: {
                 theme: Theme,
                 marker: {
@@ -587,19 +836,106 @@
                 },
                 x: {
                     show: false,
-                },
+                }
             },
             fill: {
-                type: "gradient",
+                type:"gradient",
                 gradient: {
                     type: "vertical",
                     shadeIntensity: 1,
                     inverseColors: !1,
-                    opacityFrom: 0.19,
-                    opacityTo: 0.05,
-                    stops: [100, 100],
-                },
+                    opacityFrom: .19,
+                    opacityTo: .05,
+                    stops: [100, 100]
+                }
             },
+            responsive: [{
+                breakpoint: 575,
+                options: {
+                    legend: {
+                        offsetY: -50,
+                    },
+                },
+            }]
+//            yaxis: {
+//                labels: {
+//                    formatter: function (value, index) {
+//                        return value / 1000 + "K";
+//                    },
+//                    offsetX: 0,
+//                    offsetY: 5,
+//                    style: {
+//                        fontSize: "12px",
+//                        fontFamily: "Nunito, sans-serif",
+//                        cssClass: "apexcharts-yaxis-title",
+//                    },
+//                },
+//            },
+//            grid: {
+//                borderColor: "#191e3a",
+//                strokeDashArray: 5,
+//                xaxis: {
+//                    lines: {
+//                        show: true,
+//                    },
+//                },
+//                yaxis: {
+//                    lines: {
+//                        show: false,
+//                    },
+//                },
+//                padding: {
+//                    top: -50,
+//                    right: 0,
+//                    bottom: 0,
+//                    left: 5,
+//                },
+//            },
+//
+//            tooltip: {
+//                theme: Theme,
+//                marker: {
+//                    show: true,
+//                },
+//                x: {
+//                    show: false,
+//                },
+//            },
+//            fill: {
+//                type: "gradient",
+//                gradient: {
+//                    type: "vertical",
+//                    shadeIntensity: 1,
+//                    inverseColors: !1,
+//                    opacityFrom: 0.19,
+//                    opacityTo: 0.05,
+//                    stops: [100, 100],
+//                },
+//            },
+//            subtitle: {
+//                text: '$10,840',
+//                align: 'left',
+//                margin: 0,
+//                offsetX: 100,
+//                offsetY: 20,
+//                floating: false,
+//                style: {
+//                    fontSize: '18px',
+//                    color:  '#00ab55'
+//                }
+//            },
+//            title: {
+//                text: 'Total Profit',
+//                align: 'left',
+//                margin: 0,
+//                offsetX: -10,
+//                offsetY: 20,
+//                floating: false,
+//                style: {
+//                    fontSize: '18px',
+//                    color:  '#bfc9d4'
+//                },
+//            },
 
         };
         var chart = new ApexCharts(document.querySelector("#realtime-chart"),options);
@@ -638,7 +974,7 @@
                     show: false,
                 }
             },
-            colors: ["#e7515a"],
+            colors: ["green"],
             series: [{
                 name: '',
                 type: 'column',
