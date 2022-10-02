@@ -381,13 +381,238 @@
         filterChartElectricConsumption();
         getChartElectricConsumptionDaily();
         getChartElectricConsumptionTotal();
-        // $(`#${strElectricConsumption}-yearly`).css(none);
-        // $(`#${strElectricConsumption}-monthly`).css(none);
-        // $(`#${strElectricConsumption}-daily`).css(block);
-        insertDaily();
-
-
+        changePeriodeElectricConsumption()
     };
+
+    function getTotal() {
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            url: "<?=base_url().'welcome/get_yearly/'?>",
+            type: "GET",
+            dataType: "JSON",
+            success: function(response) {
+                const newData = response['series'];
+                var Theme = "dark";
+                Apex.tooltip = {
+                    theme: Theme
+                };
+                var options = {
+                    colors: ['green'],
+                    chart: {
+                        fontFamily: "Nunito, sans-serif",
+                        height: 350,
+                        type: "area",
+                        zoom: {
+                            enabled: false
+                        },
+                        dropShadow: {
+                            enabled: true,
+                            opacity: 0.2,
+                            blur: 10,
+                            left: -7,
+                            top: 22,
+                        },
+                        toolbar: {
+                            show: false
+                        },
+                    },
+
+                    stroke: {
+                        show: true,
+                        width: 2,
+                        curve: "smooth",
+                        lineCap: "square",
+                    },
+                    dataLabels: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: '',
+                        data: newData
+                    }, ],
+                    labels: dataMonth,
+                    xaxis: {
+                        axisBorder: {
+                            show: false,
+                        },
+                        axisTicks: {
+                            show: false,
+                        },
+                        crosshairs: {
+                            show: true,
+                        },
+                        labels: {
+                            offsetX: 0,
+                            offsetY: 0,
+                            style: {
+                                fontSize: "12px",
+                                fontFamily: "Nunito, sans-serif",
+                                cssClass: "apexcharts-xaxis-title",
+                            },
+                        },
+                    },
+                    yaxis: {
+                        labels: {
+                            formatter: function(value, index) {
+                                return value;
+                            },
+                            offsetX: -15,
+                            offsetY: 0,
+                            style: {
+                                fontSize: "12px",
+                                fontFamily: "Nunito, sans-serif",
+                                cssClass: "apexcharts-yaxis-title",
+                            },
+                        },
+                    },
+                    grid: {
+                        strokeDashArray: 5,
+                        xaxis: {
+                            lines: {
+                                show: false,
+                            },
+                        },
+                        yaxis: {
+                            lines: {
+                                show: false,
+                            },
+                        },
+                        padding: {
+                            top: -50,
+                            right: 0,
+                            bottom: 0,
+                            left: 5,
+                        },
+                    },
+                    legend: {
+                        position: "top",
+                        horizontalAlign: "right",
+                        offsetY: -50,
+                        fontSize: "12px",
+                        fontFamily: "Nunito, sans-serif",
+                        fontWeight: "bold",
+                        markers: {
+                            width: 2,
+                            height: 10,
+                            strokeWidth: 0,
+                            strokeColor: "#fff",
+                            fillColors: undefined,
+                            radius: 12,
+                            onClick: undefined,
+                            offsetX: -5,
+                            offsetY: 0,
+                        },
+                        itemMargin: {
+                            horizontal: 10,
+                            vertical: 20,
+                        },
+                    },
+                    tooltip: {
+                        x: {
+                            show: false,
+                        },
+                        y: {
+                            show: false,
+                        },
+                    },
+                    fill: {
+                        type: "gradient",
+                        gradient: {
+                            type: "vertical",
+                            shadeIntensity: 1,
+                            inverseColors: !1,
+                            opacityFrom: 0.19,
+                            opacityTo: 0.05,
+                            stops: [100, 100],
+                        },
+                    },
+                    responsive: [{
+                        breakpoint: 767,
+                        options: {
+                            chart: {
+                                fontFamily: "Nunito, sans-serif",
+                                type: "area",
+                                zoom: {
+                                    enabled: false
+                                },
+                                dropShadow: {
+                                    enabled: true,
+                                    opacity: 0.2,
+                                    blur: 10,
+                                    left: -7,
+                                    top: 22,
+                                },
+                                toolbar: {
+                                    show: false
+                                },
+                            },
+                            legend: {
+                                offsetY: -50,
+                            },
+                        },
+                    }, ],
+                };
+                var chart = new ApexCharts(
+                    document.querySelector(`#${strElectricConsumption}-total`),
+                    options
+                );
+                chart.render();
+                chart.updateSeries([{
+                    data: response['series']
+                }]);
+            }
+        });
+    }
+
+    function getYearly() {
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            url: "<?=base_url().'welcome/get_yearly/'?>",
+            type: "GET",
+            dataType: "JSON",
+            success: function(response) {
+                let res = tempChartConsumptionPeriode(dataMonth, response['series']);
+                var chart = new ApexCharts(
+                    document.querySelector(`#${strElectricConsumption}`),
+                    res
+                );
+                chart.render();
+                chart.updateSeries([{
+                    data: response['series']
+                }]);
+            }
+        });
+    }
+
+    function getMonthly() {
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            url: "<?=base_url().'welcome/get_monthly/'?>",
+            type: "GET",
+            dataType: "JSON",
+            success: function(response) {
+                console.log("res", response['series']);
+                const labelDaily = [];
+                for (let i = 0; i < 30; i++) {
+                    if (i < 9) {
+                        labelDaily.push(`0${i+1}`);
+                    } else {
+                        labelDaily.push(`${i+1}`);
+                    }
+                }
+
+                let res = tempChartConsumptionPeriode(response['tanggal'], response['series']);
+                var chart = new ApexCharts(
+                    document.querySelector(`#${strElectricConsumption}-monthly`),
+                    res
+                );
+                chart.render();
+                chart.updateSeries([{
+                    data: response['series']
+                }]);
+            }
+        });
+    }
 
     function getDaily() {
         $.ajax({
@@ -415,6 +640,7 @@
                 chart.updateSeries([{
                     data: response
                 }]);
+                getTotal();
             }
         });
     }
@@ -435,6 +661,7 @@
                     arr.push(`${i}:0:0`);
                 }
             }
+            console.log("insert", `${h}:${m}:${s}`)
             const newArr = arr.filter((res) => res.includes(`${h}:${m}:${s}`));
             if (newArr.length > 0) {
                 $.ajax({
@@ -447,10 +674,10 @@
                     dataType: "JSON",
                     success: function(res) {
                         getDaily();
+
                     }
                 })
             }
-
         }, 1000)
 
     }
@@ -578,8 +805,8 @@
     // **************************************************
     function changePeriodeElectricConsumption() {
         isTrueGentani = true;
-        // const val = $(`#${strSelectPeriode}`).val();
-        const val = "daily";
+        const val = $(`#${strSelectPeriode}`).val();
+        console.log("val", val)
         let yearly = $(`#${strElectricConsumption}`);
         let monthly = $(`#${strElectricConsumption}-monthly`);
         let daily = $(`#${strElectricConsumption}-daily`);
@@ -587,13 +814,15 @@
         monthly.css(none);
         daily.css(none);
         if (val === "monthly") {
+            getMonthly();
             monthly.css(block);
             getChartElectricConsumptionMonthly();
         } else if (val === "yearly") {
+            getYearly();
             yearly.css(block);
             getChartElectricConsumptionYearly();
         } else {
-            insertDaily()
+            insertDaily();
             daily.css(block);
             getChartElectricConsumptionDaily();
         }
@@ -602,14 +831,6 @@
     }
 
     function tempChartConsumptionPeriode(label, data) {
-        const labelDaily = [];
-        for (let i = 0; i < 24; i++) {
-            if (i < 9) {
-                labelDaily.push(`0${i+1}:00`);
-            } else {
-                labelDaily.push(`${i+1}:00`);
-            }
-        }
         return {
             chart: {
                 height: 250,
@@ -704,21 +925,7 @@
                     },
 
                 },
-            }, ],
-            //
-            //            responsive: [
-            //                {
-            //                    breakpoint: 767,
-            //                    options: {
-            //                        plotOptions: {
-            //                            bar: {
-            //                                borderRadius: 0,
-            //                                columnWidth: "50%"
-            //                            }
-            //                        }
-            //                    }
-            //                },
-            //            ]
+            }],
         };
     }
 
@@ -727,298 +934,16 @@
     }
 
     function getChartElectricConsumptionMonthly(isUpdate) {
-        const labelMonthly = [];
-        for (let i = 0; i < 31; i++) {
-            if (i < 9) {
-                labelMonthly.push(`0${i+1}`);
-            } else {
-                labelMonthly.push(i + 1);
-            }
-        }
-        let res = tempChartConsumptionPeriode(labelMonthly, dataElectricMonthly);
-        var chart = new ApexCharts(
-            document.querySelector(`#${strElectricConsumption}-monthly`),
-            res
-        );
-        chart.render();
-
-        const times = setInterval(function() {
-            const value = $(`#${strSelectPeriode}`).val();
-            if (value === "monthly") {
-                noMonthly = noMonthly + 1;
-                if (noMonthly > 30) {
-                    dataElectricMonthly = [2733, 8486, 3929, 5133, 6286, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                    ];
-                    noMonthly = 4;
-                } else {
-                    dataElectricMonthly[noMonthly] = Math.random() * 10000;
-                }
-                chart.updateSeries([{
-                    data: dataElectricMonthly
-                }])
-            } else {
-                var currentdate = new Date();
-                noDaily = parseInt(currentdate.getHours()) - 1;
-                //                noDaily=13;
-                noMonthly = 4;
-                noYearly = 9;
-                dataElectricDaily = [6860, 7587, 9511, 1413, 3544, 3277, 5249, 7390, 1299, 434, 9218, 8075,
-                    9424, 5160, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                ];
-                dataElectricMonthly = [2733, 8486, 3929, 5133, 6286, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                ];
-                dataElectricYearly = [1694, 9362, 3494, 5139, 9028, 2100, 9524, 3918, 9424, 5160, 0, 0];
-                chart.updateSeries([{
-                    data: dataElectricMonthly
-                }]);
-                clearInterval(times);
-            }
-
-            //            console.log("bulan",dataElectricMonthly)
-        }, interval);
-
+        getMonthly();
     }
 
     function getChartElectricConsumptionYearly(isUpdate) {
-        let res = tempChartConsumptionPeriode(dataMonth, dataElectricYearly);
-        var chart = new ApexCharts(
-            document.querySelector(`#${strElectricConsumption}`),
-            res
-        );
-        chart.render();
-
-        const times = setInterval(function() {
-            const value = $(`#${strSelectPeriode}`).val();
-            if (value === "yearly") {
-                noYearly = noYearly + 1;
-                if (noYearly > 11) {
-                    dataElectricYearly = [1694, 9362, 3494, 5139, 9028, 2100, 9524, 3918, 9424, 5160, 0, 0];
-                    setTimeout(() => noYearly = 9, 300)
-                } else {
-                    dataElectricYearly[noYearly] = Math.random() * 10000;
-                }
-                chart.updateSeries([{
-                    data: dataElectricYearly
-                }]);
-            } else {
-                var currentdate = new Date();
-                noDaily = parseInt(currentdate.getHours()) - 1;
-
-                //                noDaily=13;
-                noMonthly = 4;
-                noYearly = 9;
-                dataElectricDaily = [6860, 7587, 9511, 1413, 3544, 3277, 5249, 7390, 1299, 434, 9218, 8075,
-                    9424, 5160, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                ];
-                dataElectricMonthly = [2733, 8486, 3929, 5133, 6286, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                ];
-                dataElectricYearly = [1694, 9362, 3494, 5139, 9028, 2100, 9524, 3918, 9424, 5160, 0, 0];
-                chart.updateSeries([{
-                    data: dataElectricYearly
-                }]);
-                clearInterval(times);
-            }
-            //            console.log("tahun",dataElectricYearly)
-        }, interval);
+        getYearly();
     }
 
     function getChartElectricConsumptionTotal() {
-        const newData = dataElectricGentani;
-        var Theme = "dark";
-        Apex.tooltip = {
-            theme: Theme
-        };
-        var options = {
-            colors: ['green'],
-            chart: {
+        getTotal()
 
-                fontFamily: "Nunito, sans-serif",
-                height: 350,
-                type: "area",
-                zoom: {
-                    enabled: false
-                },
-                dropShadow: {
-                    enabled: true,
-                    opacity: 0.2,
-                    blur: 10,
-                    left: -7,
-                    top: 22,
-                },
-                toolbar: {
-                    show: false
-                },
-            },
-
-            stroke: {
-                show: true,
-                width: 2,
-                curve: "smooth",
-                lineCap: "square",
-            },
-            dataLabels: {
-                enabled: false
-            },
-            series: [{
-                name: '',
-                data: newData
-            }, ],
-            labels: dataMonth,
-
-            xaxis: {
-                //                categories: ['Oct', 'Nov', 'Dec','Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep' ],
-
-                axisBorder: {
-                    show: false,
-                },
-                axisTicks: {
-                    show: false,
-                },
-                crosshairs: {
-                    show: true,
-                },
-                labels: {
-                    offsetX: 0,
-                    offsetY: 0,
-                    style: {
-                        fontSize: "12px",
-                        fontFamily: "Nunito, sans-serif",
-                        cssClass: "apexcharts-xaxis-title",
-                    },
-                },
-            },
-            yaxis: {
-                labels: {
-                    formatter: function(value, index) {
-                        return value;
-                    },
-                    offsetX: -15,
-                    offsetY: 0,
-                    style: {
-                        fontSize: "12px",
-                        fontFamily: "Nunito, sans-serif",
-                        cssClass: "apexcharts-yaxis-title",
-                    },
-                },
-            },
-            grid: {
-                strokeDashArray: 5,
-                xaxis: {
-                    lines: {
-                        show: false,
-                    },
-                },
-                yaxis: {
-                    lines: {
-                        show: false,
-                    },
-                },
-                padding: {
-                    top: -50,
-                    right: 0,
-                    bottom: 0,
-                    left: 5,
-                },
-            },
-            legend: {
-                position: "top",
-                horizontalAlign: "right",
-                offsetY: -50,
-                fontSize: "12px",
-                fontFamily: "Nunito, sans-serif",
-                fontWeight: "bold",
-                markers: {
-                    width: 2,
-                    height: 10,
-                    strokeWidth: 0,
-                    strokeColor: "#fff",
-                    fillColors: undefined,
-                    radius: 12,
-                    onClick: undefined,
-                    offsetX: -5,
-                    offsetY: 0,
-                },
-                itemMargin: {
-                    horizontal: 10,
-                    vertical: 20,
-                },
-            },
-            tooltip: {
-                x: {
-                    show: false,
-                },
-                y: {
-                    show: false,
-                },
-            },
-            fill: {
-                type: "gradient",
-                gradient: {
-                    type: "vertical",
-                    shadeIntensity: 1,
-                    inverseColors: !1,
-                    opacityFrom: 0.19,
-                    opacityTo: 0.05,
-                    stops: [100, 100],
-                },
-            },
-            responsive: [{
-                breakpoint: 767,
-                options: {
-                    chart: {
-                        fontFamily: "Nunito, sans-serif",
-                        type: "area",
-                        zoom: {
-                            enabled: false
-                        },
-                        dropShadow: {
-                            enabled: true,
-                            opacity: 0.2,
-                            blur: 10,
-                            left: -7,
-                            top: 22,
-                        },
-                        toolbar: {
-                            show: false
-                        },
-                    },
-                    legend: {
-                        offsetY: -50,
-                    },
-                },
-            }, ],
-        };
-        var chart = new ApexCharts(
-            document.querySelector(`#${strElectricConsumption}-total`),
-            options
-        );
-        chart.render();
-        const times = setInterval(function() {
-            if (isTrueGentani) {
-                noGentani = 0;
-                dataElectricGentani = [Math.random() * 10000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-                chart.updateSeries([{
-                    data: dataElectricYearly
-                }]);
-                isTrueGentani = false;
-                clearInterval(times);
-            } else {
-                noGentani = noGentani + 1;
-                if (noGentani > 11) {
-                    dataElectricGentani = [Math.random() * 10000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-                    setTimeout(() => noGentani = 0, 300)
-                } else {
-                    dataElectricGentani[noGentani] = Math.random() * 10000;
-                }
-                chart.updateSeries([{
-                    data: dataElectricGentani
-                }]);
-            }
-
-        }, interval);
     }
     // **************************************************
     // start Energy Capacity & Target Limit
@@ -1063,7 +988,7 @@
     // **************************************************
     function filterChartElectricConsumption() {
         let selectHtml = "";
-        let selectPeriodeHtml = ["Yearly", "Monthly", "Daily"];
+        let selectPeriodeHtml = ["Daily", "Monthly", "Yearly"];
         dataLocation.map((res) => {
             selectHtml += `<option value="${res.toLowerCase().replaceAll(" ","_")}">${res}</option>`;
         });
@@ -1084,8 +1009,9 @@
             "maxHeight": 200,
             "minWidth": 210,
             "search": true,
-            "placeHolder": "All"
+            "placeHolder": "Daily"
         });
+
     }
     // **************************************************
     // start Filter Location

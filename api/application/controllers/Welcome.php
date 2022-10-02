@@ -40,33 +40,66 @@ class Welcome extends CI_Controller {
 		$this->load->view('welcome_message');
 	}
 
+	private function toDate($col,$val){
+        return "date_format($col,'%".$val."')";
+    }
+
 	public function get_daily(){
         $newData=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-        $data = $this->db->query("select HOUR(created_at) hour, created_at, series from chart_daily where date_format(created_at,'%d') = date_format(CURDATE(),'%d') and date_format(created_at,'%M') = date_format(CURDATE(),'%M') and date_format(created_at,'%y') = date_format(CURDATE(),'%y')")->result_array();
-		$h="";
+        $data = $this->db->query("
+          SELECT hour(created_at) as tanggal, sum(series) as series
+            FROM chart_daily
+            WHERE YEAR(created_at)=YEAR(CURDATE()) and MONTH(created_at) = MONTH(CURDATE()) and DAY(created_at)=DAY(CURDATE())
+            GROUP BY hour(created_at)
+            ORDER BY created_at asc;
+        ")->result_array();
 		if(count($data) > 0){
 			foreach($data as $key=>$row){
-				if($row['hour']=="0"){
-					$newData[23] =  $row['series'];
+				if($row['tanggal']=="0"){
+					$newData[23] =  ceil($row['series']);
 				}else{
-					$newData[(int)$row['hour']-1] =  $row['series'];
+					$newData[(int)$row['tanggal']-1] =  ceil($row['series']);
 				}
+                // $newData[(int)$row['tanggal']-1] =  $row['series'];
 			}
 		}
 
         echo json_encode($newData);
     }
     public function insert_data(){
-		
-        $isTrue=$this->db->insert("chart_daily",array(
-	        "series"=>$_POST["series"]
-        ));
+        $isTrue=$this->db->insert("chart_daily",array("series"=>ceil($_POST["series"])));
         echo json_encode(array("status"=>$isTrue));
-
     }
 
-	public function get_monthly(){
-		$data = $this->db->query("SELECT * FROM `chart_daily` where date_format(created_at,'%Y') = date_format(CURDATE(),'%Y') group by date_format(created_at,'%M');")->result_array();
 
-	}
+    public function get_monthly(){
+        $newData=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+        $data = $this->db->query("select DAY(created_at) as tanggal, sum(series) as series from chart_daily where date_format(created_at,'%Y')=date_format(CURDATE(),'%Y') and date_format(created_at,'%m') =date_format(CURDATE(),'%m') group by date_format(created_at,'%d') ORDER BY created_at asc")->result_array();
+        $tgl=[];
+        foreach ($data as $key => $row){
+            $newData[(int) $row['tanggal']-1] =  ceil($row['series']);
+        }
+        for($i=1;$i<31;$i++){
+            $tgl[]=$i;
+        }
+
+        echo json_encode(array('series'=>$newData,"tanggal"=>$tgl));
+    }
+    public function get_yearly(){
+        $newData=[0,0,0,0,0,0,0,0,0,0,0,0];
+        $data = $this->db->query("
+            SELECT MONTH(created_at) tanggal, sum(series) series FROM `chart_daily`
+            where date_format(created_at,'%Y') = date_format(CURDATE(),'%Y')
+            group by MONTH(created_at)
+            order by date_format(created_at,'%m') asc
+        ")->result_array();
+        $tgl=[];
+        foreach ($data as $key => $row){
+            $newData[(int) $row['tanggal']-1] = ceil( $row['series']);
+        }
+        for($i=1;$i<13;$i++){
+            $tgl[]=$i;
+        }
+        echo json_encode(array('series'=>$newData,"tanggal"=>$tgl));
+    }
 }
