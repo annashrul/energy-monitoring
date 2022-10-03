@@ -122,7 +122,9 @@
         .mtm-20{
             margin-top: -20px !important;
         }
-
+        .zoom{zoom:90% !important}
+        .bg-green{background-color: green !important;}
+        .bs-none{box-shadow: none !important;}
 
 
 
@@ -136,15 +138,15 @@
         </div>
     </div>
 </div>
-<div class="main-container p-0" id="container" style="zoom:80% !important;">
+<div class="main-container p-0" id="container">
     <div id="content" class="main-content ml-0 mt-0 p-0">
         <div class="layout-px-spacing ml-0">
             <div class="middle-content container-xxl p-0">
                 <div class="row layout-top-spacing">
-                    <div class="col-12 col-xs-12 col-md-12">
+                    <div class="col-12 col-xs-12 col-md-12 zoom">
                         <h3 class="text-left bold">Energy Monitoring Dashboard</h3>
                     </div>
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 zoom">
                         <div class="row">
                             <div class="col-7 col-xs-7 col-md-8">
                                 <div class="widget widget-card-four">
@@ -157,17 +159,15 @@
                                                 19/09/2022 08:54 AM
                                             </div>
                                         </div>
-
                                         <div class="w-content">
                                             <div class="w-info bold">
                                                 <p class="value bold green fs-34">8.000 <span>mW/h</span> </p>
                                                 +0% Than Yesterday
                                             </div>
-
                                         </div>
                                         <div class="w-progress-stats">
                                             <div class="progress" style="background-color: #0a0d26">
-                                                <div class="progress-bar" role="progressbar" style="box-shadow: none !important;background-color:green;width: 57%" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div class="progress-bar bg-green bs-none" role="progressbar" style="width: 57%" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <div class="">
                                                 <div class="w-icon">
@@ -188,12 +188,12 @@
                                                 <div class="media-body">
                                                     <h6 class="tx-inverse bold">ENERGY CAPACITY</h6>
                                                     <p class="mg-b-0 bold">(mW/h)</p>
-                                                    <h6 class="amount bold">20.000 m/Wh</h6>
+                                                    <h6 class="amount bold">20.000 mW/h</h6>
                                                 </div>
                                             </div>
                                         </li>
                                         <hr/>
-                                        <li class="list-group-item" style="">
+                                        <li class="list-group-item">
                                             <div class="media">
                                                 <div class="me-3"><i data-feather="target"></i><span class="icon-name"></span></div>
                                                 <div class="media-body">
@@ -210,7 +210,7 @@
                                 <div class="row">
                                     <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                         <div class="widget widget-table-one pb-0">
-                                            <div class="widget-heading" style="">
+                                            <div class="widget-heading">
                                                 <h5 class="">Filter Location</h5>
                                                 <div class="task-action">
                                                     <div class="dropdown">
@@ -220,61 +220,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="widget-content" style="margin-top: -20px">
-                                                <div class="transactions-list">
-                                                    <div class="t-item">
-                                                        <div class="t-company-name">
-                                                            <div class="t-name">
-                                                                <div class="form-check form-check-primary form-check-inline">
-                                                                    <input class="form-check-input" type="checkbox" checked="">
-                                                                    <label class="form-check-label bold">
-                                                                        Sunter 1
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="t-item">
-                                                        <div class="t-company-name">
-                                                            <div class="t-name">
-                                                                <div class="form-check form-check-primary form-check-inline">
-                                                                    <input class="form-check-input" type="checkbox" checked="">
-                                                                    <label class="form-check-label bold">
-                                                                        Sunter 2
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="t-item">
-                                                        <div class="t-company-name">
-                                                            <div class="t-name">
-                                                                <div class="form-check form-check-primary form-check-inline">
-                                                                    <input class="form-check-input" type="checkbox" checked="">
-                                                                    <label class="form-check-label bold">
-                                                                        Karawang 1
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="t-item">
-                                                        <div class="t-company-name">
-                                                            <div class="t-name">
-                                                                <div class="form-check form-check-primary form-check-inline">
-                                                                    <input class="form-check-input" type="checkbox" checked="">
-                                                                    <label class="form-check-label bold">
-                                                                        Karawang 2
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
+                                            <div class="widget-content mtm-20">
+                                                <div class="transactions-list" id="filter-location-container"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -291,63 +238,7 @@
                                                 </div>
                                             </div>
                                             <div class="widget-content mtm-20">
-                                                <div class="transactions-list">
-                                                    <div class="t-item">
-                                                        <div class="t-company-name">
-                                                            <div class="t-name">
-                                                                <h4 class="bold">Sunter 1</h4>
-                                                                <p class="meta-date bold">6h 37m</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="t-rate rate-dec">
-                                                            <span class="group-list bold p-0 ">
-                                                               <a class="pr-0 nav-link list-actions g-dot-success"><p class="bold white fs-14 pt-3">ON</p></a>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <hr class="hr-location">
-                                                    <div class="t-item">
-                                                        <div class="t-company-name">
-                                                            <div class="t-name">
-                                                                <h4>Sunter 2</h4>
-                                                                <p class="meta-date bold">6h 37m</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="t-rate rate-dec">
-                                                            <span class="p-0 bold group-list">
-                                                               <a class="pr-0 nav-link list-actions g-dot-success" ><p class="fs-14 white bold pt-3">ON</p></a>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <hr class="hr-location">
-                                                    <div class="t-item">
-                                                        <div class="t-company-name">
-                                                            <div class="t-name">
-                                                                <h4>Karawang 1</h4>
-                                                                <p class="meta-date bold">6h 37m</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="t-rate rate-dec">
-                                                            <span class="p-0 bold group-list">
-                                                               <a class="pr-0 nav-link list-actions g-dot-success" ><p class="fs-14 white bold pt-3">ON</p></a>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <hr class="hr-location">
-                                                    <div class="t-item">
-                                                        <div class="t-company-name">
-                                                            <div class="t-name">
-                                                                <h4>Karawang 2</h4>
-                                                                <p class="meta-date bold">6h 37m</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="t-rate rate-dec">
-                                                            <span class="bold p-0 group-list">
-                                                               <a class="pr-0 nav-link list-actions g-dot-danger" id="work"><p class="fs-14 white bold pt-3">OFF</p></a>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <div class="transactions-list" id="uptime-container"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -356,91 +247,11 @@
 
                         </div>
                     </div>
-                    <div class="col-12 col-xs-12 col-md-12 mt-3">
+                    <div class="col-12 col-xs-12 col-md-12 mt-3 zoom">
                         <h3 class="text-left bold">Energy Consumption By Sector</h3>
                     </div>
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3">
-                        <div class="row widget-statistic">
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-6 col-xs-6 col-md-6">
-                                        <div class="widget widget-one_hybrid widget-followers">
-                                            <div class="widget-heading">
-                                                <div class="w-title">
-                                                    <div class="">
-                                                        <h5 class="">Painting</h5>
-                                                        <p class="w-value">1800 mW/h</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="widget-content">
-                                                <div class="w-chart">
-                                                    <div id="hybrid_followers"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-xs-6 col-md-6">
-                                        <div class="widget widget-one_hybrid widget-followers">
-                                            <div class="widget-heading">
-                                                <div class="w-title">
-
-                                                    <div class="">
-                                                        <h5 class="">Welding</h5>
-                                                        <p class="w-value">2200 mW/h</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="widget-content">
-                                                <div class="w-chart">
-                                                    <div id="hybrid_followers1"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-12 mt-3">
-                                <div class="row">
-                                    <div class="col-6 col-xs-6 col-md-6">
-                                        <div class="widget widget-one_hybrid widget-followers">
-                                            <div class="widget-heading">
-                                                <div class="w-title">
-
-                                                    <div class="">
-                                                        <h5 class="">Press</h5>
-                                                        <p class="w-value">800 mW/h</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="widget-content">
-                                                <div class="w-chart">
-                                                    <div id="hybrid_followers3"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-xs-6 col-md-6">
-                                        <div class="widget widget-one_hybrid widget-followers">
-                                            <div class="widget-heading">
-                                                <div class="w-title">
-
-                                                    <div class="">
-                                                        <h5 class="">Assy</h5>
-                                                        <p class="w-value">1200 mW/h</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="widget-content">
-                                                <div class="w-chart">
-                                                    <div id="hybrid_followers4"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="row widget-statistic" id="chart-consumption">
                         </div>
                     </div>
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3">
@@ -456,93 +267,14 @@
                             </div>
                         </div>
                     </div>
-                    <div  class="col-xl-12 mt-3">
+                    <div  class="col-xl-12 mt-3 zoom">
                         <div class="row" id="widget-middle">
                             <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-6 col-xs-6 col-md-6">
-                                        <div class="widget widget-card-four">
-                                            <div class="widget-content">
-                                                <div class="w-header">
-                                                    <div class="w-info">
-                                                        <h5 class="value bold">Today</h5>
-                                                    </div>
-                                                    <div class="task-action bold">
-                                                        +0% Than Yesterday
-                                                    </div>
-                                                </div>
-                                                <div class="w-content">
-                                                    <div class="w-info bold">
-                                                        <p class="value fs-34 green bold">8.000 <span>mW / h</span> </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="widget-content mt-3">
-                                                <div class="w-header">
-                                                    <div class="w-info">
-                                                        <h5 class="value bold">Avg Today</h5>
-                                                    </div>
-                                                    <div class="task-action bold">
-                                                        +0% Than Yesterday
-                                                    </div>
-                                                </div>
-                                                <div class="w-content">
-                                                    <div class="w-info bold">
-                                                        <p class="value fs-34 green bold">8.000 <span>mW / h</span> </p>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="col-6 col-xs-6 col-md-6">
-                                        <div class="widget widget-card-four">
-                                            <div class="widget-content">
-                                                <div class="w-header">
-                                                    <div class="w-info">
-                                                        <h5 class="value bold">Month</h5>
-                                                    </div>
-                                                    <div class="task-action bold">
-                                                        +0% Than Yesterday
-                                                    </div>
-                                                </div>
-                                                <div class="w-content">
-                                                    <div class="w-info bold">
-                                                        <p class="value fs-34 green bold">8.000 <span>mW / h</span> </p>
-                                                    </div>
-
-                                                </div>
-
-                                            </div>
-                                            <hr>
-                                            <div class="widget-content">
-                                                <div class="w-header">
-                                                    <div class="w-info">
-                                                        <h5 class="value bold">Avg Month</h5>
-                                                    </div>
-                                                    <div class="task-action bold">
-                                                        +0% Than Yesterday
-                                                    </div>
-                                                </div>
-                                                <div class="w-content">
-                                                    <div class="w-info bold">
-                                                        <p class="value fs-34 green bold">8.000 <span>mW / h</span> </p>
-                                                    </div>
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div class="row" id="avg-container"></div>
                             </div>
-
-
                         </div>
                     </div>
-                    <div class="col-md-12 mt-3">
+                    <div class="col-md-12 mt-3 zoom">
                         <div class="row">
                             <div class="col-12 col-xs-12 col-md-7 mb-3">
                                 <div class="widget widget-one_hybrid widget-followers">
@@ -585,43 +317,137 @@
 
 <script>
     let dataMonth=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    let dataLocation=["Sunter 1","Sunter 2","Karawang 1","Karawang 2"];
     var randomValueChart = function(num=1000) {
         return Math.round(Math.random() * num);
     };
     window.onload = function() {
         feather.replace();
+        uptimeStatus()
+        filterLocation();
         chartRealtime();
         chart12Months();
         chart30Days();
-        chartBySector("hybrid_followers");
-        chartBySector("hybrid_followers1");
-        chartBySector("hybrid_followers3");
-        chartBySector("hybrid_followers4");
+        chartConsumption();
+        widgetAvg()
     };
+
+    function widgetAvg(){
+        let html="";
+        let data=[
+            {data1:["Today","Avg Today"]},
+            {data2:["Month","Avg Month"]},
+        ];
+        data.map((row,j)=>{
+            html+=`<div class="col-6 col-xs-6 col-md-6"><div class="widget widget-card-four">`;
+                row[`data${j+1}`].map((res,i)=>{
+                    html+=`<div class="widget-content">
+                        <div class="w-header">
+                            <div class="w-info"><h5 class="value bold">${res}</h5></div>
+                            <div class="task-action bold">+0% Than Yesterday</div>
+                        </div>
+                        <div class="w-content">
+                            <div class="w-info bold">
+                                <p class="value fs-34 green bold">8.000 <span>mW / h</span> </p>
+                            </div>
+                        </div>
+                    </div>${row[`data${j+1}`].length-1===i?"":"<hr/>"}`;
+                })
+            html+=`</div></div>`;
+        })
+        document.getElementById("avg-container").innerHTML=html;
+    }
+
+    function uptimeStatus(){
+        let html="";
+        dataLocation.map((res,i)=>{
+            html+=`<div class="t-item">
+                <div class="t-company-name">
+                    <div class="t-name">
+                        <h4>${res}</h4>
+                        <p class="meta-date bold">6h 37m</p>
+                    </div>
+                </div>
+                <div class="t-rate rate-dec">
+                    <span class="p-0 bold group-list">
+                        <a class="pr-0 nav-link list-actions g-dot-${dataLocation.length-1===i?'danger':'success'}" ><p class="fs-14 white bold pt-3">ON</p></a>
+                    </span>
+                </div>
+            </div>
+            ${dataLocation.length-1!==i?`<hr class="hr-location">`:''}`;
+        })
+        document.getElementById("uptime-container").innerHTML=html;
+    }
+
+    function filterLocation(){
+        let html=""
+        dataLocation.map((res)=>{
+            html+=`<div class="t-item">
+                <div class="t-company-name">
+                    <div class="t-name">
+                        <div class="form-check form-check-primary form-check-inline">
+                            <input class="form-check-input" type="checkbox" checked="">
+                            <label class="form-check-label bold">
+                                ${res}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>` 
+        });
+        document.getElementById("filter-location-container").innerHTML=html;
+    }
+
+    function tempChartConsumption(title,value,i){
+        return `<div class="col-6 col-xs-6 col-md-6 ${i>1?'':'mb-3'}">
+            <div class="widget widget-one_hybrid widget-followers">
+                <div class="widget-heading">
+                    <div class="w-title">
+                        <div class="">
+                            <h5>${title}</h5>
+                            <p class="w-value">${value} mW/h</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-content">
+                    <div class="w-chart">
+                        <div id="${title.toLowerCase()}-container"></div>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+    }
+
+    function chartConsumption(){
+        let data = [
+            {name:"Painting",value:"1800"},
+            {name:"Welding",value:"2200"},
+            {name:"Press",value:"800"},
+            {name:"Assy",value:"1200"},
+        ]
+        let html=`<div class="col-md-12"><div class="row">`;
+        data.map((res,i)=>html+=tempChartConsumption(res.name,res.value,i))
+        html+=`</div></div>`;
+        document.getElementById("chart-consumption").innerHTML=html;
+        data.map((res,i)=>chartBySector(`${res.name.toLowerCase()}-container`,{name:res.name}))
+    }
 
 
     function chartRealtime(){
         var Theme = "dark";
         Apex.tooltip = {theme: Theme};
-        let newData=[];
-        let newData1=[];
-        let newData2=[];
-        let newData3=[];
-        dataMonth.map(function(res,i){
-            newData.push(randomValueChart(i*100000))
-            newData1.push(randomValueChart(i*100000))
-            newData2.push(randomValueChart(i*100000))
-            newData3.push(randomValueChart(i*100000))
-        });
+        let series=[];
+        let colors=["rgb(231, 81, 90)","rgb(33, 150, 243)","rgb(226, 160, 63)",'rgb(98, 43, 215)']
+        dataLocation.map(function(res,j){
+            series[j]={name:res,data:[]};
+            dataMonth.map((row,i)=>series[j].data.push(randomValueChart(i*100000)));
+        })
         var options = {
-
             chart: {
                 fontFamily: 'Nunito, sans-serif',
                 height: 365,
                 type: 'area',
-                zoom: {
-                    enabled: false
-                },
+                zoom: {enabled: false},
                 dropShadow: {
                     enabled: true,
                     opacity: 0.2,
@@ -629,32 +455,15 @@
                     left: -7,
                     top: 22
                 },
-                toolbar: {
-                    show: false
-                },
+                toolbar: {show: false},
             },
-
-            markers: {
-                discrete: [{
-                    seriesIndex: 0,
-                    dataPointIndex: 7,
-                    fillColor: '#000',
-                    strokeColor: '#000',
-                    size: 5
-                }, {
-                    seriesIndex: 2,
-                    dataPointIndex: 11,
-                    fillColor: '#000',
-                    strokeColor: '#000',
-                    size: 4
-                }]
-            },
+           
             subtitle: {
                 text: '12.600 mW/h',
                 align: 'left',
                 margin: 0,
                 offsetX: 100,
-                offsetY: 20,
+                offsetY: 0,
                 floating: false,
                 style: {
                     fontSize: '18px',
@@ -665,48 +474,23 @@
                 text: 'Avg Usage',
                 align: 'left',
                 margin: 0,
-                offsetX: -10,
-                offsetY: 20,
+                offsetX: -8,
+                offsetY: 0,
                 floating: false,
                 style: {
                     fontSize: '18px',
                     color:  '#bfc9d4'
                 },
             },
-//            stroke: {
-//                show: true,
-//                curve: 'smooth',
-//                width: 2,
-//                lineCap: 'square'
-//            },
             stroke: {
                 show: true,
                 width: 2,
                 curve: 'smooth',
                 lineCap: 'square'
             },
-            colors: ["rgb(231, 81, 90)","rgb(33, 150, 243)","rgb(226, 160, 63)",'rgb(98, 43, 215)'],
-            dataLabels: {
-                enabled: false,
-            },
-            series: [
-                {
-                    name: "Sunter 1",
-                    data:newData,
-                },
-                {
-                    name: "Sunter 2",
-                    data:newData1,
-                },
-                {
-                    name: "Karawang 1",
-                    data:newData2,
-                },
-                {
-                    name: "Karawang 2",
-                    data:newData3,
-                }
-            ],
+            dataLabels: {enabled: false},
+            colors:colors,
+            series:series,
             labels: dataMonth,
             xaxis: {
                 axisBorder: {
@@ -766,8 +550,9 @@
                 position: 'top',
                 horizontalAlign: 'right',
                 offsetY: -50,
-                fontSize: '16px',
-                fontFamily: 'Quicksand, sans-serif',
+                fontSize: '12px',
+                fontFamily: 'Nunito, sans-serif',
+                fontWeight:"bold",
                 markers: {
                     width: 10,
                     height: 10,
@@ -785,15 +570,6 @@
                 }
 
             },
-//            tooltip: {
-//                theme: Theme,
-//                marker: {
-//                    show: true,
-//                },
-//                x: {
-//                    show: false,
-//                }
-//            },
             fill: {
                 type:"gradient",
                 gradient: {
@@ -925,7 +701,7 @@
         var chart = new ApexCharts(document.querySelector(`#${id}`),options);
         chart.render();
     }
-    function chartBySector(id){
+    function chartBySector(id,data){
         var d_1options3 = {
             chart: {
                 id: 'sparkline1',
@@ -940,7 +716,7 @@
                 width: 2,
             },
             series: [{
-                name: 'Sales',
+                name: data.name,
                 data: [38, 60, 38, 52, 36, 40, 28 ]
             }],
             labels: ['1', '2', '3', '4', '5', '6', '7'],
@@ -984,11 +760,6 @@
         var newChart = new ApexCharts(document.querySelector(`#${id}`), d_1options3);
         newChart.render()
     }
-
-
-
-
-
 </script>
 </body>
 </html>
