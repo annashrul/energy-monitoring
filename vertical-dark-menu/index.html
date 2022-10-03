@@ -544,7 +544,7 @@
                     </div>
                     <div class="col-md-12 mt-3">
                         <div class="row">
-                            <div class="col-xl-7">
+                            <div class="col-12 col-xs-12 col-md-7 mb-3">
                                 <div class="widget widget-one_hybrid widget-followers">
                                     <div class="widget widget-chart-one">
                                         <div class="widget-heading">
@@ -556,7 +556,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-5">
+                            <div class="col-12 col-xs-12 col-md-5">
                                 <div class="widget widget-one_hybrid widget-followers">
                                     <div class="widget widget-chart-one">
                                         <div class="widget-heading">
@@ -614,6 +614,7 @@
             newData3.push(randomValueChart(i*100000))
         });
         var options = {
+
             chart: {
                 fontFamily: 'Nunito, sans-serif',
                 height: 365,
@@ -672,10 +673,16 @@
                     color:  '#bfc9d4'
                 },
             },
+//            stroke: {
+//                show: true,
+//                curve: 'smooth',
+//                width: 2,
+//                lineCap: 'square'
+//            },
             stroke: {
                 show: true,
-                curve: 'smooth',
                 width: 2,
+                curve: 'smooth',
                 lineCap: 'square'
             },
             colors: ["rgb(231, 81, 90)","rgb(33, 150, 243)","rgb(226, 160, 63)",'rgb(98, 43, 215)'],
@@ -778,15 +785,15 @@
                 }
 
             },
-            tooltip: {
-                theme: Theme,
-                marker: {
-                    show: true,
-                },
-                x: {
-                    show: false,
-                }
-            },
+//            tooltip: {
+//                theme: Theme,
+//                marker: {
+//                    show: true,
+//                },
+//                x: {
+//                    show: false,
+//                }
+//            },
             fill: {
                 type:"gradient",
                 gradient: {
@@ -831,51 +838,48 @@
         var options = {
             chart: {
                 fontFamily: "Nunito, sans-serif",
-                fontSize: "30px",
-                height: 300,
-                type: 'line',
-                zoom: {
-                    enabled: false,
-                },
+                height: 350,
+                type: 'bar',
                 toolbar: {
                     show: false,
                 }
+
             },
             colors: ["green"],
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '55%',
+                    endingShape: 'rounded'
+                },
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                show: true,
+                width: 2,
+                colors: ['transparent']
+            },
             series: [{
-                name: '',
+                name: "",
                 type: 'column',
                 data: data
             }],
-            stroke: {
-                width: [0, 4]
-            },
             labels:label,
-            yaxis: {
-                labels: {
-                    formatter: function (value, index) {
+            tooltip: {
+                y: {
+                    formatter: function (value) {
                         return value / 1000 + "K";
                     },
-                    offsetX: 5,
-                    offsetY: 5,
                     style: {
                         fontSize: "14px",
                         fontFamily: "Nunito, sans-serif",
                         cssClass: "apexcharts-yaxis-title",
                     },
-                },
-            },
-            xaxis: {
-                labels: {
 
-//                    offsetX: 5,
-//                    offsetY: 5,
-                    style: {
-                        fontSize: "14px",
-                        fontFamily: "Nunito, sans-serif",
-                        cssClass: "apexcharts-yaxis-title",
-                    },
                 },
+
             },
             grid: {
                 borderColor: "#191e3a",
@@ -897,7 +901,6 @@
                     left: 5,
                 },
             },
-
             fill: {
                 type: "gradient",
                 gradient: {
@@ -909,10 +912,16 @@
                     stops: [100, 100],
                 },
             },
+            xaxis: {
+                labels: {
+                    style: {
+                        fontSize: "14px",
+                        fontFamily: "Nunito, sans-serif",
+                        cssClass: "apexcharts-yaxis-title",
+                    },
+                },
+            },
         };
-
-
-
         var chart = new ApexCharts(document.querySelector(`#${id}`),options);
         chart.render();
     }
