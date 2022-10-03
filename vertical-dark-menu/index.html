@@ -29,7 +29,6 @@
     <link href="../src/plugins/css/light/apex/custom-apexcharts.css" rel="stylesheet" type="text/css">
     <link href="../src/plugins/css/dark/apex/custom-apexcharts.css" rel="stylesheet" type="text/css">
 
-
     <style>
         .p-0{
             padding: 0 !important;
@@ -179,31 +178,7 @@
                                     </div>
                                 </div>
                                 <div class="widget widget-wallet-one mt-3">
-                                    <ul class="list-group list-group-media">
-                                        <li class="list-group-item ">
-                                            <div class="media">
-                                                <div class="me-3">
-                                                    <i data-feather="zap"></i>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h6 class="tx-inverse bold">ENERGY CAPACITY</h6>
-                                                    <p class="mg-b-0 bold">(mW/h)</p>
-                                                    <h6 class="amount bold">20.000 mW/h</h6>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <hr/>
-                                        <li class="list-group-item">
-                                            <div class="media">
-                                                <div class="me-3"><i data-feather="target"></i><span class="icon-name"></span></div>
-                                                <div class="media-body">
-                                                    <h6 class="tx-inverse bold">TARGET LIMIT</h6>
-                                                    <p class="mg-b-0 bold">(Percentage)</p>
-                                                    <h6 class="amount bold">80%</h6>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                    <ul class="list-group list-group-media" id="group-container"></ul>
                                 </div>
                             </div>
                             <div class="col-5 col-xs-5 col-md-4">
@@ -221,7 +196,7 @@
                                                 </div>
                                             </div>
                                             <div class="widget-content mtm-20">
-                                                <div class="transactions-list" id="filter-location-container"></div>
+                                                <div class="transactions-list pb-3"  id="filter-location-container"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -323,6 +298,7 @@
     };
     window.onload = function() {
         feather.replace();
+        group()
         uptimeStatus()
         filterLocation();
         chartRealtime();
@@ -331,6 +307,31 @@
         chartConsumption();
         widgetAvg()
     };
+
+    function group(){
+        let html="";
+        const data=[
+            {title:"Energy Capacity",desc:"mW/h",value:"20.000 mW/h"},
+            {title:"Target Limit",desc:"Percentage",value:"80%"},
+        ];
+        data.map((res,i)=>{
+            html+=`<li class="list-group-item ">
+                <div class="media">
+                    <div class="me-3">
+                        <i data-feather="zap"></i>
+                    </div>
+                    <div class="media-body">
+                        <h5 class="tx-inverse bold  ">${res.title}</h5>
+                        <p class="mg-b-0 bold">( ${res.desc} )</p>
+                        <h6 class="amount bold">${res.value}</h6>
+                    </div>
+                </div>
+            </li>`;
+            html+=i===0?`<hr/>`:""
+        })
+        document.getElementById("group-container").innerHTML=html;
+
+    }
 
     function widgetAvg(){
         let html="";
