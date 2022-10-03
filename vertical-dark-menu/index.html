@@ -16,7 +16,6 @@
     <link href="../src/assets/css/light/scrollspyNav.css" rel="stylesheet" type="text/css" />
     <link href="../src/assets/css/dark/components/font-icons.css" rel="stylesheet" type="text/css">
     <link href="../src/plugins/src/apex/apexcharts.css" rel="stylesheet" type="text/css">
-
     <link href="../src/assets/css/light/components/list-group.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../src/assets/css/light/widgets/modules-widgets.css">
     <link href="../src/assets/css/dark/components/list-group.css" rel="stylesheet" type="text/css">
@@ -110,20 +109,37 @@
         .pr-0{
             padding-right: 0 !important;
         }
-        .white{color:white !important;}
-        .fs-14{font-size: 14px !important;}
-        .fs-17{font-size: 17px !important;}
-        .fs-20{font-size: 20px !important;}
-        .fs-34{font-size: 34px !important;}
+        .white{
+            color:white !important;
+        }
+        .fs-14{
+            font-size: 14px !important;
+        }
+        .fs-17{
+            font-size: 17px !important;
+        }
+        .fs-20{
+            font-size: 20px !important;
+        }
+        .fs-34{
+            font-size: 34px !important;
+        }
         .hr-location{
-            margin-bottom: 5px !important;margin-top: 5px !important;
+            margin-bottom: 5px !important;
+            margin-top: 5px !important;
         }
         .mtm-20{
             margin-top: -20px !important;
         }
-        .zoom{zoom:90% !important}
-        .bg-green{background-color: green !important;}
-        .bs-none{box-shadow: none !important;}
+        .zoom{
+            zoom:90% !important;
+        }
+        .bg-green{
+            background-color: green !important;
+        }
+        .bs-none{
+            box-shadow: none !important;
+        }
 
 
 
@@ -142,7 +158,7 @@
         <div class="layout-px-spacing ml-0">
             <div class="middle-content container-xxl p-0">
                 <div class="row layout-top-spacing">
-                    <div class="col-12 col-xs-12 col-md-12 zoom">
+                    <div class="col-12 col-xs-12 col-md-12 zoom mb-3">
                         <h3 class="text-left bold">Energy Monitoring Dashboard</h3>
                     </div>
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 zoom">
@@ -154,24 +170,19 @@
                                             <div class="w-info">
                                                 <h5 class="value bold">Daily Consumption</h5>
                                             </div>
-                                            <div class="task-action bold">
-                                                19/09/2022 08:54 AM
-                                            </div>
+                                            <div class="task-action bold">19/09/2022 08:54 AM</div>
                                         </div>
                                         <div class="w-content">
                                             <div class="w-info bold">
-                                                <p class="value bold green fs-34">8.000 <span>mW/h</span> </p>
-                                                +0% Than Yesterday
+                                                <p class="value bold green fs-34">8.000 <span>mW/h</span></p>+0% Than Yesterday
                                             </div>
                                         </div>
                                         <div class="w-progress-stats">
                                             <div class="progress" style="background-color: #0a0d26">
                                                 <div class="progress-bar bg-green bs-none" role="progressbar" style="width: 57%" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
-                                            <div class="">
-                                                <div class="w-icon">
-                                                    <p class="green bold">40%</p>
-                                                </div>
+                                            <div class="w-icon">
+                                                <p class="green bold">40%</p>
                                             </div>
                                         </div>
                                         <br>
@@ -189,9 +200,7 @@
                                                 <h5 class="">Filter Location</h5>
                                                 <div class="task-action">
                                                     <div class="dropdown">
-                                                        <a class="dropdown-toggle" href="#" role="button" id="transactions" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <i data-feather="filter"></i>
-                                                        </a>
+                                                        <a class="dropdown-toggle" href="#"><i data-feather="filter"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -206,9 +215,7 @@
                                                 <h5 class="">Uptime & Status</h5>
                                                 <div class="task-action">
                                                     <div class="dropdown">
-                                                        <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <i data-feather="alert-circle"></i>
-                                                        </a>
+                                                        <a class="dropdown-toggle" href="#"><i data-feather="alert-circle"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -226,18 +233,16 @@
                         <h3 class="text-left bold">Energy Consumption By Sector</h3>
                     </div>
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3">
-                        <div class="row widget-statistic" id="chart-consumption">
-                        </div>
+                        <div class="row widget-statistic" id="chart-consumption"></div>
                     </div>
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3">
                         <div class="widget widget-one_hybrid widget-followers">
                             <div class="widget widget-chart-one">
                                 <div class="widget-heading">
-                                    <h5 class="bold white fs-17">Monthly Used Energy By Plant
-                                    </h5>
+                                    <h5 class="bold white fs-17">Monthly Used Energy By Plant</h5>
                                 </div>
                                 <div class="widget-content pl-10 pr-10">
-                                    <div id="realtime-chart"></div>
+                                    <div id="monthly-energy-chart"></div>
                                 </div>
                             </div>
                         </div>
@@ -258,7 +263,7 @@
                                             <h5 class="fs-17 white bold">Last 30 Days (KWH)</h5>
                                         </div>
                                         <div class="widget-content">
-                                            <div id="last30days" class=""></div>
+                                            <div id="last30days"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -299,15 +304,18 @@
     window.onload = function() {
         feather.replace();
         group()
-        uptimeStatus()
         filterLocation();
-        chartRealtime();
+        uptimeStatus();
+        chartConsumption();
+        chartMonthlyEnergy();
+        widgetAvg()
         chart12Months();
         chart30Days();
-        chartConsumption();
-        widgetAvg()
     };
 
+    // **************************************************
+    // start Energy Capacity & Target Limit
+    // **************************************************
     function group(){
         let html="";
         const data=[
@@ -321,7 +329,7 @@
                         <i data-feather="zap"></i>
                     </div>
                     <div class="media-body">
-                        <h5 class="tx-inverse bold  ">${res.title}</h5>
+                        <h5 class="tx-inverse bold">${res.title}</h5>
                         <p class="mg-b-0 bold">( ${res.desc} )</p>
                         <h6 class="amount bold">${res.value}</h6>
                     </div>
@@ -332,61 +340,20 @@
         document.getElementById("group-container").innerHTML=html;
 
     }
-
-    function widgetAvg(){
-        let html="";
-        let data=[
-            {data1:["Today","Avg Today"]},
-            {data2:["Month","Avg Month"]},
-        ];
-        data.map((row,j)=>{
-            html+=`<div class="col-6 col-xs-6 col-md-6"><div class="widget widget-card-four">`;
-                row[`data${j+1}`].map((res,i)=>{
-                    html+=`<div class="widget-content">
-                        <div class="w-header">
-                            <div class="w-info"><h5 class="value bold">${res}</h5></div>
-                            <div class="task-action bold">+0% Than Yesterday</div>
-                        </div>
-                        <div class="w-content">
-                            <div class="w-info bold">
-                                <p class="value fs-34 green bold">8.000 <span>mW / h</span> </p>
-                            </div>
-                        </div>
-                    </div>${row[`data${j+1}`].length-1===i?"":"<hr/>"}`;
-                })
-            html+=`</div></div>`;
-        })
-        document.getElementById("avg-container").innerHTML=html;
-    }
-
-    function uptimeStatus(){
-        let html="";
-        dataLocation.map((res,i)=>{
-            html+=`<div class="t-item">
-                <div class="t-company-name">
-                    <div class="t-name">
-                        <h4>${res}</h4>
-                        <p class="meta-date bold">6h 37m</p>
-                    </div>
-                </div>
-                <div class="t-rate rate-dec">
-                    <span class="p-0 bold group-list">
-                        <a class="pr-0 nav-link list-actions g-dot-${dataLocation.length-1===i?'danger':'success'}" ><p class="fs-14 white bold pt-3">ON</p></a>
-                    </span>
-                </div>
-            </div>
-            ${dataLocation.length-1!==i?`<hr class="hr-location">`:''}`;
-        })
-        document.getElementById("uptime-container").innerHTML=html;
-    }
-
+    // **************************************************
+    // end Energy Capacity & Target Limit
+    // **************************************************
+    
+    // **************************************************
+    // start Filter Location
+    // **************************************************
     function filterLocation(){
         let html=""
         dataLocation.map((res)=>{
             html+=`<div class="t-item">
                 <div class="t-company-name">
                     <div class="t-name">
-                        <div class="form-check form-check-primary form-check-inline">
+                        <div class="form-check form-check-success form-check-inline">
                             <input class="form-check-input" type="checkbox" checked="">
                             <label class="form-check-label bold">
                                 ${res}
@@ -398,50 +365,70 @@
         });
         document.getElementById("filter-location-container").innerHTML=html;
     }
-
-    function tempChartConsumption(title,value,i){
-        return `<div class="col-6 col-xs-6 col-md-6 ${i>1?'':'mb-3'}">
-            <div class="widget widget-one_hybrid widget-followers">
-                <div class="widget-heading">
-                    <div class="w-title">
-                        <div class="">
-                            <h5>${title}</h5>
-                            <p class="w-value">${value} mW/h</p>
-                        </div>
+    // **************************************************
+    // end Filter Location
+    // **************************************************
+    
+    // **************************************************
+    // start Uptime & Status
+    // **************************************************
+    function uptimeStatus(){
+        let html="";
+        dataLocation.map((res,i)=>{
+            const isTrue=dataLocation.length-1===i;
+            html+=`<div class="t-item">
+                <div class="t-company-name">
+                    <div class="t-name">
+                        <h4>${res}</h4>
+                        <p class="meta-date bold">6h 37m</p>
                     </div>
                 </div>
-                <div class="widget-content">
-                    <div class="w-chart">
-                        <div id="${title.toLowerCase()}-container"></div>
-                    </div>
+                <div class="t-rate rate-dec">
+                    <span class="p-0 bold group-list">
+                        <a class="pr-0 nav-link list-actions g-dot-${isTrue?'danger':'success'}"><p class="fs-14 white bold pt-3">${isTrue?'OFF':'ON'}</p></a>
+                    </span>
                 </div>
             </div>
-        </div>`;
+            ${isTrue?'':'<hr class="hr-location">'}`;
+        })
+        document.getElementById("uptime-container").innerHTML=html;
     }
-
+    // **************************************************
+    // end Uptime & Status
+    // **************************************************
+    
+    // **************************************************
+    // start Energy Consumption By Sector
+    // **************************************************
+    
     function chartConsumption(){
         let data = [
-            {name:"Painting",value:"1800"},
-            {name:"Welding",value:"2200"},
+            {name:"Painting",value:"1.800"},
+            {name:"Welding",value:"2.200"},
             {name:"Press",value:"800"},
-            {name:"Assy",value:"1200"},
+            {name:"Assy",value:"1.200"},
         ]
         let html=`<div class="col-md-12"><div class="row">`;
         data.map((res,i)=>html+=tempChartConsumption(res.name,res.value,i))
         html+=`</div></div>`;
         document.getElementById("chart-consumption").innerHTML=html;
-        data.map((res,i)=>chartBySector(`${res.name.toLowerCase()}-container`,{name:res.name}))
+        data.map((res,i)=>tempChartBySector(`${res.name.toLowerCase()}-container`,{name:res.name}))
     }
-
-
-    function chartRealtime(){
+    // **************************************************
+    // end Energy Consumption By Sector
+    // **************************************************
+    
+    // **************************************************
+    // start Monthly Used Energy By Plant
+    // **************************************************
+    function chartMonthlyEnergy(){
         var Theme = "dark";
         Apex.tooltip = {theme: Theme};
         let series=[];
         let colors=["rgb(231, 81, 90)","rgb(33, 150, 243)","rgb(226, 160, 63)",'rgb(98, 43, 215)']
         dataLocation.map(function(res,j){
             series[j]={name:res,data:[]};
-            dataMonth.map((row,i)=>series[j].data.push(randomValueChart(i*100000)));
+            dataMonth.map((row,i)=>series[j].data.push(randomValueChart(100000*Math.random())));
         })
         var options = {
             chart: {
@@ -458,15 +445,15 @@
                 },
                 toolbar: {show: false},
             },
-           
             subtitle: {
                 text: '12.600 mW/h',
                 align: 'left',
                 margin: 0,
                 offsetX: 100,
-                offsetY: 0,
+                offsetY: 3,
                 floating: false,
                 style: {
+                    fontWeight:"bold",
                     fontSize: '18px',
                     color:  '#00ab55'
                 }
@@ -479,13 +466,14 @@
                 offsetY: 0,
                 floating: false,
                 style: {
+                    fontWeight:"bold",
                     fontSize: '18px',
                     color:  '#bfc9d4'
                 },
             },
             stroke: {
                 show: true,
-                width: 2,
+                width: 10,
                 curve: 'smooth',
                 lineCap: 'square'
             },
@@ -591,9 +579,48 @@
                 },
             }]
         };
-        var chart = new ApexCharts(document.querySelector("#realtime-chart"),options);
+        var chart = new ApexCharts(document.querySelector("#monthly-energy-chart"),options);
         chart.render();
     }
+    // **************************************************
+    // end Monthly Used Energy By Plant
+    // **************************************************
+    
+    // **************************************************
+    // start  average widget
+    // **************************************************
+    function widgetAvg(){
+        let html="";
+        let data=[
+            {data1:["Today","Avg Today"]},
+            {data2:["Month","Avg Month"]},
+        ];
+        data.map((row,j)=>{
+            html+=`<div class="col-6 col-xs-6 col-md-6"><div class="widget widget-card-four">`;
+                row[`data${j+1}`].map((res,i)=>{
+                    html+=`<div class="widget-content">
+                        <div class="w-header">
+                            <div class="w-info"><h5 class="value bold">${res}</h5></div>
+                            <div class="task-action bold">+0% Than Yesterday</div>
+                        </div>
+                        <div class="w-content">
+                            <div class="w-info bold">
+                                <p class="value fs-34 green bold">8.000 <span>mW / h</span> </p>
+                            </div>
+                        </div>
+                    </div>${row[`data${j+1}`].length-1===i?"":"<hr/>"}`;
+                })
+            html+=`</div></div>`;
+        })
+        document.getElementById("avg-container").innerHTML=html;
+    }
+    // **************************************************
+    // end  average widget
+    // **************************************************
+    
+    // **************************************************
+    // start Last 30 Days (KWH)
+    // **************************************************
     function chart30Days(){
         let data={label:[],data:[]};
         for(let i=1;i<31;i++){
@@ -601,17 +628,27 @@
             data.label.push(label+' Jan');
             data.data.push(randomValueChart(1000000))
         }
-        chartLast(data.label,data.data,'last30days')
+        tempChartLast(data.label,data.data,'last30days')
     }
+    // **************************************************
+    // end Last 30 Days (KWH)
+    // **************************************************
+
+    // **************************************************
+    // start Last 12 Months (KWH)
+    // **************************************************
     function chart12Months(){
         let data={label:[],data:[]};
         for(let i=0;i<dataMonth.length;i++){
             data.label.push(dataMonth[i])
             data.data.push(randomValueChart(1000000))
         }
-        chartLast(data.label,data.data,'last12months')
+        tempChartLast(data.label,data.data,'last12months')
     }
-    function chartLast(label,data,id){
+    // **************************************************
+    // end Last 12 Months (KWH)
+    // **************************************************
+    function tempChartLast(label,data,id){
         var options = {
             chart: {
                 fontFamily: "Nunito, sans-serif",
@@ -647,10 +684,10 @@
             tooltip: {
                 y: {
                     formatter: function (value) {
-                        return value / 1000 + "K";
+                        return value / 1000 + " K";
                     },
                     style: {
-                        fontSize: "14px",
+                        fontSize: "12px",
                         fontFamily: "Nunito, sans-serif",
                         cssClass: "apexcharts-yaxis-title",
                     },
@@ -689,20 +726,46 @@
                     stops: [100, 100],
                 },
             },
+            
             xaxis: {
-                labels: {
-                    style: {
-                        fontSize: "14px",
-                        fontFamily: "Nunito, sans-serif",
-                        cssClass: "apexcharts-yaxis-title",
-                    },
+                axisBorder: {
+                    show: true
                 },
+                axisTicks: {
+                    show: true
+                },
+                crosshairs: {
+                    show: false
+                },
+                labels: {
+                    offsetX: 0,
+                    offsetY: 5,
+                    style: {
+                        fontSize: '12px',
+                        fontFamily: 'Nunito, sans-serif',
+                        cssClass: 'apexcharts-xaxis-title',
+                    },
+                }
+            },
+            yaxis: {
+                labels: {
+                    formatter: function(value, index) {
+                        return (value / 1000) + ' K'
+                    },
+                    offsetX: -15,
+                    offsetY: 0,
+                    style: {
+                        fontSize: '12px',
+                        fontFamily: 'Nunito, sans-serif',
+                        cssClass: 'apexcharts-yaxis-title',
+                    },
+                }
             },
         };
         var chart = new ApexCharts(document.querySelector(`#${id}`),options);
         chart.render();
     }
-    function chartBySector(id,data){
+    function tempChartBySector(id,data){
         var d_1options3 = {
             chart: {
                 id: 'sparkline1',
@@ -727,6 +790,9 @@
             colors: ['#00ab55'],
             tooltip: {
                 x: {
+                    show: false,
+                },
+                y: {
                     show: false,
                 }
             },
@@ -761,6 +827,26 @@
         var newChart = new ApexCharts(document.querySelector(`#${id}`), d_1options3);
         newChart.render()
     }
+    function tempChartConsumption(title,value,i){
+        return `<div class="col-6 col-xs-6 col-md-6 ${i>1?'':'mb-3'}">
+            <div class="widget widget-one_hybrid widget-followers">
+                <div class="widget-heading">
+                    <div class="w-title">
+                        <div class="">
+                            <h5 class="bold">${title}</h5>
+                            <p class="w-value">${value} mW/h</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-content">
+                    <div class="w-chart">
+                        <div id="${title.toLowerCase()}-container"></div>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+    }
+
 </script>
 </body>
 </html>
