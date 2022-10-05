@@ -146,6 +146,12 @@
         .bs-none {
             box-shadow: none !important;
         }
+        /*@media only screen and (max-width: 1200px){*/
+            /*#electric-consumption-chart-total{*/
+                /*height: 250px !important;*/
+            /*}*/
+        /*}*/
+
     </style>
 </head>
 <body class="layout-boxed mb-5">
@@ -284,17 +290,39 @@
 
     let dataMonth = ["Jan","Feb", "Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
     let dataLocation = ["Press Shop 1","Welding Shop 1", "Toso Plant 1",  "Assembly Plant 1","Quality Plant 1","Other"];
-    let dataElectricYearly=[Math.random()*10000,0,0,0,0,0,0,0,0,0,0,0];
-    let dataElectricMonthly=[Math.random()*10000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-    let dataElectricDaily=[Math.random()*10000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-    let noYearly=0;
-    let noMonthly=0;
+    let dataElectricYearly=[1694,9362,3494,5139,9028,2100,9524,3918,9424,5160,0,0];
+    let dataElectricMonthly=[2733,8486,3929,5133,6286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+    let dataElectricDaily=[6860,7587,9511,1413,3544,3277,5249,7390,1299,434,9218,8075,9424,5160,0,0,0,0,0,0,0,0,0,0];
+    let dataElectricGentani=[Math.random()*10000,0,0,0,0,0,0,0,0,0,0,0];
+    let noYearly=9;
+    let noMonthly=4;
     let noDaily=0;
+    let noGentani=0;
     let noDailyConsumption=1;
+    const interval=1000;
+    const intervalDaily=3600000;
+    let isTrueGentani=false;
+    const strSelectPeriode='select-location-filter-electric-consumption-periode';
+    const strElectricConsumption='electric-consumption-chart';
+    const block={"display":"block"};
+    const none={"display":"none"};
 
-    var randomValueChart = function (num = 1000) {
-        return Math.round(Math.random() * num);
+    window.onload = function () {
+        feather.replace();
+        setNotif();
+        tempProgress();
+        group();
+        filterLocation();
+        uptimeStatus();
+        widgetAvg();
+        filterChartElectricConsumption();
+        getChartElectricConsumptionYearly(false);
+        getChartElectricConsumptionTotal();
+        $(`#${strElectricConsumption}-monthly`).css(none);
+        $(`#${strElectricConsumption}-daily`).css(none)
+
     };
+
     function tempProgress(title='1.272',val='8.48',color='green',bgName='bg-success') {
         $("#notif").css({'color':color})
         let titleHtml=`<p class="value bold fs-34" style="color:${color}">${title} <span>mW/h</span></p>`;
@@ -307,8 +335,6 @@
         $("#title-progress").html(titleHtml);
         $("#value-progress").html(valueHtml)
     }
-
-
     function setNotif(label='Normal Condition',value='8.48%'){
         $("#notif").html(`${label} <br><span id="value-notif" style="color:white">${value}</span>`)
     }
@@ -334,37 +360,22 @@
         }
         console.log(noDailyConsumption)
     }
-    window.onload = function () {
-        feather.replace();
-        setNotif();
-        tempProgress();
-        group();
-        filterLocation();
-        uptimeStatus();
-        widgetAvg();
-        filterChartElectricConsumption();
-        getChartElectricConsumptionYearly(false);
-        getChartElectricConsumptionTotal();
-        $("#electric-consumption-chart-monthly").css({"display":"none"});
-        $("#electric-consumption-chart-daily").css({"display":"none"})
 
-    };
     // **************************************************
     // start Filter Location
     // **************************************************
-    let timerYearly=1000;
     function changeLocation(val){
-        const value=$("#select-location-filter-electric-consumption-periode").val();
-//        console.log(value)
+        isTrueGentani=true;
+        const value=$(`#${strSelectPeriode}`).val();
         if(value==="yearly"){
             let res = tempChartConsumptionPeriode(dataMonth,[Math.random()*10000,0,0,0,0,0,0,0,0,0,0,0]);
             const chart = new ApexCharts(
-                document.querySelector("#electric-consumption-chart"),
+                document.querySelector(`#${strElectricConsumption}`),
                 res
             );
             chart.render();
-            noYearly=0;
-            dataElectricYearly=[Math.random()*10000,0,0,0,0,0,0,0,0,0,0,0];
+            noYearly=9;
+            dataElectricYearly=[1694,9362,3494,5139,9028,2100,9524,3918,9424,5160,0,0];
             chart.updateSeries([{data: dataElectricYearly}]);
 
         }
@@ -379,22 +390,41 @@
             }
             let res = tempChartConsumptionPeriode(labelMonthly,[Math.random()*10000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
             const chart = new ApexCharts(
-                document.querySelector("#electric-consumption-chart-monthly"),
+                document.querySelector(`#${strElectricConsumption}-monthly`),
                 res
             );
             chart.render();
-            noMonthly=0;
-            dataElectricMonthly=[Math.random()*10000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+            noMonthly=4;
+            dataElectricMonthly=[2733,8486,3929,5133,6286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
             chart.updateSeries([{
                 data: dataElectricMonthly
             }]);
-
         }
+        else{
+            const labelDaily=[ ];
+            for(let i=0;i<24;i++){
+                if(i<9){
+                    labelDaily.push(`0${i+1}:00`);
+                }else{
+                    labelDaily.push(`${i+1}:00`);
+                }
+            }
+            let res = tempChartConsumptionPeriode(labelDaily,dataElectricDaily,'daily');
+            var chart = new ApexCharts(
+                document.querySelector(`#${strElectricConsumption}-daily`),
+                res
+            );
+            chart.render();
+            var currentdate = new Date();
+            noDaily=parseInt(currentdate.getHours())-1;
 
-//        getChartElectricConsumptionYearly(true);
-//        getChartElectricConsumptionMonthly(true);
-//        getChartElectricConsumptionDaily(true);
-//        getChartElectricConsumptionTotal()
+//            noDaily=13;
+            dataElectricDaily=[6860,7587,9511,1413,3544,3277,5249,7390,1299,434,9218,8075,9424,5160,0,0,0,0,0,0,0,0,0,0];
+            chart.updateSeries([{
+                data: dataElectricDaily
+            }]);
+        }
+        getChartElectricConsumptionTotal(true)
     }
     // **************************************************
     // end Filter Location
@@ -404,29 +434,28 @@
     // start Chart Electric Consumption
     // **************************************************
     function changePeriodeElectricConsumption(){
-        const val=$("#select-location-filter-electric-consumption-periode").val();
-        let yearly= $("#electric-consumption-chart");
-        let monthly= $("#electric-consumption-chart-monthly");
-        let daily= $("#electric-consumption-chart-daily")
-        yearly.css({"display":"none"})
-        monthly.css({"display":"none"})
-        daily.css({"display":"none"})
+        isTrueGentani=true;
+        const val=$(`#${strSelectPeriode}`).val();
+        let yearly= $(`#${strElectricConsumption}`);
+        let monthly= $(`#${strElectricConsumption}-monthly`);
+        let daily= $(`#${strElectricConsumption}-daily`);
+        yearly.css(none);
+        monthly.css(none);
+        daily.css(none);
         if(val==="monthly"){
-            monthly.css({"display":"block"})
-            dataElectricYearly=[Math.random()*10000,0,0,0,0,0,0,0,0,0,0,0];
+            monthly.css(block);
             getChartElectricConsumptionMonthly();
-            return;
         }
-        if(val==="yearly"){
-            yearly.css({"display":"block"})
+        else if(val==="yearly"){
+            yearly.css(block);
             getChartElectricConsumptionYearly();
-            return;
         }
-        if(val==="daily"){
-            daily.css({"display":"block"})
+        else{
+            daily.css(block);
             getChartElectricConsumptionDaily();
-            return;
         }
+        getChartElectricConsumptionTotal(true)
+
     }
     function tempChartConsumptionPeriode(label,data){
         const labelDaily=[];
@@ -525,15 +554,30 @@
                 {
                     breakpoint: 767,
                     options: {
-                        plotOptions: {
-                            bar: {
-                                borderRadius: 0,
-                                columnWidth: "50%"
+                        chart: {
+                            type: 'bar',
+                            toolbar: {
+                                show: false,
                             }
-                        }
-                    }
+                        },
+
+                    },
                 },
-            ]
+            ],
+//
+//            responsive: [
+//                {
+//                    breakpoint: 767,
+//                    options: {
+//                        plotOptions: {
+//                            bar: {
+//                                borderRadius: 0,
+//                                columnWidth: "50%"
+//                            }
+//                        }
+//                    }
+//                },
+//            ]
         };
     }
     function getChartElectricConsumptionDaily(isUpdate){
@@ -547,45 +591,36 @@
         }
         let res = tempChartConsumptionPeriode(labelDaily,dataElectricDaily,'daily');
         var chart = new ApexCharts(
-            document.querySelector(`#electric-consumption-chart-daily`),
+            document.querySelector(`#${strElectricConsumption}-daily`),
             res
         );
-        if(!isUpdate){
-            chart.render();
-        }
+        chart.render();
 
-        if(isUpdate){
-            noDaily=0;
-            dataElectricDaily=[Math.random()*10000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-            chart.updateSeries([{
-                data: dataElectricDaily
-            }])
-        }
         const times = setInterval(function(){
-            const value=$("#select-location-filter-electric-consumption-periode").val();
+            const value=$(`#${strSelectPeriode}`).val();
             if(value==="daily"){
                 noDaily = noDaily+1;
-                if(noDaily>30){
+                if(noDaily>24){
+//                    dataElectricDaily=[6860,7587,9511,1413,3544,3277,5249,7390,1299,434,9218,8075,9424,5160,0,0,0,0,0,0,0,0,0,0];
                     dataElectricDaily=[Math.random()*10000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
                     noDaily=0;
                 }
                 else{
                     dataElectricDaily[noDaily] = Math.random()*10000;
                 }
-                chart.updateSeries([{
-                    data: dataElectricDaily
-                }])
-            }else{
-                noDaily=0;
-                noMonthly=0;
-                noYearly=0;
-                dataElectricDaily=[Math.random()*10000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-                dataElectricMonthly=[Math.random()*10000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-                dataElectricYearly=[Math.random()*10000,0,0,0,0,0,0,0,0,0,0,0];
+                chart.updateSeries([{data: dataElectricDaily}])
+            }
+            else{
+                var currentdate = new Date();
+                noDaily=parseInt(currentdate.getHours())-1;
+                noMonthly=4;
+                noYearly=9;
+                dataElectricDaily=[6860,7587,9511,1413,3544,3277,5249,7390,1299,434,9218,8075,9424,5160,0,0,0,0,0,0,0,0,0,0];
+                dataElectricMonthly=[2733,8486,3929,5133,6286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+                dataElectricYearly=[1694,9362,3494,5139,9028,2100,9524,3918,9424,5160,0,0];
                 chart.updateSeries([{data: dataElectricDaily}]);
                 clearInterval(times);
             }
-            console.log("harian",dataElectricDaily)
         },1000);
     }
     function getChartElectricConsumptionMonthly(isUpdate){
@@ -599,18 +634,18 @@
         }
         let res = tempChartConsumptionPeriode(labelMonthly,dataElectricMonthly);
         var chart = new ApexCharts(
-            document.querySelector("#electric-consumption-chart-monthly"),
+            document.querySelector(`#${strElectricConsumption}-monthly`),
             res
         );
         chart.render();
 
         const times = setInterval(function(){
-            const value=$("#select-location-filter-electric-consumption-periode").val();
+            const value=$(`#${strSelectPeriode}`).val();
             if(value==="monthly"){
                 noMonthly = noMonthly+1;
                 if(noMonthly>30){
-                    dataElectricMonthly=[Math.random()*10000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-                    noMonthly=0;
+                    dataElectricMonthly=[2733,8486,3929,5133,6286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+                    noMonthly=4;
                 }
                 else{
                     dataElectricMonthly[noMonthly] = Math.random()*10000;
@@ -619,60 +654,67 @@
                     data: dataElectricMonthly
                 }])
             }else{
-                noDaily=0;
-                noMonthly=0;
-                noYearly=0;
-                dataElectricDaily=[Math.random()*10000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-                dataElectricMonthly=[Math.random()*10000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-                dataElectricYearly=[Math.random()*10000,0,0,0,0,0,0,0,0,0,0,0];
+                var currentdate = new Date();
+                noDaily=parseInt(currentdate.getHours())-1;
+//                noDaily=13;
+                noMonthly=4;
+                noYearly=9;
+                dataElectricDaily=[6860,7587,9511,1413,3544,3277,5249,7390,1299,434,9218,8075,9424,5160,0,0,0,0,0,0,0,0,0,0];
+                dataElectricMonthly=[2733,8486,3929,5133,6286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+                dataElectricYearly=[1694,9362,3494,5139,9028,2100,9524,3918,9424,5160,0,0];
                 chart.updateSeries([{data: dataElectricMonthly}]);
                 clearInterval(times);
             }
 
             console.log("bulan",dataElectricMonthly)
-        },1000);
+        },interval);
 
     }
     function getChartElectricConsumptionYearly(isUpdate){
         let res = tempChartConsumptionPeriode(dataMonth,dataElectricYearly);
         var chart = new ApexCharts(
-            document.querySelector("#electric-consumption-chart"),
+            document.querySelector(`#${strElectricConsumption}`),
             res
         );
         chart.render();
 
         const times = setInterval(function(){
-            const value=$("#select-location-filter-electric-consumption-periode").val();
+            const value=$(`#${strSelectPeriode}`).val();
             if(value==="yearly"){
                 noYearly = noYearly+1;
                 if(noYearly>11){
-                    dataElectricYearly=[Math.random()*10000,0,0,0,0,0,0,0,0,0,0,0];
-                    setTimeout(()=>noYearly=0,300)
+                    dataElectricYearly=[1694,9362,3494,5139,9028,2100,9524,3918,9424,5160,0,0];
+                    setTimeout(()=>noYearly=9,300)
                 }else{
                     dataElectricYearly[noYearly] = Math.random()*10000;
                 }
                 chart.updateSeries([{data: dataElectricYearly}]);
             }else{
-                noDaily=0;
-                noMonthly=0;
-                noYearly=0;
-                dataElectricDaily=[Math.random()*10000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-                dataElectricMonthly=[Math.random()*10000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-                dataElectricYearly=[Math.random()*10000,0,0,0,0,0,0,0,0,0,0,0];
+                var currentdate = new Date();
+                noDaily=parseInt(currentdate.getHours())-1;
+
+//                noDaily=13;
+                noMonthly=4;
+                noYearly=9;
+                dataElectricDaily=[6860,7587,9511,1413,3544,3277,5249,7390,1299,434,9218,8075,9424,5160,0,0,0,0,0,0,0,0,0,0];
+                dataElectricMonthly=[2733,8486,3929,5133,6286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+                dataElectricYearly=[1694,9362,3494,5139,9028,2100,9524,3918,9424,5160,0,0];
                 chart.updateSeries([{data: dataElectricYearly}]);
                 clearInterval(times);
             }
-        },1000);
+            console.log("tahun",dataElectricYearly)
+        },interval);
     }
     function getChartElectricConsumptionTotal() {
-        const newData = [654.05,496.15,547.95,462.67,509.62,412.92,445.06,434.49,400.70,395.6,446.3,463.8];
+        const newData = dataElectricGentani;
         var Theme = "dark";
         Apex.tooltip = { theme: Theme };
         var options = {
             colors:['green'],
             chart: {
+
                 fontFamily: "Nunito, sans-serif",
-                height: 250,
+                height: 350,
                 type: "area",
                 zoom: { enabled: false },
                 dropShadow: {
@@ -700,7 +742,7 @@
             labels: dataMonth,
 
             xaxis: {
-                categories: ['Oct', 'Nov', 'Dec','Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep' ],
+//                categories: ['Oct', 'Nov', 'Dec','Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep' ],
 
                 axisBorder: {
                     show: false,
@@ -798,8 +840,21 @@
             },
             responsive: [
                 {
-                    breakpoint: 575,
+                    breakpoint: 767,
                     options: {
+                        chart: {
+                            fontFamily: "Nunito, sans-serif",
+                            type: "area",
+                            zoom: { enabled: false },
+                            dropShadow: {
+                                enabled: true,
+                                opacity: 0.2,
+                                blur: 10,
+                                left: -7,
+                                top: 22,
+                            },
+                            toolbar: { show: false },
+                        },
                         legend: {
                             offsetY: -50,
                         },
@@ -808,10 +863,29 @@
             ],
         };
         var chart = new ApexCharts(
-            document.querySelector("#electric-consumption-chart-total"),
+            document.querySelector(`#${strElectricConsumption}-total`),
             options
         );
         chart.render();
+        const times = setInterval(function(){
+            if(isTrueGentani){
+                noGentani=0;
+                dataElectricGentani=[Math.random()*10000,0,0,0,0,0,0,0,0,0,0,0];
+                chart.updateSeries([{data: dataElectricYearly}]);
+                isTrueGentani=false;
+                clearInterval(times);
+            }else{
+                noGentani = noGentani+1;
+                if(noGentani>11){
+                    dataElectricGentani=[Math.random()*10000,0,0,0,0,0,0,0,0,0,0,0];
+                    setTimeout(()=>noGentani=0,300)
+                }else{
+                    dataElectricGentani[noGentani] = Math.random()*10000;
+                }
+                chart.updateSeries([{data: dataElectricGentani}]);
+            }
+
+        },interval);
     }
     // **************************************************
     // start Energy Capacity & Target Limit
@@ -820,10 +894,11 @@
         let html = "";
         const data = [
             { title: "Energy Capacity", desc: "mW/h", value: "20.000 mW/h" },
-            { title: "Target Limit", desc: "Percentage", value: "80%" },
+            { title: "Average Cost", desc: "Rp / Unit", value: "Rp. 604.201" },
+            { title: "Average Production Unit", desc: "Unit", value: "9.8 Unit" },
         ];
         data.map((res, i) => {
-            html += `<li class="list-group-item ">
+            html += `<li class="list-group-item">
                 <div class="media">
                     <div class="me-3">
                         <i data-feather="zap"></i>
@@ -835,10 +910,9 @@
                     </div>
                 </div>
             </li>`;
-            html += i === 0 ? `<hr/>` : "";
+            html += data.length-1 === i ? `` : "<hr style='margin-bottom: 14px'/>";
         });
         $("#group-container").html(html);
-        // document.getElementById("group-container").innerHTML = html;
     }
     // **************************************************
     // end Energy Capacity & Target Limit
@@ -853,15 +927,15 @@
             selectPeriodeHtml+=`<option value="${res.toLowerCase().replaceAll(" ","_")}">${res}</option>`;
         })
         document.getElementById("select-location-filter-electric-consumption").innerHTML = selectHtml;
-        document.getElementById("select-location-filter-electric-consumption-periode").innerHTML = selectPeriodeHtml;
+        document.getElementById(`${strSelectPeriode}`).innerHTML = selectPeriodeHtml;
         new vanillaSelectBox("#select-location-filter-electric-consumption", {
             "keepInlineStyles":true,
             "maxHeight": 200,
-            "minWidth":210,
+            "minWidth":200,
             "search": true,
             "placeHolder":"All"
         });
-        new vanillaSelectBox("#select-location-filter-electric-consumption-periode", {
+        new vanillaSelectBox(`#${strSelectPeriode}`, {
             "keepInlineStyles":true,
             "maxHeight": 200,
             "minWidth":210,
