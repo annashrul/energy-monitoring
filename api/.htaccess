@@ -1,0 +1,14 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
+<FilesMatch ".(eot|ttf|otf|woff)">
+    Header set Access-Control-Allow-Origin "*"
+</FilesMatch>
+<FilesMatch "\.(php|jpg|png|css/javascript|json)$">
+Header set Access-Control-Allow-Origin *
+Header set Access-Control-Allow-Methods: GET
+Header set Access-Control-Allow-Headers: Cache-Control
+
+</FilesMatch>
+

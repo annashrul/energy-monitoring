@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no"/>
     <title>ENERGY MONITORING</title>
+    <link href="" rel="icon" type="image/x-icon" />
     <link href="../src/assets/img/favicon.ico" rel="icon" type="image/x-icon" />
     <link href="../layouts/vertical-dark-menu/css/light/loader.css" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet"/>
@@ -262,17 +263,17 @@
                     </div>
                 </div>
 
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3">
-                    <div class="row widget-statistic" id="chart-consumption"></div>
-                </div>
+                <!--<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3">-->
+                    <!--<div class="row widget-statistic" id="chart-consumption"></div>-->
+                <!--</div>-->
 
-                <div class="col-xl-12 mt-3 zoom">
-                    <div class="row" id="widget-middle">
-                        <div class="col-md-12">
-                            <div class="row" id="avg-container"></div>
-                        </div>
-                    </div>
-                </div>
+                <!--<div class="col-xl-12 mt-3 zoom">-->
+                    <!--<div class="row" id="widget-middle">-->
+                        <!--<div class="col-md-12">-->
+                            <!--<div class="row" id="avg-container"></div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
             </div>
         </div>
     </div>
@@ -287,7 +288,6 @@
 <script src="../layouts/vertical-dark-menu/loader.js"></script>
 <script src="../src/plugins/src/vanillaSelectBox/vanillaSelectBox.js"></script>
 <script>
-
     let dataMonth = ["Jan","Feb", "Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
     let dataLocation = ["Press Shop 1","Welding Shop 1", "Toso Plant 1",  "Assembly Plant 1","Quality Plant 1","Other"];
     let dataElectricYearly=[1694,9362,3494,5139,9028,2100,9524,3918,9424,5160,0,0];
@@ -319,7 +319,16 @@
         getChartElectricConsumptionYearly(false);
         getChartElectricConsumptionTotal();
         $(`#${strElectricConsumption}-monthly`).css(none);
-        $(`#${strElectricConsumption}-daily`).css(none)
+        $(`#${strElectricConsumption}-daily`).css(none);
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            url:"http://localhost/LCI/energy-monitoring/api",
+            type:"GET",
+            dataType:"JSON",
+            success:function(res){
+                console.log(res);
+            }
+        })
 
     };
 
@@ -358,7 +367,7 @@
             tempProgress();
             return
         }
-        console.log(noDailyConsumption)
+//        console.log(noDailyConsumption)
     }
 
     // **************************************************
@@ -608,6 +617,7 @@
                 else{
                     dataElectricDaily[noDaily] = Math.random()*10000;
                 }
+
                 chart.updateSeries([{data: dataElectricDaily}])
             }
             else{
@@ -666,7 +676,7 @@
                 clearInterval(times);
             }
 
-            console.log("bulan",dataElectricMonthly)
+//            console.log("bulan",dataElectricMonthly)
         },interval);
 
     }
@@ -702,7 +712,7 @@
                 chart.updateSeries([{data: dataElectricYearly}]);
                 clearInterval(times);
             }
-            console.log("tahun",dataElectricYearly)
+//            console.log("tahun",dataElectricYearly)
         },interval);
     }
     function getChartElectricConsumptionTotal() {
