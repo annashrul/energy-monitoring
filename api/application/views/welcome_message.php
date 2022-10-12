@@ -191,16 +191,10 @@
     .bs-none {
         box-shadow: none !important;
     }
-
-    /*@media only screen and (max-width: 1200px){*/
-    /*#electric-consumption-chart-total{*/
-    /*height: 250px !important;*/
-    /*}*/
-    /*}*/
     </style>
 </head>
 
-<body class="layout-boxed mb-5">
+<body class="layout-boxed mb-5" style="zoom:75%">
     <div id="load_screen">
         <div class="loader">
             <div class="loader-content">
@@ -315,18 +309,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!--<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3">-->
-                    <!--<div class="row widget-statistic" id="chart-consumption"></div>-->
-                    <!--</div>-->
-
-                    <!--<div class="col-xl-12 mt-3 zoom">-->
-                    <!--<div class="row" id="widget-middle">-->
-                    <!--<div class="col-md-12">-->
-                    <!--<div class="row" id="avg-container"></div>-->
-                    <!--</div>-->
-                    <!--</div>-->
-                    <!--</div>-->
                 </div>
             </div>
         </div>
@@ -381,8 +363,63 @@
         filterChartElectricConsumption();
         getChartElectricConsumptionDaily();
         getChartElectricConsumptionTotal();
-        changePeriodeElectricConsumption()
+        changePeriodeElectricConsumption();
+        realtimeProgress()
     };
+
+
+    function realtimeProgress(isTrue=true) {
+        let i = 0;
+//        let angkaDefault=41.666666666666666;
+        let timers = setInterval(() => {
+            const currentDate = new Date();
+            const h = currentDate.getHours();
+            const m = currentDate.getMinutes();
+            const s = currentDate.getSeconds();
+            const arrTime=['5:0','10:0','15:0','20:0','25:0','30:0','35:0','40:0','45:0','50:0','55:0','0:0'];
+            let angkaDefault=(Number(h)*2.5)*200;
+            i=Number(h);
+            let persen=h;
+            console.log("current time", `${h}:${m}:${s}`);
+            if(noDailyConsumption!==1){
+                clearTimeout(timers);
+            }else{
+                let isTrue=false;
+                for(let key=0;key<arrTime.length;key++){
+                    if(arrTime[key] ===`${m}:${s}`){
+                        isTrue=true;
+                        break;
+                    }
+                }
+                if (`${m}:${s}` === "0:0") {
+                    clearTimeout(timers);
+                    angkaDefault = 0;
+                    realtimeProgress();
+                    setNotif();
+                    tempProgress(angkaDefault, "0", "green", "bg-success");
+                }else{
+                    setNotif();
+
+                    if(isTrue){
+                        angkaDefault=angkaDefault+(Number(h)*2.5)*200;
+                        persen=60/(arrTime.length-1) * Number(h);
+                        tempProgress(angkaDefault,Math.round(persen), "green", "bg-success");
+                        console.log(`persen = ${persen}`,angkaDefault)
+                    }else{
+                        persen=60/(arrTime.length-1) * Number(h);
+
+                        angkaDefault=angkaDefault+(Number(h)*2.5)*200;
+                        tempProgress(angkaDefault,Math.round(persen), "green", "bg-success");
+
+                    }
+
+                }
+                console.log(arrTime.length-Number(h));
+            }
+
+
+        }, 1000);
+    }
 
     function getTotal() {
         $.ajax({
@@ -591,7 +628,6 @@
             type: "GET",
             dataType: "JSON",
             success: function(response) {
-                console.log("res", response['series']);
                 const labelDaily = [];
                 for (let i = 0; i < 30; i++) {
                     if (i < 9) {
@@ -645,8 +681,6 @@
         });
     }
 
-
-
     function insertDaily() {
         setInterval(function() {
             const currentDate = new Date();
@@ -661,7 +695,6 @@
                     arr.push(`${i}:0:0`);
                 }
             }
-            console.log("insert", `${h}:${m}:${s}`)
             const newArr = arr.filter((res) => res.includes(`${h}:${m}:${s}`));
             if (newArr.length > 0) {
                 $.ajax({
@@ -682,10 +715,10 @@
 
     }
 
-    function tempProgress(title = '1.272', val = '8.48', color = 'green', bgName = 'bg-success') {
+    function tempProgress(title = '0', val = '0', color = 'green', bgName = 'bg-success') {
         $("#notif").css({
             'color': color
-        })
+        });
         let titleHtml = `<p class="value bold fs-34" style="color:${color}">${title} <span>mW/h</span></p>`;
         let valueHtml = `<div class="progress" style="background-color:#0a0d26">
             <div class="progress-bar ${bgName} bs-none" role="progressbar" style="width:${val}%" aria-valuenow="${val}" aria-valuemin="0" aria-valuemax="100"></div>
@@ -697,32 +730,34 @@
         $("#value-progress").html(valueHtml)
     }
 
-    function setNotif(label = 'Normal Condition', value = '8.48%') {
+    function setNotif(label = 'Normal Condition', value = 'no abnormality condition\n') {
         $("#notif").html(`${label} <br><span id="value-notif" style="color:white">${value}</span>`)
     }
 
     function setDailyConsumption() {
+
+
         if (noDailyConsumption === 1) {
             noDailyConsumption = noDailyConsumption + 1;
             setNotif("Warning", "80%");
             tempProgress("12.200", "80", "#e2a03f", "bg-warning");
+            realtimeProgress(false);
             return;
         }
         if (noDailyConsumption === 2) {
             setNotif("Critical", "90%");
             noDailyConsumption = 0;
             tempProgress("13.600", "90", "#e7515a", "bg-danger");
-
+            realtimeProgress(false);
             return;
         }
         if (noDailyConsumption === 0) {
             noDailyConsumption = noDailyConsumption + 1;
             setNotif();
             tempProgress();
+            realtimeProgress(false);
 
-            return
         }
-        //        console.log(noDailyConsumption)
     }
 
     // **************************************************
@@ -806,7 +841,7 @@
     function changePeriodeElectricConsumption() {
         isTrueGentani = true;
         const val = $(`#${strSelectPeriode}`).val();
-        console.log("val", val)
+        console.log("val", val);
         let yearly = $(`#${strElectricConsumption}`);
         let monthly = $(`#${strElectricConsumption}-monthly`);
         let daily = $(`#${strElectricConsumption}-daily`);
@@ -994,7 +1029,7 @@
         });
         selectPeriodeHtml.map((res) => {
             selectPeriodeHtml += `<option value="${res.toLowerCase().replaceAll(" ","_")}">${res}</option>`;
-        })
+        });
         document.getElementById("select-location-filter-electric-consumption").innerHTML = selectHtml;
         document.getElementById(`${strSelectPeriode}`).innerHTML = selectPeriodeHtml;
         new vanillaSelectBox("#select-location-filter-electric-consumption", {
