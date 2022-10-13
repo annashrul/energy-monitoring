@@ -368,26 +368,30 @@
     };
 
 
-    function realtimeProgress(isTrue=true) {
+    function realtimeProgress(isTrue = true) {
         let i = 0;
-//        let angkaDefault=41.666666666666666;
+        //        let angkaDefault=41.666666666666666;
+        let angkaDefault = 41.6666666667;
+
         let timers = setInterval(() => {
             const currentDate = new Date();
             const h = currentDate.getHours();
             const m = currentDate.getMinutes();
             const s = currentDate.getSeconds();
-            const arrTime=['5:0','10:0','15:0','20:0','25:0','30:0','35:0','40:0','45:0','50:0','55:0','0:0'];
-            let angkaDefault=(Number(h)*2.5)*200;
-            i=Number(h);
-            let persen=h;
+            const arrTime = ['5:0', '10:0', '15:0', '20:0', '25:0', '30:0', '35:0', '40:0', '45:0', '50:0',
+                '55:0', '0:0'
+            ];
+
+            //            i=Number(h);
+            let persen = h;
             console.log("current time", `${h}:${m}:${s}`);
-            if(noDailyConsumption!==1){
+            if (noDailyConsumption !== 1) {
                 clearTimeout(timers);
-            }else{
-                let isTrue=false;
-                for(let key=0;key<arrTime.length;key++){
-                    if(arrTime[key] ===`${m}:${s}`){
-                        isTrue=true;
+            } else {
+                let isTrue = false;
+                for (let key = 0; key < arrTime.length; key++) {
+                    if (arrTime[key] === `${m}:${s}`) {
+                        isTrue = true;
                         break;
                     }
                 }
@@ -397,27 +401,25 @@
                     realtimeProgress();
                     setNotif();
                     tempProgress(angkaDefault, "0", "green", "bg-success");
-                }else{
-                    setNotif();
-
-                    if(isTrue){
-                        angkaDefault=angkaDefault+(Number(h)*2.5)*200;
-                        persen=60/(arrTime.length-1) * Number(h);
-                        tempProgress(angkaDefault,Math.round(persen), "green", "bg-success");
-                        console.log(`persen = ${persen}`,angkaDefault)
-                    }else{
-                        persen=60/(arrTime.length-1) * Number(h);
-
-                        angkaDefault=angkaDefault+(Number(h)*2.5)*200;
-                        tempProgress(angkaDefault,Math.round(persen), "green", "bg-success");
-
+                } else {
+                    if (i > 60) {
+                        i = 0;
+                        angkaDefault = 41.6666666667;
                     }
-
+                    //                    24 jam dari 12000 = 500
+                    //                    1 jam = 60 menit
+                    //                    per 5 menit update progress
+                    //                    12000 dari per 5 menit = 41.6666666667
+                    if (isTrue) {
+                        i = i + 1;
+                        angkaDefault = angkaDefault + 41.6666666667;
+                    }
+                    setNotif();
+                    tempProgress(Math.round(angkaDefault), i + 1, "green", "bg-success");
+                    console.log(`persen = ${persen}`, angkaDefault);
                 }
-                console.log(arrTime.length-Number(h));
             }
-
-
+            console.log(i, i * angkaDefault)
         }, 1000);
     }
 
