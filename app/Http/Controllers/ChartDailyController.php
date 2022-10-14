@@ -25,10 +25,10 @@ class ChartDailyController extends Controller
         );
         if(count($data) > 0){
             foreach($data as $key=>$row){
-                if($row['tanggal']=="0"){
-                    $newData[23] =  ceil($row['series']);
+                if($row->tanggal=="0"){
+                    $newData[23] =  ceil($row->series);
                 }else{
-                    $newData[(int)$row['tanggal']-1] =  ceil($row['series']);
+                    $newData[(int)$row->tanggal-1] =  ceil($row->series);
                 }
             }
         }
