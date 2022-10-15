@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-
-Route::post('/insert', [\App\Http\Controllers\ChartDailyController::class, 'insert']);
-Route::get('/get_daily', [\App\Http\Controllers\ChartDailyController::class, 'get_daily']);
-Route::get('/get_monthly', [\App\Http\Controllers\ChartDailyController::class, 'get_monthly']);
-Route::get('/get_yearly', [\App\Http\Controllers\ChartDailyController::class, 'get_yearly']);
+//
+//
+//Route::post('/insert', [\App\Http\Controllers\ChartDailyController::class, 'insert']);
+//Route::get('/get_daily', [\App\Http\Controllers\ChartDailyController::class, 'get_daily']);
+//Route::get('/get_monthly', [\App\Http\Controllers\ChartDailyController::class, 'get_monthly']);
+//Route::get('/get_yearly', [\App\Http\Controllers\ChartDailyController::class, 'get_yearly']);

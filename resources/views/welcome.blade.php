@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" />
-    <title>ENERGY MONITORING ads</title>
+    <title>ENERGY MONITORING</title>
     <link href="" rel="icon" type="image/x-icon" />
 
     {{-- <link href="fe/src/assets/img/favicon.ico" rel="icon" type="image/x-icon" /> --}}
@@ -216,7 +216,7 @@
                     <div class="row layout-top-spacing">
                         <div class="col-12 col-xs-12 col-md-12 zoom mb-3"
                             style="display: flex;justify-content: space-between;">
-                            <h3 class="text-left bold">Energy Monitoring Dashboard sadasd</h3>
+                            <h3 class="text-left bold">Energy Monitoring Dashboard</h3>
                             <select id="select-location" onchange="changeLocation()"></select>
                         </div>
 
@@ -381,9 +381,7 @@
         function calculatePercent(h, m, s) {
             const hours = h;
             const minute = m;
-            const second = s;
             let i = 0;
-            let angkaDefault = 0;
             const arrTime = ['5:0', '10:0', '15:0', '20:0', '25:0', '30:0', '35:0', '40:0', '45:0', '50:0', '55:0', '0:0'];
             let jam = Number(hours);
             let menit = Number(minute) + "0";
@@ -397,7 +395,6 @@
                     newArr.push(arrTime[x])
                 }
             }
-            let avgTime = Number(`${jam - 1}.${newArr.length}`) * 12;
             if (Number(hours) === 0) {
                 i = i + newArr.length / 288 * 100;
             } else {
@@ -407,15 +404,11 @@
 
             const totalLoop = newArr.length + 12 * Number(hours);
             angkaDefault = totalLoop * 41.6666666667;
-            console.log("function", {
-                arrTime: newArr.length,
-                total: angkaDefault,
-                percent: i
-            });
+
             return {
                 total: angkaDefault,
                 percent: i,
-                arrTime: newArr
+                arrTime: arrTime
             }
         }
 
@@ -437,10 +430,14 @@
                 const m = currentDate.getMinutes();
                 const s = currentDate.getSeconds();
                 const baseTrue = calculatePercent(h, m, s);
-                console.log("current time asd", baseTrue);
+                console.log("current time", `${h}:${m}:${s}`);
+                console.log("baseTrue", baseTrue);
+
                 if (noDailyConsumption !== 1) {
                     clearTimeout(timers);
                 } else {
+                    console.log("baseTrue.arrTime",baseTrue.arrTime);
+
                     let isTrue = false;
                     for (let key = 0; key < baseTrue.arrTime.length; key++) {
                         if (baseTrue.arrTime[key] === `${m}:${s}`) {
@@ -448,6 +445,7 @@
                             break;
                         }
                     }
+
                     if (`${m}:${s}` === "0:0") {
                         clearTimeout(timers);
                         angkaDefault = 0;
@@ -456,13 +454,15 @@
                         tempProgress(angkaDefault, "0", "green", "bg-success");
                     } else {
                         if (isTrue) {
-                            // i = i + 1;
-
-                            console.log("baseTrue", baseTrue);
-                            angkaDefault = angkaDefault + 41.6666666667;
+                            const baseTrues = calculatePercent(h, m, s);
+                            angkaDefault=baseTrues.total;
+                            console.log("########################", baseTrues);
+                            angkaDefault = angkaDefault+41.6666666667;
+                            i= baseTrues.percent;
                         }
+                        console.log(angkaDefault);
                         setNotif();
-                        tempProgress(Math.round(angkaDefault), i.toFixed(1), "green", "bg-success");
+                        tempProgress(angkaDefault.toFixed(2), i.toFixed(1), "green", "bg-success");
                     }
                 }
             }, 1000);
@@ -922,7 +922,6 @@
         function changePeriodeElectricConsumption() {
             isTrueGentani = true;
             const val = $(`#${strSelectPeriode}`).val();
-            console.log("val", val);
             let yearly = $(`#${strElectricConsumption}`);
             let monthly = $(`#${strElectricConsumption}-monthly`);
             let daily = $(`#${strElectricConsumption}-daily`);

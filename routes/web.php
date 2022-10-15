@@ -16,8 +16,6 @@ use App\Http\Controllers\ChartDailyController;
 */
 
 Route::get('/', function () {
-    // return redirect('http://localhost/LCI/laravel/energy-monitoring/');
-//    return File::get(public_path() . '/index.html');
    return view('welcome');
 });
 
