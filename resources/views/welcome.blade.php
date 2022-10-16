@@ -431,13 +431,9 @@
                 const s = currentDate.getSeconds();
                 const baseTrue = calculatePercent(h, m, s);
                 console.log("current time", `${h}:${m}:${s}`);
-                console.log("baseTrue", baseTrue);
-
                 if (noDailyConsumption !== 1) {
                     clearTimeout(timers);
                 } else {
-                    console.log("baseTrue.arrTime",baseTrue.arrTime);
-
                     let isTrue = false;
                     for (let key = 0; key < baseTrue.arrTime.length; key++) {
                         if (baseTrue.arrTime[key] === `${m}:${s}`) {
@@ -455,14 +451,12 @@
                     } else {
                         if (isTrue) {
                             const baseTrues = calculatePercent(h, m, s);
-                            angkaDefault=baseTrues.total;
-                            console.log("########################", baseTrues);
-                            angkaDefault = angkaDefault+41.6666666667;
-                            i= baseTrues.percent;
+                            angkaDefault = baseTrues.total;
+                            angkaDefault = angkaDefault + 41.6666666667;
+                            i = baseTrues.percent;
                         }
-                        console.log(angkaDefault);
                         setNotif();
-                        tempProgress(angkaDefault.toFixed(2), i.toFixed(1), "green", "bg-success");
+                        tempProgress(angkaDefault.toFixed(0), i.toFixed(1), "green", "bg-success");
                     }
                 }
             }, 1000);
@@ -470,8 +464,10 @@
 
         function getTotal() {
             $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 contentType: 'application/json; charset=utf-8',
-                // url: "http://127.0.0.1:8000/api/get_yearly",
                 url: "{{ route('get_yearly') }}",
                 type: "GET",
                 dataType: "JSON",
@@ -657,6 +653,9 @@
 
         function getYearly() {
             $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 url: "{{ route('get_yearly') }}",
                 contentType: 'application/json; charset=utf-8',
                 type: "GET",
@@ -683,6 +682,9 @@
 
         function getMonthly() {
             $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 contentType: 'application/json; charset=utf-8',
                 url: "{{ route('get_monthly') }}",
                 type: "GET",
@@ -717,10 +719,11 @@
 
         function getDaily() {
             $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 contentType: 'application/json; charset=utf-8',
-                // url: "http://127.0.0.1:8000/api/get_daily",
                 url: "{{ route('get_daily') }}",
-
                 type: "GET",
                 dataType: "JSON",
                 beforeSend: function() {
@@ -769,16 +772,20 @@
                     }
                 }
                 const newArr = arr.filter((res) => res.includes(`${h}:${m}:${s}`));
+                console.log("insert daily arr", arr)
+                console.log("insert daily now", `${h}:${m}:${s}`)
+
                 if (newArr.length > 0) {
                     $.ajax({
-                        // url: "http://127.0.0.1:8000/api/insert",
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
                         url: "{{ route('insert') }}",
                         type: "POST",
                         data: {
                             series: Math.random() * 10000,
                             idx: h
                         },
-
                         beforeSend: function() {
                             $('body').append('<div class="first-loader"><img src="' + img + '"></div>')
                         },
@@ -787,6 +794,7 @@
                         },
                         dataType: "JSON",
                         success: function(res) {
+                            console.log("######################## INSERT CHART ", res)
                             getDaily();
 
                         }
