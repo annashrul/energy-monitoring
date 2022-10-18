@@ -374,7 +374,11 @@
             getChartElectricConsumptionDaily();
             getChartElectricConsumptionTotal();
             changePeriodeElectricConsumption();
-            realtimeProgress()
+            realtimeProgress();
+            insertDaily();
+            checkInsert()
+
+
         };
 
 
@@ -385,6 +389,7 @@
             const arrTime = ['5:0', '10:0', '15:0', '20:0', '25:0', '30:0', '35:0', '40:0', '45:0', '50:0', '55:0', '0:0'];
             let jam = Number(hours);
             let menit = Number(minute) + "0";
+            let newHours = jam - 1;
             let newArr = [];
             for (let x = 0; x < arrTime.length; x++) {
                 if (arrTime[x] === "0:0" || hours === "0") {
@@ -395,15 +400,16 @@
                     newArr.push(arrTime[x])
                 }
             }
+            let totalCalculate = arrTime.length * Number(hours) + newArr.length;
+            totalCalculate = totalCalculate / 288 * 1
             if (Number(hours) === 0) {
-                i = i + newArr.length / 288 * 100;
+                i = i + newArr.length / 288 * 60;
             } else {
-                i = i + newArr.length + 12 * Number(hours) / 288 * 100;
+                i = i + totalCalculate * (60 / 100 * 100);
             }
 
-
-            const totalLoop = newArr.length + 12 * Number(hours);
-            angkaDefault = totalLoop * 41.6666666667;
+            const totalLoop = arrTime.length * Number(hours) + newArr.length
+            let angkaDefault = totalLoop * 41.6666666667;
 
             return {
                 total: angkaDefault,
@@ -442,7 +448,7 @@
                         }
                     }
 
-                    if (`${m}:${s}` === "0:0") {
+                    if (`${m}:${s}` === "0:0" || i > 60) {
                         clearTimeout(timers);
                         angkaDefault = 0;
                         realtimeProgress();
@@ -455,6 +461,7 @@
                             angkaDefault = angkaDefault + 41.6666666667;
                             i = baseTrues.percent;
                         }
+
                         setNotif();
                         tempProgress(angkaDefault.toFixed(0), i.toFixed(1), "green", "bg-success");
                     }
@@ -734,11 +741,11 @@
                 },
                 success: function(response) {
                     const labelDaily = [];
-                    for (let i = 0; i < 24; i++) {
+                    for (let i = 1; i < 25; i++) {
                         if (i < 9) {
-                            labelDaily.push(`0${i+1}:00`);
+                            labelDaily.push(`0${i}:00`);
                         } else {
-                            labelDaily.push(`${i+1}:00`);
+                            labelDaily.push(`${i}:00`);
                         }
                     }
                     let def = tempChartConsumptionPeriode(labelDaily,
@@ -757,12 +764,52 @@
             });
         }
 
+        function checkInsert() {
+            const currentDate = new Date();
+            const h = currentDate.getHours();
+            let newData = [];
+            for (let i = 0; i < Number(h); i++) {
+                let newHours = i;
+                if (`${i}`.length === 1) {
+                    newHours = `0${i}`
+                }
+                newData.push(newHours);
+
+            }
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "{{ route('insertFirst') }}",
+                type: "POST",
+                data: {
+                    series: Math.random() * 10000,
+                    idx: newData
+                },
+                beforeSend: function() {
+                    $('body').append('<div class="first-loader"><img src="' + img + '"></div>')
+                },
+                complete: function() {
+                    $('.first-loader').remove()
+                },
+                dataType: "JSON",
+                success: function(res) {
+                    getDaily();
+
+                }
+            })
+            console.log(newData)
+        }
+
+
         function insertDaily() {
-            setInterval(function() {
+            setInterval(() => {
                 const currentDate = new Date();
                 const h = currentDate.getHours();
                 const m = currentDate.getMinutes();
                 const s = currentDate.getSeconds();
+
+                console.log(`${h}:${m}:${s}`)
                 let arr = [];
                 for (let i = 0; i < 24; i++) {
                     if (i < 10) {
@@ -771,10 +818,8 @@
                         arr.push(`${i}:0:0`);
                     }
                 }
-                const newArr = arr.filter((res) => res.includes(`${h}:${m}:${s}`));
-                console.log("insert daily arr", arr)
-                console.log("insert daily now", `${h}:${m}:${s}`)
 
+                const newArr = arr.filter((res) => res.includes(`${h}:${m}:${s}`));
                 if (newArr.length > 0) {
                     $.ajax({
                         headers: {
@@ -794,13 +839,13 @@
                         },
                         dataType: "JSON",
                         success: function(res) {
-                            console.log("######################## INSERT CHART ", res)
                             getDaily();
 
                         }
                     })
                 }
             }, 1000)
+
 
         }
 
@@ -810,11 +855,11 @@
             });
             let titleHtml = `<p class="value bold fs-34" style="color:${color}">${title} <span>mW/h</span></p>`;
             let valueHtml = `<div class="progress" style="background-color:#0a0d26">
-            <div class="progress-bar ${bgName} bs-none" role="progressbar" style="width:${val}%" aria-valuenow="${val}" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        <div class="w-icon">
-            <p class="bold" style="color:${color}">${val}%</p>
-        </div>`;
+                <div class="progress-bar ${bgName} bs-none" role="progressbar" style="width:${val}%" aria-valuenow="${val}" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="w-icon">
+                <p class="bold" style="color:${color}">${val}%</p>
+            </div>`;
             $("#title-progress").html(titleHtml);
             $("#value-progress").html(valueHtml)
         }
@@ -824,8 +869,6 @@
         }
 
         function setDailyConsumption() {
-
-
             if (noDailyConsumption === 1) {
                 noDailyConsumption = noDailyConsumption + 1;
                 setNotif("Warning", "80%");
@@ -853,72 +896,7 @@
         // start Filter Location
         // **************************************************
         function changeLocation(val) {
-            isTrueGentani = true;
-            const value = $(`#${strSelectPeriode}`).val();
-            if (value === "yearly") {
-                let res = tempChartConsumptionPeriode(dataMonth, [Math.random() * 10000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
-                const chart = new ApexCharts(
-                    document.querySelector(`#${strElectricConsumption}`),
-                    res
-                );
-                chart.render();
-                noYearly = 9;
-                dataElectricYearly = [1694, 9362, 3494, 5139, 9028, 2100, 9524, 3918, 9424, 5160, 0, 0];
-                chart.updateSeries([{
-                    data: dataElectricYearly
-                }]);
-
-            } else if (value === "monthly") {
-                const labelMonthly = [];
-                for (let i = 0; i < 31; i++) {
-                    if (i < 9) {
-                        labelMonthly.push(`0${i+1}`);
-                    } else {
-                        labelMonthly.push(i + 1);
-                    }
-                }
-                let res = tempChartConsumptionPeriode(labelMonthly, [Math.random() * 10000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                ]);
-                const chart = new ApexCharts(
-                    document.querySelector(`#${strElectricConsumption}-monthly`),
-                    res
-                );
-                chart.render();
-                noMonthly = 4;
-                dataElectricMonthly = [2733, 8486, 3929, 5133, 6286, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0
-                ];
-                chart.updateSeries([{
-                    data: dataElectricMonthly
-                }]);
-            } else {
-                const labelDaily = [];
-                for (let i = 0; i < 24; i++) {
-                    if (i < 9) {
-                        labelDaily.push(`0${i+1}:00`);
-                    } else {
-                        labelDaily.push(`${i+1}:00`);
-                    }
-                }
-                let res = tempChartConsumptionPeriode(labelDaily, dataElectricDaily, 'daily');
-                var chart = new ApexCharts(
-                    document.querySelector(`#${strElectricConsumption}-daily`),
-                    res
-                );
-                chart.render();
-                var currentdate = new Date();
-                noDaily = parseInt(currentdate.getHours()) - 1;
-
-                //            noDaily=13;
-                dataElectricDaily = [6860, 7587, 9511, 1413, 3544, 3277, 5249, 7390, 1299, 434, 9218, 8075, 9424, 5160, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0, 0
-                ];
-                chart.updateSeries([{
-                    data: dataElectricDaily
-                }]);
-            }
-            getChartElectricConsumptionTotal(true)
+            checkInsert()
         }
         // **************************************************
         // end Filter Location
@@ -945,7 +923,6 @@
                 yearly.css(block);
                 getChartElectricConsumptionYearly();
             } else {
-                insertDaily();
                 daily.css(block);
                 getChartElectricConsumptionDaily();
             }

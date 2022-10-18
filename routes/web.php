@@ -19,6 +19,7 @@ Route::get('/', function () {
    return view('welcome');
 });
 
+Route::post('/insertFirst', [\App\Http\Controllers\ChartDailyController::class, 'insertFirst'])->name('insertFirst');
 Route::post('/insert', [\App\Http\Controllers\ChartDailyController::class, 'insert'])->name('insert');
 Route::get('/get_daily', [\App\Http\Controllers\ChartDailyController::class, 'get_daily'])->name('get_daily');
 Route::get('/get_monthly', [\App\Http\Controllers\ChartDailyController::class, 'get_monthly'])->name('get_monthly');

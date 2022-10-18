@@ -14,7 +14,13 @@ use Illuminate\Support\Facades\DB;
 class ChartDailyController extends Controller
 {
 
+
     public function get_daily(){
+        header('Access-Control-Allow-Origin: *');
+        header("Access-Control-Allow-Credentials: true");
+        header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
+        header('Access-Control-Max-Age: 1000');
+        header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
         $newData=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
         $data = DB::select("
             SELECT hour(created_at) as tanggal, sum(series) as series
@@ -26,9 +32,9 @@ class ChartDailyController extends Controller
         if(count($data) > 0){
             foreach($data as $key=>$row){
                 if($row->tanggal=="0"){
-                    $newData[23] =  ceil($row->series);
+                    $newData[0] =  ceil($row->series);
                 }else{
-                    $newData[(int)$row->tanggal-1] =  ceil($row->series);
+                    $newData[(int)$row->tanggal] =  ceil($row->series);
                 }
             }
         }
@@ -37,6 +43,11 @@ class ChartDailyController extends Controller
     }
 
     public function get_monthly(){
+        header('Access-Control-Allow-Origin: *');
+        header("Access-Control-Allow-Credentials: true");
+        header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
+        header('Access-Control-Max-Age: 1000');
+        header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
         $newData=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
         $data = DB::select("
           select DAY(created_at) as tanggal, sum(series) as series 
@@ -56,6 +67,11 @@ class ChartDailyController extends Controller
         echo json_encode(array('series'=>$newData,"tanggal"=>$tgl));
     }
     public function get_yearly(){
+        header('Access-Control-Allow-Origin: *');
+        header("Access-Control-Allow-Credentials: true");
+        header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
+        header('Access-Control-Max-Age: 1000');
+        header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
         $newData=[0,0,0,0,0,0,0,0,0,0,0,0];
         $data = DB::select("
             SELECT MONTH(created_at) tanggal, sum(series) series FROM `chart_daily`
@@ -73,10 +89,29 @@ class ChartDailyController extends Controller
         echo json_encode(array('series'=>$newData,"tanggal"=>$tgl));
     }
 
+    public function insertFirst(Request $request){
+         $newData=[];
+         for($i=0;$i<count($request->idx);$i++){
+             $createdAt=date("Y-m-d H:i:s",strtotime(date("Y-m-d").$request->idx[$i].":00:00"));
+             DB::table('chart_daily')->where('created_at',$createdAt)->delete();
+             $newData[]=array(
+                 'series' =>  ceil(rand(1000,10000)),
+                 'created_at'=>$createdAt
+             );
+         }
+        $isTrue=DB::table('chart_daily')->insert($newData);
+        echo json_encode(array(
+            "status"=>$isTrue,
+        ));
+    }
+
     public function insert(Request $request){
         $isTrue=DB::table('chart_daily')->insert([
             'series' =>  ceil($request->series),
         ]);
-        echo json_encode(array("status"=>$isTrue));
+
+        echo json_encode(array(
+            "status"=>$isTrue
+        ));
     }
 }
