@@ -389,33 +389,53 @@
 
     };
 
+    function getDaily() {
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            url: "<?=base_url().'welcome/get_daily/'?>",
+            type: "GET",
+            dataType: "JSON",
+            success: function(response) {
+                const labelDaily = [];
+                for (let i = 0; i < 24; i++) {
+                    if (i < 9) {
+                        labelDaily.push(`0${i+1}:00`);
+                    } else {
+                        labelDaily.push(`${i+1}:00`);
+                    }
+                }
+                let def = tempChartConsumptionPeriode(labelDaily,
+                    response, 'daily');
+                var chart = new ApexCharts(
+                    document.querySelector(
+                        `#${strElectricConsumption}-daily`),
+                    def
+                );
+                chart.render();
+                chart.updateSeries([{
+                    data: response
+                }]);
+            }
+        });
+    }
+
 
 
     function insertDaily() {
-        //        let currHours = currentDate.getHours();
-        //        const h=currentDate.getHours();
-        //        const m=currentDate.getMinutes();
-        //        const s=currentDate.getSeconds();
-        //        console.log(`${currentDate.getHours()} : ${currentDate.getMinutes()} : ${currentDate.getSeconds()}`);
-        //        let isTrue=false;
-        //        dateLocal.forEach(function(res){
-        //            if(res===parseInt(h)){
-        //                console.log(res);
-        //            }
-        //        });
         setInterval(function() {
-            const labelDaily = [];
-            let isTrue = false;
             const currentDate = new Date();
             const h = currentDate.getHours();
             const m = currentDate.getMinutes();
             const s = currentDate.getSeconds();
             let arr = [];
             for (let i = 0; i < 24; i++) {
-                arr.push(`14:${i}:0`);
+                if (i < 10) {
+                    arr.push(`0${i}:0:0`);
+                } else {
+                    arr.push(`${i}:0:0`);
+                }
             }
             const newArr = arr.filter((res) => res.includes(`${h}:${m}:${s}`));
-            console.log(`#######################  ${h}:${m}:${s} #######################`);
             if (newArr.length > 0) {
                 $.ajax({
                     url: "<?=base_url().'welcome/insert_data'?>",
@@ -426,38 +446,7 @@
                     },
                     dataType: "JSON",
                     success: function(res) {
-                        // getChartElectricConsumptionDaily();
-                        $.ajax({
-                            contentType: 'application/json; charset=utf-8',
-                            url: "<?=base_url().'welcome/get_data/'?>" + m,
-                            type: "GET",
-                            // data: {
-                            //     idx: h
-                            // },
-                            dataType: "JSON",
-                            success: function(response) {
-                                const labelDaily = [];
-                                for (let i = 0; i < 24; i++) {
-                                    if (i < 9) {
-                                        labelDaily.push(`0${i+1}:00`);
-                                    } else {
-                                        labelDaily.push(`${i+1}:00`);
-                                    }
-                                }
-                                let def = tempChartConsumptionPeriode(labelDaily,
-                                    response, 'daily');
-                                var chart = new ApexCharts(
-                                    document.querySelector(
-                                        `#${strElectricConsumption}-daily`),
-                                    def
-                                );
-                                chart.render();
-                                chart.updateSeries([{
-                                    data: response
-                                }]);
-                            }
-                        });
-                        // getChartElectricConsumptionDaily(true);
+                        getDaily();
                     }
                 })
             }
@@ -734,82 +723,7 @@
     }
 
     function getChartElectricConsumptionDaily(isUpdate) {
-        const labelDaily = [];
-        for (let i = 0; i < 24; i++) {
-            if (i < 9) {
-                labelDaily.push(`0${i+1}:00`);
-            } else {
-                labelDaily.push(`${i+1}:00`);
-            }
-        }
-        const currentDate = new Date();
-        const h = currentDate.getHours();
-        const m = currentDate.getMinutes();
-
-        $.ajax({
-            contentType: 'application/json; charset=utf-8',
-            url: "<?=base_url().'welcome/get_data/'?>" + m,
-            type: "GET",
-            // data: {
-            //     idx: m
-            // },
-            dataType: "JSON",
-            success: function(datas) {
-                console.log(datas)
-                let res = tempChartConsumptionPeriode(labelDaily, datas, 'daily');
-                var chart = new ApexCharts(
-                    document.querySelector(`#${strElectricConsumption}-daily`),
-                    res
-                );
-                chart.render();
-                chart.updateSeries([{
-                    data: datas
-                }]);
-
-            }
-        });
-        //        const labelDaily=[ ];
-        //        for(let i=0;i<24;i++){
-        //            if(i<9){
-        //                labelDaily.push(`0${i+1}:00`);
-        //            }else{
-        //                labelDaily.push(`${i+1}:00`);
-        //            }
-        //        }
-        //        let res = tempChartConsumptionPeriode(labelDaily,dataElectricDaily,'daily');
-        //        var chart = new ApexCharts(
-        //            document.querySelector(`#${strElectricConsumption}-daily`),
-        //            res
-        //        );
-        //        chart.render();
-        //
-        //        const times = setInterval(function(){
-        //            const value=$(`#${strSelectPeriode}`).val();
-        //            if(value==="daily"){
-        //                noDaily = noDaily+1;
-        //                if(noDaily>24){
-        //                    dataElectricDaily=[Math.random()*10000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-        //                    noDaily=0;
-        //                }
-        //                else{
-        //                    dataElectricDaily[noDaily] = Math.random()*10000;
-        //                    insertDaily(dataElectricDaily[noDaily])
-        //                }
-        //
-        //                chart.updateSeries([{data: dataElectricDaily}])
-        //            }
-        //            else{
-        //                var currentdate = new Date();
-        //                noDaily=parseInt(currentdate.getHours())-1;
-        //                noMonthly=4;
-        //                noYearly=9;
-        //                dataElectricDaily=[6860,7587,9511,1413,3544,3277,5249,7390,1299,434,9218,8075,9424,5160,0,0,0,0,0,0,0,0,0,0];
-        //                dataElectricMonthly=[2733,8486,3929,5133,6286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-        //                dataElectricYearly=[1694,9362,3494,5139,9028,2100,9524,3918,9424,5160,0,0];
-        //                chart.updateSeries([{data: dataElectricDaily}]);
-        //                clearInterval(times);
-        //            }
-        //        },1000);
+        getDaily()
     }
 
     function getChartElectricConsumptionMonthly(isUpdate) {

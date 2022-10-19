@@ -23,40 +23,50 @@ class Welcome extends CI_Controller {
         header('Access-Control-Allow-Origin: *');
         header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
         header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+		date_default_timezone_set('Asia/Jakarta');
     }
 	public function index()
 	{
+		// date_default_timezone_set('Asia/Jakarta');
+		// $dateNow = date('H');
+		// echo "<pre/>";
+		// $checkIsZero=(substr($dateNow,1,1));
+		// $newHours="";
+		// if($checkIsZero == "0"){
+		// 	$newHours = substr($dateNow,1,2);
+		// }
+		// // var_dump(substr($dateNow,1,1));
+		// die();
 		$this->load->view('welcome_message');
 	}
 
-	public function get_data($no){
-		// $h=date("m");
-		// if(substr($h,0,1) == "0"){
-		// 	$h=substr($h,1,1);
-		// }
-		$newNo=(int)$no;
+	public function get_daily(){
         $newData=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-		if($newNo == 25){
-			$this->db->query("DELETE * FROM chart_daily");
-			$newNo=0;
+        $data = $this->db->query("select HOUR(created_at) hour, created_at, series from chart_daily where date_format(created_at,'%d') = date_format(CURDATE(),'%d') and date_format(created_at,'%M') = date_format(CURDATE(),'%M') and date_format(created_at,'%y') = date_format(CURDATE(),'%y')")->result_array();
+		$h="";
+		if(count($data) > 0){
+			foreach($data as $key=>$row){
+				if($row['hour']=="0"){
+					$newData[23] =  $row['series'];
+				}else{
+					$newData[(int)$row['hour']-1] =  $row['series'];
+				}
+			}
 		}
-        $data = $this->db->query("select * from chart_daily ORDER BY id limit 24 ")->result_array();
-		foreach($data as $key=>$row){
-			$newData[$key] = $row["series"];
-		}
-		// $newData[$newNo] = $data[$newNo]["series"];
 
-        // $newData[count($data)-1] = $data[count($data)-1]["series"];
-		
         echo json_encode($newData);
     }
     public function insert_data(){
-
+		
         $isTrue=$this->db->insert("chart_daily",array(
 	        "series"=>$_POST["series"]
         ));
-        // $data = $this->db->query("select count(*) from chart_daily where date_format(created_at,'%Y-%m-%d') =  CURDATE()")->result_array();
         echo json_encode(array("status"=>$isTrue));
 
     }
+
+	public function get_monthly(){
+		$data = $this->db->query("SELECT * FROM `chart_daily` where date_format(created_at,'%Y') = date_format(CURDATE(),'%Y') group by date_format(created_at,'%M');")->result_array();
+
+	}
 }
