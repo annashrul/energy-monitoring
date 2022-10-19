@@ -52,7 +52,7 @@ class ChartDailyController extends Controller
         $data = DB::select("
           select DAY(created_at) as tanggal, sum(series) as series 
           from chart_daily 
-          where date_format(created_at,'%Y')=date_format(CURDATE(),'%Y') and date_format(created_at,'%m') =date_format(CURDATE(),'%m') 
+          where YEAR(created_at)=YEAR(CURDATE()) and MONTH(created_at) = MONTH(CURDATE())
           group by DAY(created_at) 
           ORDER BY created_at 
         ");
@@ -75,9 +75,9 @@ class ChartDailyController extends Controller
         $newData=[0,0,0,0,0,0,0,0,0,0,0,0];
         $data = DB::select("
             SELECT MONTH(created_at) tanggal, sum(series) series FROM `chart_daily`
-            where date_format(created_at,'%Y') = date_format(CURDATE(),'%Y')
+            where YEAR(created_at) = YEAR(CURDATE())
             group by MONTH(created_at)
-            order by date_format(created_at,'%m') asc
+            order by MONTH(created_at) asc
         ");
         $tgl=[];
         foreach ($data as $key => $row){
