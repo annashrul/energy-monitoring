@@ -377,9 +377,38 @@
             realtimeProgress();
             insertDaily();
             checkInsert()
+            // setAbnotmality()
 
 
         };
+
+        function setAbnotmality() {
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "http://172.16.0.21:38011/alert/alert",
+                type: "POST",
+                data: {
+                    sequence_name: "ECOMA",
+                    problem_detail: "line-shop",
+                    problem_id: "ECO-001",
+                    action: "please check"
+                },
+                beforeSend: function() {
+                    $('body').append('<div class="first-loader"><img src="' + img + '"></div>')
+                },
+                complete: function() {
+                    $('.first-loader').remove()
+                },
+                dataType: "JSON",
+                success: function(res) {
+                    console.log(res);
+                    // getDaily();
+
+                }
+            })
+        }
 
 
         function calculatePercent(h, m, s) {
@@ -454,6 +483,7 @@
                         realtimeProgress();
                         setNotif();
                         tempProgress(angkaDefault, "0", "green", "bg-success");
+                        setAbnotmality()
                     } else {
                         if (isTrue) {
                             const baseTrues = calculatePercent(h, m, s);
@@ -774,7 +804,6 @@
                     newHours = `0${i}`
                 }
                 newData.push(newHours);
-
             }
             $.ajax({
                 headers: {

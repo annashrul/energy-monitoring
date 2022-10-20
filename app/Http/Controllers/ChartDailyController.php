@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\DB;
 
 class ChartDailyController extends Controller
 {
+    
+
+    public function getAbnormality(){
+        
+    }
 
 
     public function get_daily(){
@@ -90,6 +95,11 @@ class ChartDailyController extends Controller
     }
 
     public function insertFirst(Request $request){
+         header('Access-Control-Allow-Origin: *');
+        header("Access-Control-Allow-Credentials: true");
+        header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
+        header('Access-Control-Max-Age: 1000');
+        header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
          $newData=[];
          for($i=0;$i<count($request->idx);$i++){
              $createdAt=date("Y-m-d H:i:s",strtotime(date("Y-m-d").$request->idx[$i].":00:00"));
@@ -106,6 +116,11 @@ class ChartDailyController extends Controller
     }
 
     public function insert(Request $request){
+         header('Access-Control-Allow-Origin: *');
+        header("Access-Control-Allow-Credentials: true");
+        header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
+        header('Access-Control-Max-Age: 1000');
+        header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
         $isTrue=DB::table('chart_daily')->insert([
             'series' =>  ceil($request->series),
         ]);
