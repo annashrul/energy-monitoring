@@ -58,7 +58,7 @@ class ChartDailyController extends Controller
           select DAY(created_at) as tanggal, sum(series) as series 
           from chart_daily 
           where YEAR(created_at)=YEAR(CURDATE()) and MONTH(created_at) = MONTH(CURDATE())
-          group by DAY(created_at) 
+          group by DAY(created_at)
           ORDER BY created_at 
         ");
         $tgl=[];

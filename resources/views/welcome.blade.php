@@ -898,6 +898,7 @@
         }
 
         function setDailyConsumption() {
+            setAbnotmality()
             if (noDailyConsumption === 1) {
                 noDailyConsumption = noDailyConsumption + 1;
                 setNotif("Warning", "80%");
