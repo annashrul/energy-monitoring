@@ -407,7 +407,7 @@
                 type: "POST",
                 data: {
                     sequence_name: "ENERGY MONITORING",
-                    problem_detail: "OVER CONSUMPTION",
+                    problem_detail: "Energy consumption was over capacity up to 13.600 MWh",
                     problem_id: "ECO-001",
                     action: "please check"
                 },
@@ -786,6 +786,7 @@
                     $('.first-loader').remove()
                 },
                 success: function(response) {
+                    console.log("GET DAILY")
                     const labelDaily = [];
                     for (let i = 1; i < 25; i++) {
                         if (i < 9) {
@@ -854,7 +855,7 @@
                 const m = currentDate.getMinutes();
                 const s = currentDate.getSeconds();
 
-                // console.log(`${h}:${m}:${s}`)
+                console.log(`${h}:${m}:${s}`)
                 let arr = [];
                 for (let i = 0; i < 24; i++) {
                     if (i < 10) {
