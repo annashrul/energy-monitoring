@@ -201,7 +201,7 @@
     </style>
 </head>
 
-<body class="layout-boxed mb-5" style="zoom:90%">
+<body class="layout-boxed mb-5" style="zoom:95%">
     <div id="load_screen">
         <div class="loader">
             <div class="loader-content">
