@@ -406,7 +406,7 @@
                 url: "http://172.16.0.21:38011/alert/alert",
                 type: "POST",
                 data: {
-                    sequence_name: "ECOMA",
+                    sequence_name: "ENERGY MONITORING",
                     problem_detail: "line-shop",
                     problem_id: "ECO-001",
                     action: "please check"
@@ -916,6 +916,7 @@
         function setDailyConsumption() {
 
             if (noDailyConsumption === 1) {
+                setAbnotmality()
                 noDailyConsumption = noDailyConsumption + 1;
                 setNotif("Warning", "80%");
                 tempProgress("12.200", "80", "#e2a03f", "bg-warning");
@@ -923,7 +924,7 @@
                 return;
             }
             if (noDailyConsumption === 2) {
-                setAbnotmality()
+                setResolve();
                 setNotif("Critical", "90%");
                 noDailyConsumption = 0;
                 tempProgress("13.600", "90", "#e7515a", "bg-danger");
@@ -931,7 +932,7 @@
                 return;
             }
             if (noDailyConsumption === 0) {
-                setResolve();
+
                 noDailyConsumption = noDailyConsumption + 1;
                 setNotif();
                 tempProgress();
