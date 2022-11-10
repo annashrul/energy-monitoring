@@ -411,12 +411,12 @@
                     problem_id: "ECO-001",
                     action: "please check"
                 },
-                beforeSend: function() {
-                    $('body').append('<div class="first-loader"><img src="' + img + '"></div>')
-                },
-                complete: function() {
-                    $('.first-loader').remove()
-                },
+                // beforeSend: function() {
+                //     $('body').append('<div class="first-loader"><img src="' + img + '"></div>')
+                // },
+                // complete: function() {
+                //     $('.first-loader').remove()
+                // },
                 dataType: "JSON",
                 success: function(res) {
                     // console.log(res);
