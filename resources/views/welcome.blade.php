@@ -376,7 +376,22 @@
             changePeriodeElectricConsumption();
             realtimeProgress();
             insertDaily();
-            checkInsert()
+            checkInsert();
+
+            // setInterval(function() {
+            //     getDaily();
+
+            //     console.log("satu menit")
+            // }, 60000)
+
+            var date = new Date();
+
+            setTimeout(function() {
+                setInterval(function() {
+                    getDaily();
+                    console.log("satu menit")
+                }, 60000);
+            }, (60 - date.getSeconds()) * 1000);
             // setAbnotmality()
 
 
@@ -474,8 +489,9 @@
             let i = base.percent;
             let angkaDefault = base.total;
 
-
+            //  getDaily()
             let timers = setInterval(() => {
+
                 const currentDate = new Date();
                 const h = currentDate.getHours();
                 const m = currentDate.getMinutes();
@@ -524,12 +540,12 @@
                 url: "{{ route('get_yearly') }}",
                 type: "GET",
                 dataType: "JSON",
-                beforeSend: function() {
-                    $('body').append('<div class="first-loader"><img src="' + img + '"></div>')
-                },
-                complete: function() {
-                    $('.first-loader').remove()
-                },
+                // beforeSend: function() {
+                //     $('body').append('<div class="first-loader"><img src="' + img + '"></div>')
+                // },
+                // complete: function() {
+                //     $('.first-loader').remove()
+                // },
                 success: function(response) {
                     const newData = response['series'];
                     let Theme = "dark";
@@ -713,12 +729,12 @@
                 contentType: 'application/json; charset=utf-8',
                 type: "GET",
                 dataType: "JSON",
-                beforeSend: function() {
-                    $('body').append('<div class="first-loader"><img src="' + img + '"></div>')
-                },
-                complete: function() {
-                    $('.first-loader').remove()
-                },
+                // beforeSend: function() {
+                //     $('body').append('<div class="first-loader"><img src="' + img + '"></div>')
+                // },
+                // complete: function() {
+                //     $('.first-loader').remove()
+                // },
                 success: function(response) {
                     let res = tempChartConsumptionPeriode(dataMonth, response['series']);
                     var chart = new ApexCharts(
@@ -742,12 +758,12 @@
                 url: "{{ route('get_monthly') }}",
                 type: "GET",
                 dataType: "JSON",
-                beforeSend: function() {
-                    $('body').append('<div class="first-loader"><img src="' + img + '"></div>')
-                },
-                complete: function() {
-                    $('.first-loader').remove()
-                },
+                // beforeSend: function() {
+                //     $('body').append('<div class="first-loader"><img src="' + img + '"></div>')
+                // },
+                // complete: function() {
+                //     $('.first-loader').remove()
+                // },
                 success: function(response) {
                     const labelDaily = [];
                     for (let i = 0; i < 30; i++) {
@@ -779,14 +795,14 @@
                 url: "{{ route('get_daily') }}",
                 type: "GET",
                 dataType: "JSON",
-                beforeSend: function() {
-                    $('body').append('<div class="first-loader"><img src="' + img + '"></div>')
-                },
-                complete: function() {
-                    $('.first-loader').remove()
-                },
+                // beforeSend: function() {
+                //     $('body').append('<div class="first-loader"><img src="' + img + '"></div>')
+                // },
+                // complete: function() {
+                //     $('.first-loader').remove()
+                // },
                 success: function(response) {
-                    console.log("GET DAILY")
+                    console.log("######################### GET DAILY ############################")
                     const labelDaily = [];
                     for (let i = 1; i < 25; i++) {
                         if (i < 9) {
@@ -832,14 +848,15 @@
                     series: Math.random() * 10000,
                     idx: newData
                 },
-                beforeSend: function() {
-                    $('body').append('<div class="first-loader"><img src="' + img + '"></div>')
-                },
-                complete: function() {
-                    $('.first-loader').remove()
-                },
+                // beforeSend: function() {
+                //     $('body').append('<div class="first-loader"><img src="' + img + '"></div>')
+                // },
+                // complete: function() {
+                //     $('.first-loader').remove()
+                // },
                 dataType: "JSON",
                 success: function(res) {
+                    console.log("############################### INSERT DAILY ############################")
                     getDaily();
 
                 }
@@ -877,12 +894,12 @@
                             series: Math.random() * 10000,
                             idx: h
                         },
-                        beforeSend: function() {
-                            $('body').append('<div class="first-loader"><img src="' + img + '"></div>')
-                        },
-                        complete: function() {
-                            $('.first-loader').remove()
-                        },
+                        // beforeSend: function() {
+                        //     $('body').append('<div class="first-loader"><img src="' + img + '"></div>')
+                        // },
+                        // complete: function() {
+                        //     $('.first-loader').remove()
+                        // },
                         dataType: "JSON",
                         success: function(res) {
                             getDaily();
