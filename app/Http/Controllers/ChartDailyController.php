@@ -64,7 +64,7 @@ class ChartDailyController extends Controller
         $tgl=[];
         foreach ($data as $key => $row){
             $newData[(int) $row->tanggal-1] =  ceil($row->series);
-        }
+        } 
         for($i=1;$i<31;$i++){
             $tgl[]=$i;
         }

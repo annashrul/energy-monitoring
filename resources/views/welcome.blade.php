@@ -382,6 +382,22 @@
 
         };
 
+        async function setResolve() {
+            const myData2 = {
+                problem_id: "ECO-001",
+            }
+
+            const response = await fetch('http://172.16.0.21:38011/alert/resolve', {
+                method: 'POST',
+                body: JSON.stringify(myData2), // string or object
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const myJson = await response.json(); //extract JSON from the http response
+            console.log(myJson);
+        }
+
         function setAbnotmality() {
             $.ajax({
                 headers: {
@@ -403,7 +419,7 @@
                 },
                 dataType: "JSON",
                 success: function(res) {
-                    console.log(res);
+                    // console.log(res);
                     // getDaily();
 
                 }
@@ -465,7 +481,7 @@
                 const m = currentDate.getMinutes();
                 const s = currentDate.getSeconds();
                 const baseTrue = calculatePercent(h, m, s);
-                console.log("current time", `${h}:${m}:${s}`);
+                // console.log("current time", `${h}:${m}:${s}`);
                 if (noDailyConsumption !== 1) {
                     clearTimeout(timers);
                 } else {
@@ -827,7 +843,7 @@
 
                 }
             })
-            console.log(newData)
+            // console.log(newData)
         }
 
 
@@ -838,7 +854,7 @@
                 const m = currentDate.getMinutes();
                 const s = currentDate.getSeconds();
 
-                console.log(`${h}:${m}:${s}`)
+                // console.log(`${h}:${m}:${s}`)
                 let arr = [];
                 for (let i = 0; i < 24; i++) {
                     if (i < 10) {
@@ -898,7 +914,7 @@
         }
 
         function setDailyConsumption() {
-            setAbnotmality()
+
             if (noDailyConsumption === 1) {
                 noDailyConsumption = noDailyConsumption + 1;
                 setNotif("Warning", "80%");
@@ -907,6 +923,7 @@
                 return;
             }
             if (noDailyConsumption === 2) {
+                setAbnotmality()
                 setNotif("Critical", "90%");
                 noDailyConsumption = 0;
                 tempProgress("13.600", "90", "#e7515a", "bg-danger");
@@ -914,6 +931,7 @@
                 return;
             }
             if (noDailyConsumption === 0) {
+                setResolve();
                 noDailyConsumption = noDailyConsumption + 1;
                 setNotif();
                 tempProgress();
