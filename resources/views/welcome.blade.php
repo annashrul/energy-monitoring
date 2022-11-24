@@ -515,7 +515,6 @@
                         realtimeProgress();
                         setNotif();
                         tempProgress(angkaDefault, "0", "green", "bg-success");
-                        setAbnotmality()
                     } else {
                         if (isTrue) {
                             const baseTrues = calculatePercent(h, m, s);
@@ -934,21 +933,21 @@
         function setDailyConsumption() {
             console.log(noDailyConsumption)
             if (noDailyConsumption === 1) {
-                noDailyConsumption = noDailyConsumption + 1;
-                setNotif("Warning", "80%");
-                tempProgress("12.200", "80", "#e2a03f", "bg-warning");
-                realtimeProgress(false);
-                return;
-            }
-            if (noDailyConsumption === 2) {
-                setAbnotmality()
-
-                setNotif("Critical", "90%");
-                noDailyConsumption = 0;
+                noDailyConsumption = 0
+                setNotif("Warning", "90%");
                 tempProgress("13.600", "90", "#e7515a", "bg-danger");
                 realtimeProgress(false);
+                setAbnotmality()
                 return;
             }
+            // if (noDailyConsumption === 2) {
+            //     setAbnotmality()
+            //     setNotif("Critical", "90%");
+            //     noDailyConsumption = 0;
+            //     tempProgress("13.600", "90", "#e7515a", "bg-danger");
+            //     realtimeProgress(false);
+            //     return;
+            // }
             if (noDailyConsumption === 0) {
                 setResolve();
                 noDailyConsumption = noDailyConsumption + 1;
