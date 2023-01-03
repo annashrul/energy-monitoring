@@ -273,8 +273,7 @@
                                                 <h5 class="">Uptime & Status</h5>
                                                 <div class="task-action">
                                                     <div class="dropdown">
-                                                        <a class="dropdown-toggle" href="#"><i
-                                                                data-feather="alert-circle"></i></a>
+                                                        <a class="dropdown-toggle" href="#"><i data-feather="alert-circle"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -341,21 +340,8 @@
         let dataLocation = ["Press Shop 1", "Welding Shop 1", "Toso Plant 1", "Assembly Plant 1", "Quality Plant 1",
             "Other"
         ];
-        let dataElectricYearly = [1694, 9362, 3494, 5139, 9028, 2100, 9524, 3918, 9424, 5160, 0, 0];
-        let dataElectricMonthly = [2733, 8486, 3929, 5133, 6286, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0
-        ];
-        let dataElectricDaily = [6860, 7587, 9511, 1413, 3544, 3277, 5249, 7390, 1299, 434, 9218, 8075, 9424, 5160, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0
-        ];
-        let dataElectricGentani = [Math.random() * 10000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-        let noYearly = 9;
-        let noMonthly = 4;
-        let noDaily = 0;
-        let noGentani = 0;
+
         let noDailyConsumption = 1;
-        const interval = 1000;
-        const intervalDaily = 3600000;
         let isTrueGentani = false;
         const strSelectPeriode = 'select-location-filter-electric-consumption-periode';
         const strElectricConsumption = 'electric-consumption-chart';
@@ -386,7 +372,6 @@
                 let currentMonth = months[d.getMonth()];
                 today = currentDay + ', ' + dd+" " +currentMonth + ' ' + yyyy;
                 $("#clock").html(`${today} ${currentTimeString}`);
-
             }, 1000);
             feather.replace();
             setNotif();

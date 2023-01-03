@@ -39,7 +39,7 @@ class ChartDailyController extends Controller
                 if($row->tanggal=="0"){
                     $newData[0] =  ceil($row->series);
                 }else{
-                    $newData[(int)$row->tanggal] =  ceil($row->series);
+                    $newData[(int)$row->tanggal-1] =  ceil($row->series);
                 }
             }
         }
@@ -101,7 +101,7 @@ class ChartDailyController extends Controller
         header('Access-Control-Max-Age: 1000');
         header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
          $newData=[];
-         for($i=0;$i<count($request->idx);$i++){
+         for($i=0;$i<count($request->idx)-1;$i++){
              $createdAt=date("Y-m-d H:i:s",strtotime(date("Y-m-d").$request->idx[$i].":00:00"));
              DB::table('chart_daily')->where('created_at',$createdAt)->delete();
              $newData[]=array(
