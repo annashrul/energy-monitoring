@@ -368,41 +368,21 @@
 
         window.onload = function() {
             setInterval(function() {
-                var currentTime = new Date();
-                var hours = currentTime.getHours();
-                var minutes = currentTime.getMinutes();
-                var seconds = currentTime.getSeconds();
-
-                // Add leading zeros
+                let currentTime = new Date();
+                let hours = currentTime.getHours();
+                let minutes = currentTime.getMinutes();
+                let seconds = currentTime.getSeconds();
                 hours = (hours < 10 ? "0" : "") + hours;
                 minutes = (minutes < 10 ? "0" : "") + minutes;
                 seconds = (seconds < 10 ? "0" : "") + seconds;
-
-                // Compose the string for display
-                var currentTimeString = hours + ":" + minutes + ":" + seconds;
-//                var currentDates = new Date(Date.now());
-                var today = new Date();
-                var dd = String(today.getDate()).padStart(2, '0');
-                var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-                var yyyy = today.getFullYear();
-
-                var days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-                var d = new Date(today);
-                var currentDay = days[d.getDay()];
-                const months = [
-                    'Januari',
-                    'Februari',
-                    'Maret',
-                    'April',
-                    'Mei',
-                    'Juni',
-                    'Juli',
-                    'Agustus',
-                    'September',
-                    'Oktober',
-                    'November',
-                    'Desember',
-                ];
+                let currentTimeString = hours + ":" + minutes + ":" + seconds;
+                let today = new Date();
+                let dd = String(today.getDate()).padStart(2, '0');
+                let yyyy = today.getFullYear();
+                let days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+                const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September','Oktober','November', 'Desember',];
+                let d = new Date(today);
+                let currentDay = days[d.getDay()];
                 let currentMonth = months[d.getMonth()];
                 today = currentDay + ', ' + dd+" " +currentMonth + ' ' + yyyy;
                 $("#clock").html(`${today} ${currentTimeString}`);
