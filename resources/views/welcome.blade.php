@@ -214,10 +214,14 @@
             <div class="layout-px-spacing ml-0">
                 <div class="middle-content container-xxl p-0">
                     <div class="row layout-top-spacing">
-                        <div class="col-12 col-xs-12 col-md-12 zoom mb-3"
-                            style="display: flex;justify-content: space-between;">
+                        <div class="col-12 col-xs-12 col-md-8 zoom mb-3"
+                            style="display: flex;justify-content: space-between;align-items: center">
                             <h3 class="text-left bold">Energy Monitoring Dashboard</h3>
                             <select id="select-location" onchange="changeLocation()"></select>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="text-right bold" style="float: right" id="clock"></p>
+
                         </div>
 
                     </div>
@@ -363,6 +367,47 @@
         };
 
         window.onload = function() {
+            setInterval(function() {
+                var currentTime = new Date();
+                var hours = currentTime.getHours();
+                var minutes = currentTime.getMinutes();
+                var seconds = currentTime.getSeconds();
+
+                // Add leading zeros
+                hours = (hours < 10 ? "0" : "") + hours;
+                minutes = (minutes < 10 ? "0" : "") + minutes;
+                seconds = (seconds < 10 ? "0" : "") + seconds;
+
+                // Compose the string for display
+                var currentTimeString = hours + ":" + minutes + ":" + seconds;
+//                var currentDates = new Date(Date.now());
+                var today = new Date();
+                var dd = String(today.getDate()).padStart(2, '0');
+                var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                var yyyy = today.getFullYear();
+
+                var days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+                var d = new Date(today);
+                var currentDay = days[d.getDay()];
+                const months = [
+                    'Januari',
+                    'Februari',
+                    'Maret',
+                    'April',
+                    'Mei',
+                    'Juni',
+                    'Juli',
+                    'Agustus',
+                    'September',
+                    'Oktober',
+                    'November',
+                    'Desember',
+                ];
+                let currentMonth = months[d.getMonth()];
+                today = currentDay + ', ' + dd+" " +currentMonth + ' ' + yyyy;
+                $("#clock").html(`${today} ${currentTimeString}`);
+
+            }, 1000);
             feather.replace();
             setNotif();
             tempProgress();
