@@ -95,23 +95,26 @@ class ChartDailyController extends Controller
     }
 
     public function insertFirst(Request $request){
-         header('Access-Control-Allow-Origin: *');
+        date_default_timezone_set('Asia/Jakarta');
+
+        header('Access-Control-Allow-Origin: *');
         header("Access-Control-Allow-Credentials: true");
         header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
         header('Access-Control-Max-Age: 1000');
         header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
          $newData=[];
-         for($i=0;$i<count($request->idx)-1;$i++){
+         for($i=0;$i<count($request->idx);$i++){
              $createdAt=date("Y-m-d H:i:s",strtotime(date("Y-m-d").$request->idx[$i].":00:00"));
              DB::table('chart_daily')->where('created_at',$createdAt)->delete();
              $newData[]=array(
                  'series' =>  ceil(rand(1000,10000)),
-                 'created_at'=>$createdAt
+                 'created_at'=>$createdAt,
              );
          }
         $isTrue=DB::table('chart_daily')->insert($newData);
         echo json_encode(array(
             "status"=>$isTrue,
+            'created'=>count($request->idx)
         ));
     }
 
@@ -126,7 +129,8 @@ class ChartDailyController extends Controller
         ]);
 
         echo json_encode(array(
-            "status"=>$isTrue
+            "status"=>$isTrue,
+
         ));
     }
 }

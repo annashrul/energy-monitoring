@@ -38,6 +38,10 @@
     <link href="{{ asset('fe/src/assets/css/dark/elements/infobox.css') }}" rel="stylesheet" type="text/css" />
 
     <style>
+        * {
+            font-weight: normal !important;
+        }
+
         .p-0 {
             padding: 0 !important;
         }
@@ -122,7 +126,7 @@
         }
 
         .bold {
-            font-weight: bold !important;
+            font-weight: normal !important;
         }
 
         .ml-0 {
@@ -198,6 +202,12 @@
             width: 60px;
             height: 60px
         }
+
+        .vsb-main {
+            float: right !important;
+            margin-left: 10px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 
@@ -217,11 +227,10 @@
                         <div class="col-12 col-xs-12 col-md-8 zoom mb-3"
                             style="display: flex;justify-content: space-between;align-items: center">
                             <h3 class="text-left bold">Energy Monitoring Dashboard</h3>
-                            <select id="select-location" onchange="changeLocation()"></select>
-                        </div>
-                        <div class="col-md-4">
                             <p class="text-right bold" style="float: right" id="clock"></p>
-
+                        </div>
+                        <div class="col-12 col-xs-12 col-sm-12 col-md-4">
+                            <select id="select-location" class="text-right" onchange="changeLocation()"></select>
                         </div>
 
                     </div>
@@ -273,7 +282,8 @@
                                                 <h5 class="">Uptime & Status</h5>
                                                 <div class="task-action">
                                                     <div class="dropdown">
-                                                        <a class="dropdown-toggle" href="#"><i data-feather="alert-circle"></i></a>
+                                                        <a class="dropdown-toggle" href="#"><i
+                                                                data-feather="alert-circle"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -293,7 +303,7 @@
                                 <div class="">
                                     <h5 class="">Electric Consumption</h5>
                                 </div>
-                                <div class="dropdown ">
+                                <div class="dropdown">
                                     <select id="select-location-filter-electric-consumption"
                                         onchange="changeLocation($(this).val())"></select>
                                     <select id="select-location-filter-electric-consumption-periode"
@@ -340,7 +350,7 @@
         let dataLocation = ["Press Shop 1", "Welding Shop 1", "Toso Plant 1", "Assembly Plant 1", "Quality Plant 1",
             "Other"
         ];
-
+        let dataDay = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         let noDailyConsumption = 1;
         let isTrueGentani = false;
         const strSelectPeriode = 'select-location-filter-electric-consumption-periode';
@@ -365,12 +375,10 @@
                 let today = new Date();
                 let dd = String(today.getDate()).padStart(2, '0');
                 let yyyy = today.getFullYear();
-                let days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-                const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September','Oktober','November', 'Desember',];
                 let d = new Date(today);
-                let currentDay = days[d.getDay()];
-                let currentMonth = months[d.getMonth()];
-                today = currentDay + ', ' + dd+" " +currentMonth + ' ' + yyyy;
+                let currentDay = dataDay[d.getDay()];
+                let currentMonth = dataMonth[d.getMonth()];
+                today = currentDay + ', ' + dd + " " + currentMonth + ' ' + yyyy;
                 $("#clock").html(`${today} ${currentTimeString}`);
             }, 1000);
             feather.replace();
@@ -840,13 +848,18 @@
             const currentDate = new Date();
             const h = currentDate.getHours();
             let newData = [];
-            for (let i = 0; i < Number(h); i++) {
+
+            for (let i = 1; i < Number(h); i++) {
                 let newHours = i;
                 if (`${i}`.length === 1) {
                     newHours = `0${i}`
                 }
                 newData.push(newHours);
             }
+            for (let x = 1; x < h; x++) {
+                console.log(x)
+            }
+            console.log(h)
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1150,7 +1163,7 @@
                     </div>
                     <div class="media-body">
                         <h5 class="tx-inverse bold">${res.title}</h5>
-                        <p class="mg-b-0 bold">( ${res.desc} )</p>
+                        <p class="mg-b-0 bold fs-14">( ${res.desc} )</p>
                         <h6 class="amount bold">${res.value}</h6>
                     </div>
                 </div>
@@ -1222,8 +1235,8 @@
                 html += `<div class="t-item">
                 <div class="t-company-name">
                     <div class="t-name">
-                        <h4>${res}</h4>
-                        <p class="meta-date bold">6h 37m</p>
+                        <h4 class="fs-17">${res}</h4>
+                        <p class="meta-date bold fs-14">6h 37m</p>
                     </div>
                 </div>
                 <div class="t-rate rate-dec">
